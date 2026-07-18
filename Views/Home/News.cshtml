@@ -1,0 +1,166 @@
+@{
+    ViewData["Title"] = "News";
+}
+
+<section class="page-hero news-page-hero">
+    <div class="container page-hero-content">
+        <div class="eyebrow">
+            <span class="server-status-dot"></span>
+            MaximoRO News
+        </div>
+
+        <h1>
+            Development updates,
+            <span>events, and announcements.</span>
+        </h1>
+
+        <p>
+            Follow the progress of MaximoRO, review important announcements,
+            and stay informed about upcoming tests, events, and server changes.
+        </p>
+    </div>
+</section>
+
+<section class="section news-page-section">
+    <div class="container">
+        <div class="section-heading">
+            <div class="eyebrow">
+                <span class="server-status-dot"></span>
+                Latest updates
+            </div>
+
+            <h2>
+                What is happening
+                <span>around MaximoRO.</span>
+            </h2>
+
+            <p>
+                New development posts and community announcements will appear
+                here as work on the server continues.
+            </p>
+        </div>
+
+        <div class="news-page-grid">
+            <article class="news-page-card featured-news-card">
+                <div class="news-page-image news-image-development"></div>
+
+                <div class="news-page-card-content">
+                    <div class="news-card-meta">
+                        <span>Development</span>
+                        <time datetime="2026-07-17">July 17, 2026</time>
+                    </div>
+
+                    <h2>Building the foundation of MaximoRO</h2>
+
+                    <p>
+                        Work has begun on the MaximoRO website, visual identity,
+                        server information pages, and development structure.
+                        The project is currently in its early foundation stage.
+                    </p>
+
+                    <a class="news-read-more" asp-controller="Home" asp-action="ServerInfo">
+                        View server progress
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="news-page-card">
+                <div class="news-page-image news-image-community"></div>
+
+                <div class="news-page-card-content">
+                    <div class="news-card-meta">
+                        <span>Community</span>
+                        <time datetime="2026-07-17">July 17, 2026</time>
+                    </div>
+
+                    <h2>A community-first server experience</h2>
+
+                    <p>
+                        MaximoRO is being designed around parties, guilds,
+                        trading, events, and meaningful interaction between
+                        players rather than isolated solo progression.
+                    </p>
+
+                    <a class="news-read-more" asp-controller="Home" asp-action="Features">
+                        Explore the features
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="news-page-card">
+                <div class="news-page-image news-image-guide"></div>
+
+                <div class="news-page-card-content">
+                    <div class="news-card-meta">
+                        <span>Guide</span>
+                        <time datetime="2026-07-17">July 17, 2026</time>
+                    </div>
+
+                    <h2>Preparing for your first adventure</h2>
+
+                    <p>
+                        Installation instructions, account registration,
+                        launcher details, and beginner information will be
+                        published before public testing begins.
+                    </p>
+
+                    <a class="news-read-more" asp-controller="Home" asp-action="Downloads">
+                        Visit downloads
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="news-page-card">
+                <div class="news-page-image news-image-event"></div>
+
+                <div class="news-page-card-content">
+                    <div class="news-card-meta">
+                        <span>Events</span>
+                        <time datetime="2026-07-17">July 17, 2026</time>
+                    </div>
+
+                    <h2>Future events and community activities</h2>
+
+                    <p>
+                        Seasonal celebrations, automated activities, GM-hosted
+                        events, and community competitions are being considered
+                        for future development.
+                    </p>
+
+                    <a class="news-read-more" asp-controller="Home" asp-action="Discord">
+                        Join the community
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="news-development-banner">
+    <div class="container">
+        <div class="news-development-panel">
+            <div>
+                <div class="eyebrow">
+                    <span class="server-status-dot"></span>
+                    Development notice
+                </div>
+
+                <h2>MaximoRO is still under active development.</h2>
+
+                <p>
+                    Server settings, systems, features, and release dates may
+                    change as testing continues. Confirmed details will be
+                    published here when they are ready.
+                </p>
+            </div>
+
+            <a class="btn hero-primary-button" asp-controller="Home" asp-action="Discord">
+                Follow on Discord
+            </a>
+        </div>
+    </div>
+</section>

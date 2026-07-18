@@ -1,0 +1,343 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero-section">
+    <div class="container hero-container">
+        <div class="hero-content">
+            <div class="eyebrow">
+                <span class="server-status-dot"></span>
+                The gates are opening
+            </div>
+
+            <h1>
+                Return to a world of
+                <span>legendary adventure.</span>
+            </h1>
+
+            <p class="hero-description">
+                MaximoRO brings the classic Ragnarok Online experience to life
+                with meaningful progression, community events, competitive
+                gameplay, and new adventures waiting beyond every city gate.
+            </p>
+
+            <div class="hero-actions">
+                <a class="btn hero-primary-button" asp-controller="Home" asp-action="Downloads">
+                    Start Playing
+                </a>
+
+                <a class="btn hero-secondary-button" asp-controller="Home" asp-action="ServerInfo">
+                    Explore the Server
+                </a>
+            </div>
+
+            <div class="hero-details">
+                <div class="hero-detail">
+                    <span class="detail-value">Renewal</span>
+                    <span class="detail-label">Server Style</span>
+                </div>
+
+                <div class="hero-detail">
+                    <span class="detail-value">Community</span>
+                    <span class="detail-label">Focused</span>
+                </div>
+
+                <div class="hero-detail">
+                    <span class="detail-value">Always</span>
+                    <span class="detail-label">Improving</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="floating-card floating-card-status">
+                <span class="server-status-dot" aria-hidden="true"></span>
+
+                <div>
+                    <strong>Server Status</strong>
+
+                    <span>
+                        <span data-server-status-text>Checking...</span>
+                        ·
+                        <strong data-player-count>0</strong>
+                        players online
+                    </span>
+                </div>
+            </div>
+
+            <div class="floating-card floating-card-community">
+                <span class="floating-card-icon">✦</span>
+
+                <div>
+                    <strong>Join the Community</strong>
+                    <span>Meet your next party</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-divider"></div>
+</section>
+
+<section class="section server-introduction">
+    <div class="container">
+        <div class="section-heading centered-heading">
+            <div class="eyebrow">
+                <span class="server-status-dot" aria-hidden="true"></span>
+
+                MaximoRO is
+                <strong data-server-status-text>checking...</strong>
+            </div>
+
+            <h2>
+                The adventure you remember,
+                <span>rebuilt for today.</span>
+            </h2>
+
+            <p>
+                Whether you are returning to Rune-Midgard or entering it for the
+                first time, MaximoRO is designed to deliver rewarding progression,
+                memorable battles, and a community worth calling home.
+            </p>
+        </div>
+
+        <div class="feature-card-grid">
+            <article class="feature-card">
+                <div class="feature-icon">⚔</div>
+
+                <span class="feature-number">01</span>
+
+                <h3>Meaningful Progression</h3>
+
+                <p>
+                    Build your character, master your class, collect powerful
+                    equipment, and make every step of your journey count.
+                </p>
+
+                <a asp-controller="Home" asp-action="Features">
+                    View features
+                    <span aria-hidden="true">→</span>
+                </a>
+            </article>
+
+            <article class="feature-card featured-card">
+                <div class="feature-icon">♜</div>
+
+                <span class="feature-number">02</span>
+
+                <h3>Classic MMORPG Adventure</h3>
+
+                <p>
+                    Rediscover iconic cities, dangerous dungeons, MVP hunts,
+                    party play, and the social experience that made RO legendary.
+                </p>
+
+                <a asp-controller="Home" asp-action="ServerInfo">
+                    Server information
+                    <span aria-hidden="true">→</span>
+                </a>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon">✦</div>
+
+                <span class="feature-number">03</span>
+
+                <h3>Community First</h3>
+
+                <p>
+                    Join events, form guilds, trade with other players, and help
+                    shape the future of the MaximoRO world.
+                </p>
+
+                <a asp-controller="Home" asp-action="Discord">
+                    Join the community
+                    <span aria-hidden="true">→</span>
+                </a>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section world-section">
+    <div class="container world-grid">
+        <div class="world-panel">
+            <img src="~/images/world/rune-midgard-overlook.png" alt="Adventurers overlooking the world of Rune-Midgard"
+                 class="world-image" />
+        </div>
+
+        <div class="world-content">
+            <div class="eyebrow">
+                <span class="server-status-dot"></span>
+                Explore Rune-Midgard
+            </div>
+
+            <h2>
+                Your story begins with
+                <span>one brave step.</span>
+            </h2>
+
+            <p>
+                Choose your path, develop your build, conquer dungeons, challenge
+                powerful bosses, and create a legacy alongside players from
+                across the community.
+            </p>
+
+            <ul class="world-list">
+                <li>
+                    <span>✓</span>
+                    Familiar gameplay with carefully considered improvements
+                </li>
+
+                <li>
+                    <span>✓</span>
+                    Events and activities for solo players, parties, and guilds
+                </li>
+
+                <li>
+                    <span>✓</span>
+                    Transparent information and community-driven development
+                </li>
+            </ul>
+
+            <a class="text-link" asp-controller="Home" asp-action="Features">
+                Discover MaximoRO
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section latest-news-section">
+    <div class="container">
+        <div class="section-heading-row">
+            <div class="section-heading">
+                <div class="eyebrow">
+                    <span class="server-status-dot"></span>
+                    From the development team
+                </div>
+
+                <h2>
+                    Latest <span>news</span>
+                </h2>
+            </div>
+
+            <a class="text-link" asp-controller="Home" asp-action="News">
+                View all news
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
+
+        <div class="news-card-grid">
+            <article class="news-card">
+                <div class="news-card-image news-image-launch">
+                    <span>Development</span>
+                </div>
+
+                <div class="news-card-content">
+                    <div class="news-meta">
+                        <span>Development Update</span>
+                        <time datetime="2026-07-17">July 17, 2026</time>
+                    </div>
+
+                    <h3>Welcome to the MaximoRO development journey</h3>
+
+                    <p>
+                        Follow the creation of the server, website, community,
+                        and systems that will shape the MaximoRO experience.
+                    </p>
+
+                    <a asp-controller="Home" asp-action="News">
+                        Read update
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-card-image news-image-community">
+                    <span>Community</span>
+                </div>
+
+                <div class="news-card-content">
+                    <div class="news-meta">
+                        <span>Community News</span>
+                        <time datetime="2026-07-17">July 17, 2026</time>
+                    </div>
+
+                    <h3>The MaximoRO community is taking shape</h3>
+
+                    <p>
+                        Join Discord, follow development, share feedback, and
+                        prepare to meet your future party members.
+                    </p>
+
+                    <a asp-controller="Home" asp-action="Discord">
+                        Join Discord
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-card-image news-image-guide">
+                    <span>Getting Started</span>
+                </div>
+
+                <div class="news-card-content">
+                    <div class="news-meta">
+                        <span>Player Guide</span>
+                        <time datetime="2026-07-17">July 17, 2026</time>
+                    </div>
+
+                    <h3>Prepare your client for launch</h3>
+
+                    <p>
+                        Learn where downloads, installation instructions, account
+                        information, and future patch notes will be published.
+                    </p>
+
+                    <a asp-controller="Home" asp-action="Downloads">
+                        Visit downloads
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="final-cta-section">
+    <div class="container">
+        <div class="final-cta-panel">
+            <div class="final-cta-emblem">
+                <img src="~/images/maximoro-emblem.png" alt="MaximoRO emblem" />
+            </div>
+
+            <div class="final-cta-content">
+                <div class="eyebrow">
+                    <span class="server-status-dot"></span>
+                    Your next adventure awaits
+                </div>
+
+                <h2>Will you become part of the legend?</h2>
+
+                <p>
+                    Prepare your client, join the community, and be there when
+                    the gates of MaximoRO open.
+                </p>
+            </div>
+
+            <div class="final-cta-actions">
+                <a class="btn hero-primary-button" asp-controller="Home" asp-action="Downloads">
+                    Download Client
+                </a>
+
+                <a class="btn hero-secondary-button" asp-controller="Home" asp-action="Discord">
+                    Join Discord
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
