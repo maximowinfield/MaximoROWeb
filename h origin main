@@ -1,0 +1,295 @@
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mindex 36aa502..c1ee454 100644[m
+[1m--- a/.gitignore[m
+[1m+++ b/.gitignore[m
+[36m@@ -1,7 +1,18 @@[m
+[32m+[m[32m# Secrets[m
+[32m+[m[32mappsettings.Development.json[m
+[32m+[m[32mappsettings.Production.json[m
+[32m+[m[32msecrets.json[m
+[32m+[m
+[32m+[m[32m# Build output[m
+ bin/[m
+ obj/[m
+[32m+[m[32mpublish/[m
+[32m+[m
+[32m+[m[32m# Runtime output[m
+[32m+[m[32mlogs/[m
+[32m+[m[32m*.log[m
+[32m+[m
+[32m+[m[32m# Visual Studio[m
+ .vs/[m
+[31m-.vscode/[m
+[31m-appsettings.Development.json[m
+ *.user[m
+[31m-*.suo[m
+[32m+[m[32m*.suo[m
+\ No newline at end of file[m
+[1mdiff --git a/scripts/deploy.ps1 b/scripts/deploy.ps1[m
+[1mnew file mode 100644[m
+[1mindex 0000000..10360b2[m
+[1m--- /dev/null[m
+[1m+++ b/scripts/deploy.ps1[m
+[36m@@ -0,0 +1,75 @@[m
+[32m+[m[32m$CurrentIdentity = [Security.Principal.WindowsIdentity]::GetCurrent()[m
+[32m+[m[32m$CurrentPrincipal = [Security.Principal.WindowsPrincipal]::new($CurrentIdentity)[m
+[32m+[m
+[32m+[m[32m$IsAdmin = $CurrentPrincipal.IsInRole([m
+[32m+[m[32m    [Security.Principal.WindowsBuiltInRole]::Administrator[m
+[32m+[m[32m)[m
+[32m+[m
+[32m+[m[32mif (-not $IsAdmin) {[m
+[32m+[m[32m    Write-Host "Requesting Administrator permission..." -ForegroundColor Yellow[m
+[32m+[m
+[32m+[m[32m    $ScriptPath = $PSCommandPath[m
+[32m+[m[32m    $Arguments = "-NoExit -NoProfile -ExecutionPolicy Bypass -File `"$ScriptPath`""[m
+[32m+[m
+[32m+[m[32m    Start-Process `[m
+[32m+[m[32m        -FilePath "powershell.exe" `[m
+[32m+[m[32m        -Verb RunAs `[m
+[32m+[m[32m        -ArgumentList $Arguments `[m
+[32m+[m[32m        -WorkingDirectory "C:\Projects\MaximoROWeb"[m
+[32m+[m
+[32m+[m[32m    return[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m$ErrorActionPreference = "Stop"[m
+[32m+[m
+[32m+[m[32m$TaskName = "MaximoROWeb"[m
+[32m+[m[32m$ProjectRoot = "C:\Projects\MaximoROWeb"[m
+[32m+[m[32m$Port = 5041[m
+[32m+[m
+[32m+[m[32mSet-Location $ProjectRoot[m
+[32m+[m
+[32m+[m[32mWrite-Host "Stopping any running production task..." -ForegroundColor Yellow[m
+[32m+[m
+[32m+[m[32mStop-ScheduledTask `[m
+[32m+[m[32m    -TaskName $TaskName `[m
+[32m+[m[32m    -ErrorAction SilentlyContinue[m
+[32m+[m
+[32m+[m[32mStart-Sleep -Seconds 2[m
+[32m+[m
+[32m+[m[32m$Listener = Get-NetTCPConnection `[m
+[32m+[m[32m    -LocalPort $Port `[m
+[32m+[m[32m    -State Listen `[m
+[32m+[m[32m    -ErrorAction SilentlyContinue |[m
+[32m+[m[32mSelect-Object -First 1[m
+[32m+[m
+[32m+[m[32mif ($Listener) {[m
+[32m+[m[32m    throw "Port $Port is still in use by PID $($Listener.OwningProcess). Stop dotnet watch with Ctrl+C before deploying."[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mWrite-Host "Publishing MaximoROWeb..." -ForegroundColor Cyan[m
+[32m+[m
+[32m+[m[32mdotnet publish `[m
+[32m+[m[32m    ".\MaximoROWeb.csproj" `[m
+[32m+[m[32m    -c Release `[m
+[32m+[m[32m    -o ".\publish"[m
+[32m+[m
+[32m+[m[32mif ($LASTEXITCODE -ne 0) {[m
+[32m+[m[32m    throw "Publish failed with exit code $LASTEXITCODE."[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mEnable-ScheduledTask `[m
+[32m+[m[32m    -TaskName $TaskName `[m
+[32m+[m[32m    -ErrorAction SilentlyContinue |[m
+[32m+[m[32mOut-Null[m
+[32m+[m
+[32m+[m[32mStart-ScheduledTask -TaskName $TaskName[m
+[32m+[m
+[32m+[m[32mStart-Sleep -Seconds 8[m
+[32m+[m
+[32m+[m[32m$Response = Invoke-WebRequest `[m
+[32m+[m[32m    "http://127.0.0.1:5041/" `[m
+[32m+[m[32m    -UseBasicParsing `[m
+[32m+[m[32m    -TimeoutSec 10[m
+[32m+[m
+[32m+[m[32mWrite-Host "MaximoROWeb deployed successfully." -ForegroundColor Green[m
+[32m+[m[32mWrite-Host "HTTP status: $($Response.StatusCode)" -ForegroundColor Green[m
+\ No newline at end of file[m
+[1mdiff --git a/scripts/dev.ps1 b/scripts/dev.ps1[m
+[1mnew file mode 100644[m
+[1mindex 0000000..0833524[m
+[1m--- /dev/null[m
+[1m+++ b/scripts/dev.ps1[m
+[36m@@ -0,0 +1,126 @@[m
+[32m+[m[32m﻿$ErrorActionPreference = "Stop"[m
+[32m+[m
+[32m+[m[32m# Resolve the script path even when VS Code dot-sources the file.[m
+[32m+[m[32m$ScriptPath = $PSCommandPath[m
+[32m+[m
+[32m+[m[32mif ([string]::IsNullOrWhiteSpace($ScriptPath)) {[m
+[32m+[m[32m    $ScriptPath = $MyInvocation.MyCommand.Path[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mif ([string]::IsNullOrWhiteSpace($ScriptPath)) {[m
+[32m+[m[32m    throw "PowerShell could not determine the path to dev.ps1."[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m$CurrentIdentity = [Security.Principal.WindowsIdentity]::GetCurrent()[m
+[32m+[m[32m$CurrentPrincipal = [Security.Principal.WindowsPrincipal]::new($CurrentIdentity)[m
+[32m+[m
+[32m+[m[32m$IsAdmin = $CurrentPrincipal.IsInRole([m
+[32m+[m[32m    [Security.Principal.WindowsBuiltInRole]::Administrator[m
+[32m+[m[32m)[m
+[32m+[m
+[32m+[m[32mif (-not $IsAdmin) {[m
+[32m+[m[32m    Write-Host "Requesting Administrator permission..." -ForegroundColor Yellow[m
+[32m+[m
+[32m+[m[32m    $PowerShellPath = Join-Path `[m
+[32m+[m[32m        $PSHOME `[m
+[32m+[m[32m        "powershell.exe"[m
+[32m+[m
+[32m+[m[32m    $EscapedScriptPath = $ScriptPath.Replace("'", "''")[m
+[32m+[m
+[32m+[m[32m    $ElevatedArguments = @([m
+[32m+[m[32m        "-NoExit"[m
+[32m+[m[32m        "-NoProfile"[m
+[32m+[m[32m        "-ExecutionPolicy Bypass"[m
+[32m+[m[32m        "-Command `"& '$EscapedScriptPath'`""[m
+[32m+[m[32m    ) -join " "[m
+[32m+[m
+[32m+[m[32m    try {[m
+[32m+[m[32m        Start-Process `[m
+[32m+[m[32m            -FilePath $PowerShellPath `[m
+[32m+[m[32m            -Verb RunAs `[m
+[32m+[m[32m            -ArgumentList $ElevatedArguments `[m
+[32m+[m[32m            -WorkingDirectory "C:\Projects\MaximoROWeb" `[m
+[32m+[m[32m            -WindowStyle Normal `[m
+[32m+[m[32m            -ErrorAction Stop[m
+[32m+[m[32m    }[m
+[32m+[m[32m    catch {[m
+[32m+[m[32m        Write-Host "Administrator launch failed:" -ForegroundColor Red[m
+[32m+[m[32m        Write-Host $_.Exception.Message -ForegroundColor Red[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    # Use return because VS Code runs the file by dot-sourcing it.[m
+[32m+[m[32m    return[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m$TaskName = "MaximoROWeb"[m
+[32m+[m[32m$Port = 5041[m
+[32m+[m[32m$ProjectRoot = "C:\Projects\MaximoROWeb"[m
+[32m+[m
+[32m+[m[32mWrite-Host "Entering MaximoROWeb development mode..." -ForegroundColor Cyan[m
+[32m+[m
+[32m+[m[32mDisable-ScheduledTask `[m
+[32m+[m[32m    -TaskName $TaskName `[m
+[32m+[m[32m    -ErrorAction SilentlyContinue |[m
+[32m+[m[32mOut-Null[m
+[32m+[m
+[32m+[m[32mStop-ScheduledTask `[m
+[32m+[m[32m    -TaskName $TaskName `[m
+[32m+[m[32m    -ErrorAction SilentlyContinue[m
+[32m+[m
+[32m+[m[32mStart-Sleep -Seconds 2[m
+[32m+[m
+[32m+[m[32m$Deadline = (Get-Date).AddSeconds(15)[m
+[32m+[m
+[32m+[m[32mdo {[m
+[32m+[m[32m    $Listeners = @([m
+[32m+[m[32m        Get-NetTCPConnection `[m
+[32m+[m[32m            -LocalPort $Port `[m
+[32m+[m[32m            -State Listen `[m
+[32m+[m[32m            -ErrorAction SilentlyContinue[m
+[32m+[m[32m    )[m
+[32m+[m
+[32m+[m[32m    foreach ($Listener in $Listeners) {[m
+[32m+[m[32m        $OwningProcessId = $Listener.OwningProcess[m
+[32m+[m
+[32m+[m[32m        Write-Host "Stopping PID $OwningProcessId on port $Port..." `[m
+[32m+[m[32m            -ForegroundColor Yellow[m
+[32m+[m
+[32m+[m[32m        try {[m
+[32m+[m[32m            Stop-Process `[m
+[32m+[m[32m                -Id $OwningProcessId `[m
+[32m+[m[32m                -Force `[m
+[32m+[m[32m                -ErrorAction Stop[m
+[32m+[m[32m        }[m
+[32m+[m[32m        catch {[m
+[32m+[m[32m            throw "Could not stop PID $OwningProcessId. $($_.Exception.Message)"[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    if ($Listeners.Count -eq 0) {[m
+[32m+[m[32m        break[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    Start-Sleep -Milliseconds 500[m
+[32m+[m[32m}[m
+[32m+[m[32mwhile ((Get-Date) -lt $Deadline)[m
+[32m+[m
+[32m+[m[32m$RemainingListener = Get-NetTCPConnection `[m
+[32m+[m[32m    -LocalPort $Port `[m
+[32m+[m[32m    -State Listen `[m
+[32m+[m[32m    -ErrorAction SilentlyContinue |[m
+[32m+[m[32mSelect-Object -First 1[m
+[32m+[m
+[32m+[m[32mif ($RemainingListener) {[m
+[32m+[m[32m    throw "Port $Port is still occupied by PID $($RemainingListener.OwningProcess)."[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mSet-Location $ProjectRoot[m
+[32m+[m
+[32m+[m[32mWrite-Host "Starting dotnet watch on http://127.0.0.1:5041..." `[m
+[32m+[m[32m    -ForegroundColor Green[m
+[32m+[m
+[32m+[m[32m& dotnet watch run --urls "http://127.0.0.1:5041"[m
+[32m+[m
+[32m+[m[32mif ($LASTEXITCODE -ne 0) {[m
+[32m+[m[32m    throw "dotnet watch exited with code $LASTEXITCODE."[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/scripts/start-maximoroweb.ps1 b/scripts/start-maximoroweb.ps1[m
+[1mnew file mode 100644[m
+[1mindex 0000000..0aa8a1a[m
+[1m--- /dev/null[m
+[1m+++ b/scripts/start-maximoroweb.ps1[m
+[36m@@ -0,0 +1,47 @@[m
+[32m+[m[32m﻿$ErrorActionPreference = "Continue"[m
+[32m+[m
+[32m+[m[32m$ProjectRoot = "C:\Projects\MaximoROWeb"[m
+[32m+[m[32m$PublishPath = Join-Path $ProjectRoot "publish"[m
+[32m+[m[32m$LogDirectory = Join-Path $ProjectRoot "logs"[m
+[32m+[m[32m$LogPath = Join-Path $LogDirectory "website.log"[m
+[32m+[m[32m$ApplicationDll = Join-Path $PublishPath "MaximoROWeb.dll"[m
+[32m+[m
+[32m+[m[32mNew-Item -ItemType Directory -Path $LogDirectory -Force | Out-Null[m
+[32m+[m
+[32m+[m[32mfunction Write-WebsiteLog {[m
+[32m+[m[32m    param([string]$Message)[m
+[32m+[m
+[32m+[m[32m    "[$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')] $Message" |[m
+[32m+[m[32m        Out-File -FilePath $LogPath -Append[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mif (-not (Test-Path $ApplicationDll)) {[m
+[32m+[m[32m    Write-WebsiteLog "Published application was not found: $ApplicationDll"[m
+[32m+[m[32m    exit 1[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mSet-Location $PublishPath[m
+[32m+[m
+[32m+[m[32m$env:ASPNETCORE_ENVIRONMENT = "Production"[m
+[32m+[m
+[32m+[m[32mWrite-WebsiteLog "MaximoROWeb supervisor started."[m
+[32m+[m
+[32m+[m[32mwhile ($true) {[m
+[32m+[m[32m    try {[m
+[32m+[m[32m        Write-WebsiteLog "Starting MaximoROWeb."[m
+[32m+[m
+[32m+[m[32m        & dotnet $ApplicationDll `[m
+[32m+[m[32m            --urls "http://127.0.0.1:5041" `[m
+[32m+[m[32m            *>> $LogPath[m
+[32m+[m
+[32m+[m[32m        $ExitCode = $LASTEXITCODE[m
+[32m+[m
+[32m+[m[32m        Write-WebsiteLog "MaximoROWeb exited with code $ExitCode."[m
+[32m+[m[32m    }[m
+[32m+[m[32m    catch {[m
+[32m+[m[32m        Write-WebsiteLog "Launcher error: $($_.Exception.Message)"[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    Write-WebsiteLog "Restarting MaximoROWeb in 10 seconds."[m
+[32m+[m[32m    Start-Sleep -Seconds 10[m
+[32m+[m[32m}[m
