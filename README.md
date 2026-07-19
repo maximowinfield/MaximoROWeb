@@ -1,5 +1,8 @@
 # MaximoROWeb
 
+Live Website
+https://desktop-68ka5hg.tail9fc6cc.ts.net:8443/
+
 MaximoROWeb is an ASP.NET Core MVC website built for **MaximoRO**, a locally hosted Ragnarok Online server powered by rAthena and MariaDB.
 
 The project provides a public-facing home for the server, including account registration, server information, downloads, rules, news, Discord links, and live server-status presentation. It also includes PowerShell tooling for development, production deployment, automatic startup, and self-healing recovery on Windows.
