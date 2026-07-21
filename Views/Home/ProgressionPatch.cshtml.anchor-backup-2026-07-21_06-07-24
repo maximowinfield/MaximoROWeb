@@ -1,0 +1,477 @@
+﻿@{
+    ViewData["Title"] = "Progression Patch";
+}
+
+<section class="page-hero news-page-hero">
+    <div class="container page-hero-content">
+        <div class="eyebrow">
+            <span class="server-status-dot"></span>
+            July 21, 2026 — Major Development Update
+        </div>
+
+        <h1>
+            The MaximoRO
+            <span>Progression Patch.</span>
+        </h1>
+
+        <p>
+            Pathfinder progression, beginner support, class guidance,
+            website guides, build advice, and protected stat resets now
+            work together as one connected new-player system.
+        </p>
+
+        <div class="hero-actions">
+            <a class="btn hero-primary-button" href="#pathfinder">
+                Pathfinder System
+            </a>
+
+            <a class="btn hero-secondary-button" href="#guides-and-builds">
+                Guides and Builds
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section news-page-section" id="patch-overview">
+    <div class="container">
+        <div class="centered-heading section-heading">
+            <div class="eyebrow">
+                <span class="server-status-dot"></span>
+                One connected progression experience
+            </div>
+
+            <h2>
+                Learn, train, build,
+                <span>and continue forward.</span>
+            </h2>
+
+            <p>
+                The Progression Patch connects MaximoRO's in-game beginner
+                systems with its website guides. Players can receive guidance
+                inside the game, travel to appropriate training areas, review
+                detailed class information, and correct early stat mistakes.
+            </p>
+        </div>
+
+        <div class="feature-card-grid">
+            <article class="feature-card">
+                <span class="feature-number">01</span>
+
+                <h3>In-game progression</h3>
+
+                <p>
+                    Pathfinders provide class-aware direction, training routes,
+                    supplies, healing, assignments, guided navigation, and
+                    beginner transportation.
+                </p>
+
+                <a href="#pathfinder">
+                    View Pathfinder systems
+                    <span aria-hidden="true">→</span>
+                </a>
+            </article>
+
+            <article class="feature-card featured-card">
+                <span class="feature-number">02</span>
+
+                <h3>Class and build support</h3>
+
+                <p>
+                    The Build Adviser explains stats, provides class-specific
+                    guidance, opens matching website guides, and manages
+                    protected stat resets.
+                </p>
+
+                <a href="#guides-and-builds">
+                    View guide systems
+                    <span aria-hidden="true">→</span>
+                </a>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">03</span>
+
+                <h3>Connected player journey</h3>
+
+                <p>
+                    Every Pathfinder can transport players to the central
+                    Build Adviser in Prontera, keeping the entire support
+                    system easy to discover.
+                </p>
+
+                <a asp-controller="Guides" asp-action="StatsAndBuilds">
+                    Open Stats and Builds
+                    <span aria-hidden="true">→</span>
+                </a>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section world-section" id="pathfinder">
+    <div class="container world-grid">
+        <div class="world-panel">
+            <img
+                class="world-image"
+                src="/images/news/pathfinder-news.png"
+                alt="MaximoRO Pathfinder assisting an adventurer" />
+        </div>
+
+        <div class="world-content">
+            <div class="eyebrow">
+                <span class="server-status-dot"></span>
+                Part One
+            </div>
+
+            <h2>
+                The MaximoRO
+                <span>Pathfinder system.</span>
+            </h2>
+
+            <p>
+                After completing a first-job change, players can continue
+                directly into MaximoRO's custom progression support instead
+                of being left without direction.
+            </p>
+
+            <ul class="world-list">
+                <li>
+                    <span>◆</span>
+                    Class-aware role and beginner stat guidance
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    Profession-based hunting and leveling routes
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    Guided Navigation routes and optional beginner warps
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    Five weekly supply bundles per character
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    Free beginner healing through Base Level 30
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    A first Pathfinder assignment and completion reward
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    Direct access to the Build Adviser in Prontera
+                </li>
+            </ul>
+        </div>
+    </div>
+
+        <!-- MAXIMORO PATHFINDER GUIDE LINK -->
+        <div class="pathfinder-guide-link-panel">
+            <div>
+                <span class="pathfinder-guide-link-label">
+                    Complete system guide
+                </span>
+
+                <strong>Need a full explanation of the Pathfinder network?</strong>
+
+                <p>
+                    Review training assignments, destination warps, shared
+                    regional progress, rewards, and the Build Adviser connection.
+                </p>
+            </div>
+
+            <a class="btn hero-primary-button"
+               asp-controller="Guides"
+               asp-action="Pathfinder">
+                Open Pathfinder Guide
+            </a>
+        </div>
+</section>
+
+<section class="section news-page-section" id="guides-and-builds">
+    <div class="container">
+        <div class="section-heading-row">
+            <div class="section-heading">
+                <div class="eyebrow">
+                    <span class="server-status-dot"></span>
+                    Part Two
+                </div>
+
+                <h2>
+                    Guides, stats,
+                    <span>and beginner builds.</span>
+                </h2>
+
+                <p>
+                    The website guide system and the in-game Build Adviser
+                    now form one connected resource for new characters.
+                </p>
+            </div>
+
+            <a class="text-link"
+               asp-controller="Guides"
+               asp-action="StatsAndBuilds">
+                Open the full guide
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
+
+
+        <!-- MAXIMORO BUILD ADVISER SHOWCASE -->
+        <section class="progression-adviser-showcase" aria-labelledby="build-adviser-title">
+            <div class="progression-adviser-copy">
+                <div class="eyebrow">
+                    <span class="server-status-dot"></span>
+                    Featured progression tool
+                </div>
+
+                <h3 id="build-adviser-title">
+                    The MaximoRO
+                    <span>Build Adviser.</span>
+                </h3>
+
+                <p>
+                    The Build Adviser gives each beginner class a clear starting
+                    direction. Players can review primary stats, compare safe
+                    first-job builds, open the matching class guide, and correct
+                    early stat mistakes through the protected reset service.
+                </p>
+
+                
+                <!-- MAXIMORO BUILD ADVISER NPC CALLOUT -->
+                <aside class="progression-adviser-npc-callout" aria-label="Build Adviser NPC preview">
+                    <img src="~/images/progression/maximoro-build-adviser-npc.png"
+                         alt="The MaximoRO Build Adviser NPC" />
+
+                    <div class="progression-adviser-npc-copy">
+                        <h4>Look for this NPC in game</h4>
+                        <p>
+                            This is the MaximoRO Build Adviser NPC. Pathfinder warps
+                            can bring new players straight here so they can review
+                            stats, beginner builds, and reset guidance before
+                            committing to a route.
+                        </p>
+                    </div>
+                </aside>
+<div class="progression-adviser-flow"
+                     aria-label="Build Adviser progression flow">
+                    <div>
+                        <strong>1</strong>
+                        <span>Speak with any Pathfinder</span>
+                    </div>
+
+                    <span class="progression-adviser-arrow" aria-hidden="true">→</span>
+
+                    <div>
+                        <strong>2</strong>
+                        <span>Warp to the Build Adviser</span>
+                    </div>
+
+                    <span class="progression-adviser-arrow" aria-hidden="true">→</span>
+
+                    <div>
+                        <strong>3</strong>
+                        <span>Open your class guide</span>
+                    </div>
+                </div>
+
+                <ul class="progression-adviser-benefits">
+                    <li>Class-aware stat priorities</li>
+                    <li>Nine beginner build guides</li>
+                    <li>Direct links to matching class sections</li>
+                    <li>Protected beginner stat resets</li>
+                </ul>
+
+                <a class="btn hero-primary-button"
+                   asp-controller="Guides"
+                   asp-action="StatsAndBuilds">
+                    Open the Build Adviser Guide
+                </a>
+            </div>
+
+            <div class="progression-adviser-class-grid"
+                 aria-label="Beginner class guide preview">
+                <a asp-controller="Guides"
+                   asp-action="StatsAndBuilds"
+                   asp-fragment="swordsman"
+                   class="progression-adviser-class progression-adviser-swordsman">
+                    <span>Swordsman</span>
+                </a>
+
+                <a asp-controller="Guides"
+                   asp-action="StatsAndBuilds"
+                   asp-fragment="mage"
+                   class="progression-adviser-class progression-adviser-mage">
+                    <span>Mage</span>
+                </a>
+
+                <a asp-controller="Guides"
+                   asp-action="StatsAndBuilds"
+                   asp-fragment="archer"
+                   class="progression-adviser-class progression-adviser-archer">
+                    <span>Archer</span>
+                </a>
+
+                <a asp-controller="Guides"
+                   asp-action="StatsAndBuilds"
+                   asp-fragment="acolyte"
+                   class="progression-adviser-class progression-adviser-acolyte">
+                    <span>Acolyte</span>
+                </a>
+
+                <a asp-controller="Guides"
+                   asp-action="StatsAndBuilds"
+                   asp-fragment="merchant"
+                   class="progression-adviser-class progression-adviser-merchant">
+                    <span>Merchant</span>
+                </a>
+
+                <a asp-controller="Guides"
+                   asp-action="StatsAndBuilds"
+                   asp-fragment="thief"
+                   class="progression-adviser-class progression-adviser-thief">
+                    <span>Thief</span>
+                </a>
+
+                <a asp-controller="Guides"
+                   asp-action="StatsAndBuilds"
+                   asp-fragment="ninja"
+                   class="progression-adviser-class progression-adviser-ninja">
+                    <span>Ninja</span>
+                </a>
+
+                <a asp-controller="Guides"
+                   asp-action="StatsAndBuilds"
+                   asp-fragment="gunslinger"
+                   class="progression-adviser-class progression-adviser-gunslinger">
+                    <span>Gunslinger</span>
+                </a>
+
+                <a asp-controller="Guides"
+                   asp-action="StatsAndBuilds"
+                   asp-fragment="taekwon"
+                   class="progression-adviser-class progression-adviser-taekwon">
+                    <span>Taekwon</span>
+                </a>
+            </div>
+        </section>
+        <div class="feature-card-grid">
+            <article class="feature-card">
+                <span class="feature-number">01</span>
+
+                <h3>Expanded guide hub</h3>
+
+                <p>
+                    The MaximoRO website now includes dedicated sections for
+                    Getting Started, Stats and Builds, Leveling, and Party Play.
+                </p>
+            </article>
+
+            <article class="feature-card featured-card">
+                <span class="feature-number">02</span>
+
+                <h3>Nine first-job guides</h3>
+
+                <p>
+                    Swordsman, Mage, Archer, Acolyte, Merchant, Thief,
+                    Ninja, Gunslinger, and TaeKwon each have a dedicated
+                    beginner section.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">03</span>
+
+                <h3>Direct class links</h3>
+
+                <p>
+                    The Build Adviser detects the player's class and opens
+                    the matching website accordion automatically.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">04</span>
+
+                <h3>Stat explanations</h3>
+
+                <p>
+                    Players can review what each stat controls and understand
+                    the secondary values displayed in the stat window.
+                </p>
+            </article>
+
+            <article class="feature-card featured-card">
+                <span class="feature-number">05</span>
+
+                <h3>Protected stat resets</h3>
+
+                <p>
+                    Novices and first-job characters through Base Level 60
+                    can correct allocated stats for free. Higher-level and
+                    advanced characters use the paid reset service.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">06</span>
+
+                <h3>Central Build Adviser</h3>
+
+                <p>
+                    One Build Adviser remains in Prontera while every
+                    Pathfinder offers an explanation and a direct warp
+                    to the service.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="final-cta-section">
+    <div class="container">
+        <div class="final-cta-panel">
+            <div class="final-cta-emblem">M</div>
+
+            <div class="final-cta-content">
+                <div class="eyebrow">
+                    Progression Patch
+                </div>
+
+                <h2>A stronger beginning for every adventurer.</h2>
+
+                <p>
+                    These systems form the foundation of MaximoRO's
+                    new-player experience. Additional class guidance,
+                    assignments, progression milestones, and advanced
+                    guides will be added as development continues.
+                </p>
+            </div>
+
+            <div class="final-cta-actions">
+                <a class="btn hero-primary-button"
+                   asp-controller="Guides"
+                   asp-action="StatsAndBuilds">
+                    View Stats and Builds
+                </a>
+
+                <a class="btn hero-secondary-button"
+                   asp-controller="Home"
+                   asp-action="News">
+                    Return to News
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

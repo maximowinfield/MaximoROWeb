@@ -1,14 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
+<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>11ee85d3-a405-4baf-8690-bf6255182b57</UserSecretsId>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="MySqlConnector" Version="2.6.1" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Compile Remove="Backups\**\*.cs" />
+    <Content Remove="Backups\**\*" />
+    <None Remove="Backups\**\*" />
+  </ItemGroup>
 </Project>

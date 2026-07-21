@@ -1,47 +1,15 @@
-﻿$ErrorActionPreference = "Continue"
+﻿$ErrorActionPreference = "Stop"
 
-$ProjectRoot = "C:\Projects\MaximoROWeb"
-$PublishPath = Join-Path $ProjectRoot "publish"
-$LogDirectory = Join-Path $ProjectRoot "logs"
-$LogPath = Join-Path $LogDirectory "website.log"
-$ApplicationDll = Join-Path $PublishPath "MaximoROWeb.dll"
+$PublishFolder = "C:\Projects\MaximoROweb\publish"
+$Dll = Join-Path $PublishFolder "MaximoROWeb.dll"
 
-New-Item -ItemType Directory -Path $LogDirectory -Force | Out-Null
-
-function Write-WebsiteLog {
-    param([string]$Message)
-
-    "[$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')] $Message" |
-        Out-File -FilePath $LogPath -Append
+if (-not (Test-Path $Dll)) {
+    throw "Published application DLL was not found: $Dll"
 }
 
-if (-not (Test-Path $ApplicationDll)) {
-    Write-WebsiteLog "Published application was not found: $ApplicationDll"
-    exit 1
-}
-
-Set-Location $PublishPath
+Set-Location $PublishFolder
 
 $env:ASPNETCORE_ENVIRONMENT = "Production"
+$env:ASPNETCORE_URLS = "http://127.0.0.1:5041"
 
-Write-WebsiteLog "MaximoROWeb supervisor started."
-
-while ($true) {
-    try {
-        Write-WebsiteLog "Starting MaximoROWeb."
-
-        & dotnet $ApplicationDll `
-            --urls "http://127.0.0.1:5041" `
-            *>> $LogPath
-
-        $ExitCode = $LASTEXITCODE
-
-        Write-WebsiteLog "MaximoROWeb exited with code $ExitCode."
-    }
-    catch {
-        Write-WebsiteLog "Launcher error: $($_.Exception.Message)"
-    }
-
-    Write-WebsiteLog "Restarting MaximoROWeb in 10 seconds."
-    Start-Sleep -Seconds 10
-}
+& dotnet $Dll

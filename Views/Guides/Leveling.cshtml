@@ -1,0 +1,173 @@
+﻿@{
+    ViewData["Title"] = "Leveling 1–25";
+}
+
+<section class="page-hero guides-page-hero guide-detail-hero">
+    <div class="container page-hero-content">
+        <span class="eyebrow">Early Progression Guide</span>
+        <h1>
+            Leveling
+            <span>1–25</span>
+        </h1>
+        <p>
+            Use the Pathfinder's class-aware training network to reach the right
+            field for your level and profession.
+        </p>
+
+        <div class="guide-status-row">
+            <span class="guide-status guide-status-official">
+                Active server routes
+            </span>
+
+            <span class="guide-status">
+                Direct warp available
+            </span>
+        </div>
+    </div>
+</section>
+
+<section class="section guide-article-section">
+    <div class="container guide-article-layout">
+        <aside class="guide-sidebar">
+            <a asp-controller="Guides"
+               asp-action="Index"
+               class="guide-back-link">
+                &larr; All Guides
+            </a>
+
+            <nav class="guide-table-of-contents" aria-label="Guide contents">
+                <strong>On this page</strong>
+                <a href="#how-it-works">How it works</a>
+                <a href="#prontera">Prontera route</a>
+                <a href="#payon">Payon route</a>
+                <a href="#geffen">Geffen route</a>
+                <a href="#pathfinders">Field Pathfinders</a>
+            </nav>
+        </aside>
+
+        <article class="guide-article">
+            <header class="guide-article-header">
+                <span class="guide-kicker">Pathfinder Network</span>
+                <h2>Two stages for every route</h2>
+                <p>
+                    Your profession determines the region. Your selected level
+                    bracket determines whether you visit its beginner or adventurer field.
+                </p>
+            </header>
+
+            <section id="how-it-works" class="guide-content-block">
+                <h3>How the training menu works</h3>
+
+                <ol class="guide-numbered-list">
+                    <li>Speak with any MaximoRO Pathfinder.</li>
+                    <li>Choose the training-route option.</li>
+                    <li>Select Levels 5–15 or Levels 15–25.</li>
+                    <li>Review the monsters and destination.</li>
+                    <li>Choose direct warp or Navigation assistance.</li>
+                </ol>
+            </section>
+
+            <section id="prontera" class="guide-content-block">
+                <h3>Prontera route</h3>
+                <p>
+                    Used by Swordsman, Acolyte, Merchant, and Thief characters.
+                </p>
+
+                <div class="guide-route-table">
+                    <div class="guide-route-header">
+                        <span>Bracket</span>
+                        <span>Destination</span>
+                        <span>Suggested monsters</span>
+                    </div>
+
+                    <div>
+                        <span>Levels 5–15</span>
+                        <strong>prt_fild08 · 170,369</strong>
+                        <span>Porings, Lunatics, Fabres, and Pupas</span>
+                    </div>
+
+                    <div>
+                        <span>Levels 15–25</span>
+                        <strong>prt_fild07 · 250,257</strong>
+                        <span>Rockers and Savage Babes</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="payon" class="guide-content-block">
+                <h3>Payon route</h3>
+                <p>
+                    Used by Archer, Taekwon, and Ninja characters.
+                </p>
+
+                <div class="guide-route-table">
+                    <div class="guide-route-header">
+                        <span>Bracket</span>
+                        <span>Destination</span>
+                        <span>Suggested monsters</span>
+                    </div>
+
+                    <div>
+                        <span>Levels 5–15</span>
+                        <strong>pay_fild01 · 339,346</strong>
+                        <span>Willows, Porings, and Fabres</span>
+                    </div>
+
+                    <div>
+                        <span>Levels 15–25</span>
+                        <strong>pay_fild08 · 148,76</strong>
+                        <span>Spores, Wormtails, and Boas</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="geffen" class="guide-content-block">
+                <h3>Geffen route</h3>
+                <p>
+                    Used by Mage and Gunslinger characters.
+                </p>
+
+                <div class="guide-route-table">
+                    <div class="guide-route-header">
+                        <span>Bracket</span>
+                        <span>Destination</span>
+                        <span>Suggested monsters</span>
+                    </div>
+
+                    <div>
+                        <span>Levels 5–15</span>
+                        <strong>gef_fild00 · 46,199</strong>
+                        <span>Chonchons, Porings, and Fabres</span>
+                    </div>
+
+                    <div>
+                        <span>Levels 15–25</span>
+                        <strong>gef_fild07 · 88,205</strong>
+                        <span>Pupas, Porings, Fabres, and Chonchons</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="pathfinders" class="guide-content-block">
+                <h3>Pathfinders at every destination</h3>
+
+                <p>
+                    Each training landing point has a Pathfinder positioned a few
+                    cells away. You can immediately request guidance, healing,
+                    assignment information, or another destination.
+                </p>
+
+                <div class="guide-callout guide-callout-gold">
+                    <strong>Shared progress</strong>
+                    <p>
+                        Every regional copy uses the same character quest variables.
+                        You do not need to return to the exact Pathfinder who first
+                        gave you an assignment.
+                    </p>
+                </div>
+            </section>
+        </article>
+    </div>
+</section>
+
+

@@ -1,0 +1,548 @@
+﻿@{
+    ViewData["Title"] = "Stats and Builds";
+}
+
+<section class="page-hero guides-page-hero guide-detail-hero">
+    <div class="container page-hero-content">
+        <span class="eyebrow">Character Building Guide</span>
+        <h1>
+            Stats and
+            <span>Beginner Builds</span>
+        </h1>
+        <p>
+            Learn what every stat does and how to make focused early choices
+            without locking yourself into an untested endgame build.
+        </p>
+
+        <div class="guide-status-row">
+            <span class="guide-status guide-status-draft">
+                Draft build guidance
+            </span>
+
+            <span class="guide-status">
+                Balance testing in progress
+            </span>
+        </div>
+    </div>
+</section>
+
+<!-- MAXIMORO STATS BUILDS ADVISER EXACT -->
+<section class="stats-adviser-npc-section" aria-labelledby="stats-adviser-npc-title">
+    <div class="container">
+        <div class="stats-adviser-npc-panel">
+            <div class="stats-adviser-npc-art">
+                <img src="~/images/guides/build-adviser/maximoro-build-adviser-npc.png"
+                     alt="MaximoRO Build Adviser NPC" />
+            </div>
+
+            <div class="stats-adviser-npc-copy">
+                <span class="eyebrow">In-Game Progression NPC</span>
+
+                <h2 id="stats-adviser-npc-title">
+                    Meet the
+                    <span>MaximoRO Build Adviser</span>
+                </h2>
+
+                <p>
+                    Look for this NPC when you need help choosing stats,
+                    reviewing a beginner class build, or correcting early
+                    stat mistakes through protected reset support.
+                    Every Pathfinder can provide a direct warp to the
+                    central Build Adviser in Prontera.
+                </p>
+
+                <div class="stats-adviser-npc-features">
+                    <span>Primary stat explanations</span>
+                    <span>Nine beginner class builds</span>
+                    <span>Class-aware recommendations</span>
+                    <span>Protected beginner resets</span>
+                </div>
+
+                <div class="stats-adviser-npc-actions">
+                    <a class="btn hero-primary-button" href="#templates">
+                        Choose a Class Build
+                    </a>
+
+                    <a class="btn hero-secondary-button"
+                       asp-controller="Guides"
+                       asp-action="Pathfinder">
+                        Open Pathfinder Guide
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section guide-article-section">
+    <div class="container guide-article-layout">
+        <aside class="guide-sidebar">
+            <a asp-controller="Guides"
+               asp-action="Index"
+               class="guide-back-link">
+                &larr; All Guides
+            </a>
+
+            <nav class="guide-table-of-contents" aria-label="Guide contents">
+                <strong>On this page</strong>
+                <a href="#base-stats">Base values</a>
+                <a href="#stat-list">The six stats</a>
+                <a href="#build-rule">Build philosophy</a>
+                <a href="#templates">Beginner templates</a>
+                <a href="#testing">Guide status</a>
+            </nav>
+        </aside>
+
+        <article class="guide-article">
+            <header class="guide-article-header">
+                <span class="guide-kicker">Important Definition</span>
+                <h2>Build values mean base stats</h2>
+                <p>
+                    All MaximoRO guide values refer to the first number shown in
+                    the stat window, before equipment, job, buff, or other bonuses.
+                </p>
+            </header>
+
+            <section id="base-stats" class="guide-content-block">
+                <h3>Base value versus the green bonus</h3>
+
+                <div class="guide-stat-example">
+                    <span>STR</span>
+                    <strong>20</strong>
+                    <em>+ 1</em>
+                </div>
+
+                <p>
+                    In this example, the build guide counts the character as having
+                    <strong>20 base STR</strong>. The green <strong>+1</strong>
+                    is a bonus and does not count toward the listed target.
+                </p>
+            </section>
+
+            <section id="stat-list" class="guide-content-block">
+                <h3>The six primary stats</h3>
+
+                <div class="guide-stat-grid">
+                    <article>
+                        <strong>STR</strong>
+                        <p>Physical power and carrying capacity.</p>
+                    </article>
+
+                    <article>
+                        <strong>AGI</strong>
+                        <p>Attack speed and FLEE-oriented play.</p>
+                    </article>
+
+                    <article>
+                        <strong>VIT</strong>
+                        <p>Durability and defensive stability.</p>
+                    </article>
+
+                    <article>
+                        <strong>INT</strong>
+                        <p>Magic, SP, healing, and magical support.</p>
+                    </article>
+
+                    <article>
+                        <strong>DEX</strong>
+                        <p>Accuracy, ranged performance, and casting support.</p>
+                    </article>
+
+                    <article>
+                        <strong>LUK</strong>
+                        <p>Critical and specialized build interactions.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="build-rule" class="guide-content-block">
+                <h3>The most important beginner rule</h3>
+
+                <div class="guide-callout guide-callout-warning">
+                    <strong>Do not raise every stat evenly.</strong>
+                    <p>
+                        Choose one main offensive stat, then invest in the support
+                        stats your class and intended playstyle actually need.
+                    </p>
+                </div>
+            </section>
+            <section id="templates" class="guide-content-block">
+                <h3>Beginner class stat guides</h3>
+
+                <p>
+                    Choose your profession below. Each panel explains one safe,
+                    focused first-job direction. These are starting guides rather
+                    than permanent endgame builds.
+                </p>
+
+                <div class="guide-class-jump-links" aria-label="Jump to a class guide">
+                    <a href="#swordsman-guide">Swordsman</a>
+                    <a href="#mage-guide">Mage</a>
+                    <a href="#archer-guide">Archer</a>
+                    <a href="#acolyte-guide">Acolyte</a>
+                    <a href="#merchant-guide">Merchant</a>
+                    <a href="#thief-guide">Thief</a>
+                    <a href="#ninja-guide">Ninja</a>
+                    <a href="#gunslinger-guide">Gunslinger</a>
+                    <a href="#taekwon-guide">Taekwon</a>
+                </div>
+
+                <div class="guide-class-accordion">
+                    <details id="swordsman-guide" open>
+                        <summary>
+                            <span>
+                                <small>Durable close-range fighter</small>
+                                <strong>Swordsman</strong>
+                            </span>
+                            <code>STR &gt; AGI &gt; DEX &gt; VIT</code>
+                        </summary>
+
+                        <div class="guide-class-content">
+                            <p>
+                                This beginner route creates a reliable melee fighter
+                                with solid damage, smoother attack speed, enough
+                                accuracy, and room for defensive investment.
+                            </p>
+
+                            <div class="guide-class-stat-row">
+                                <div><strong>STR</strong><span>Main melee damage.</span></div>
+                                <div><strong>AGI</strong><span>Attack speed and FLEE.</span></div>
+                                <div><strong>DEX</strong><span>Accuracy against stronger monsters.</span></div>
+                                <div><strong>VIT</strong><span>HP and defensive stability.</span></div>
+                            </div>
+
+                            <div class="guide-class-advice">
+                                <strong>Safe early direction</strong>
+                                <p>
+                                    Raise STR first, add enough DEX to avoid frequent
+                                    misses, then build AGI. Add VIT when enemies begin
+                                    dealing uncomfortable damage.
+                                </p>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details id="mage-guide">
+                        <summary>
+                            <span>
+                                <small>Elemental ranged spellcaster</small>
+                                <strong>Mage</strong>
+                            </span>
+                            <code>INT &gt; DEX</code>
+                        </summary>
+
+                        <div class="guide-class-content">
+                            <p>
+                                Mage depends primarily on magical strength and SP.
+                                DEX supports the build by reducing variable cast time.
+                            </p>
+
+                            <div class="guide-class-stat-row">
+                                <div><strong>INT</strong><span>Magic damage, SP, and SP recovery.</span></div>
+                                <div><strong>DEX</strong><span>Faster variable casting.</span></div>
+                                <div><strong>VIT</strong><span>Optional protection after core stats.</span></div>
+                            </div>
+
+                            <div class="guide-class-advice">
+                                <strong>Safe early direction</strong>
+                                <p>
+                                    Push INT early. Begin adding DEX once your spells
+                                    deal comfortable damage but casting feels slow.
+                                </p>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details id="archer-guide">
+                        <summary>
+                            <span>
+                                <small>Mobile ranged physical attacker</small>
+                                <strong>Archer</strong>
+                            </span>
+                            <code>DEX &gt; AGI</code>
+                        </summary>
+
+                        <div class="guide-class-content">
+                            <p>
+                                Archer uses DEX for ranged physical damage and
+                                accuracy. AGI improves attack speed and evasive play.
+                            </p>
+
+                            <div class="guide-class-stat-row">
+                                <div><strong>DEX</strong><span>Bow damage and accuracy.</span></div>
+                                <div><strong>AGI</strong><span>Attack speed and FLEE.</span></div>
+                                <div><strong>VIT</strong><span>Optional safety for mistakes.</span></div>
+                            </div>
+
+                            <div class="guide-class-advice">
+                                <strong>Safe early direction</strong>
+                                <p>
+                                    Keep DEX as your highest stat. Add AGI steadily
+                                    after your attacks already hit reliably.
+                                </p>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details id="acolyte-guide">
+                        <summary>
+                            <span>
+                                <small>Healer and holy support specialist</small>
+                                <strong>Acolyte</strong>
+                            </span>
+                            <code>INT &gt; DEX &gt; VIT</code>
+                        </summary>
+
+                        <div class="guide-class-content">
+                            <p>
+                                This guide follows the support route. INT strengthens
+                                healing and SP, DEX supports casting, and VIT improves
+                                survival while helping a party.
+                            </p>
+
+                            <div class="guide-class-stat-row">
+                                <div><strong>INT</strong><span>Healing, SP, and magical support.</span></div>
+                                <div><strong>DEX</strong><span>Casting support.</span></div>
+                                <div><strong>VIT</strong><span>HP and defensive stability.</span></div>
+                            </div>
+
+                            <div class="guide-class-advice">
+                                <strong>Safe early direction</strong>
+                                <p>
+                                    Build INT first, add DEX as your support skill set
+                                    grows, and add VIT when party content becomes more
+                                    dangerous.
+                                </p>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details id="merchant-guide">
+                        <summary>
+                            <span>
+                                <small>Resourceful fighter and trader</small>
+                                <strong>Merchant</strong>
+                            </span>
+                            <code>STR &gt; AGI or VIT &gt; DEX</code>
+                        </summary>
+
+                        <div class="guide-class-content">
+                            <p>
+                                Merchant uses STR for melee power and carrying
+                                capacity. AGI favors faster solo combat, while VIT
+                                creates a sturdier beginner.
+                            </p>
+
+                            <div class="guide-class-stat-row">
+                                <div><strong>STR</strong><span>Damage and carrying capacity.</span></div>
+                                <div><strong>AGI</strong><span>Faster solo combat.</span></div>
+                                <div><strong>VIT</strong><span>A sturdier alternative to AGI.</span></div>
+                                <div><strong>DEX</strong><span>Reliable accuracy.</span></div>
+                            </div>
+
+                            <div class="guide-class-advice">
+                                <strong>Safe early direction</strong>
+                                <p>
+                                    Raise STR first and maintain enough DEX to hit.
+                                    Choose AGI for speed or VIT for durability rather
+                                    than spreading heavily into both at once.
+                                </p>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details id="thief-guide">
+                        <summary>
+                            <span>
+                                <small>Fast evasive close-range fighter</small>
+                                <strong>Thief</strong>
+                            </span>
+                            <code>AGI &gt; STR &gt; DEX</code>
+                        </summary>
+
+                        <div class="guide-class-content">
+                            <p>
+                                Thief centers on AGI-oriented evasion and attack
+                                speed, supported by STR for damage and DEX for accuracy.
+                            </p>
+
+                            <div class="guide-class-stat-row">
+                                <div><strong>AGI</strong><span>Attack speed and FLEE-oriented play.</span></div>
+                                <div><strong>STR</strong><span>Close-range physical damage.</span></div>
+                                <div><strong>DEX</strong><span>Accuracy.</span></div>
+                                <div><strong>VIT</strong><span>Optional defensive support.</span></div>
+                            </div>
+
+                            <div class="guide-class-advice">
+                                <strong>Safe early direction</strong>
+                                <p>
+                                    Raise AGI early without neglecting STR. Add DEX
+                                    whenever misses begin slowing your leveling.
+                                </p>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details id="ninja-guide">
+                        <summary>
+                            <span>
+                                <small>Flexible magical or projectile fighter</small>
+                                <strong>Ninja</strong>
+                            </span>
+                            <code>INT &gt; DEX</code>
+                        </summary>
+
+                        <div class="guide-class-content">
+                            <p>
+                                Ninja can follow physical or magical routes. This
+                                beginner guide uses the clearer magic-focused path.
+                            </p>
+
+                            <div class="guide-class-stat-row">
+                                <div><strong>INT</strong><span>Magic, SP, and magical support.</span></div>
+                                <div><strong>DEX</strong><span>Accuracy and casting support.</span></div>
+                                <div><strong>VIT</strong><span>Optional defensive stability.</span></div>
+                            </div>
+
+                            <div class="guide-class-advice">
+                                <strong>Safe early direction</strong>
+                                <p>
+                                    Commit to a magical or physical route early rather
+                                    than dividing points between both. This guide
+                                    assumes a magic Ninja.
+                                </p>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details id="gunslinger-guide">
+                        <summary>
+                            <span>
+                                <small>Firearm-based ranged specialist</small>
+                                <strong>Gunslinger</strong>
+                            </span>
+                            <code>DEX &gt; AGI &gt; VIT</code>
+                        </summary>
+
+                        <div class="guide-class-content">
+                            <p>
+                                Gunslinger relies on DEX for ranged performance and
+                                accuracy. Secondary needs depend on the firearm and
+                                skill style selected later.
+                            </p>
+
+                            <div class="guide-class-stat-row">
+                                <div><strong>DEX</strong><span>Ranged damage and accuracy.</span></div>
+                                <div><strong>AGI</strong><span>Attack speed for general leveling.</span></div>
+                                <div><strong>VIT</strong><span>Basic survivability.</span></div>
+                                <div><strong>INT</strong><span>Optional SP for skill-heavy play.</span></div>
+                            </div>
+
+                            <div class="guide-class-advice">
+                                <strong>Safe early direction</strong>
+                                <p>
+                                    Keep DEX highest. Use AGI for a straightforward
+                                    leveling route, then specialize further once you
+                                    choose a preferred firearm style.
+                                </p>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details id="taekwon-guide">
+                        <summary>
+                            <span>
+                                <small>Fast martial artist using kicking techniques</small>
+                                <strong>Taekwon</strong>
+                            </span>
+                            <code>STR &gt; AGI &gt; DEX &gt; VIT</code>
+                        </summary>
+
+                        <div class="guide-class-content">
+                            <p>
+                                This guide follows the physical kicking route. STR
+                                provides damage, AGI supports speed and FLEE, and DEX
+                                keeps attacks reliable.
+                            </p>
+
+                            <div class="guide-class-stat-row">
+                                <div><strong>STR</strong><span>Physical kicking damage.</span></div>
+                                <div><strong>AGI</strong><span>Attack speed and FLEE.</span></div>
+                                <div><strong>DEX</strong><span>Accuracy.</span></div>
+                                <div><strong>VIT</strong><span>Optional durability.</span></div>
+                            </div>
+
+                            <div class="guide-class-advice">
+                                <strong>Safe early direction</strong>
+                                <p>
+                                    Raise STR and AGI together, adding enough DEX to
+                                    maintain accuracy. The Soul Linker route requires
+                                    a separate magical build later.
+                                </p>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <section id="testing" class="guide-content-block">
+                <h3>Why exact numbers are still marked draft</h3>
+
+                <p>
+                    Before publishing an exact level checkpoint, MaximoRO will test
+                    the build against the actual training-route monsters, equipment,
+                    potion use, kill speed, and second-job transition available on
+                    the live server configuration.
+                </p>
+
+                <div class="guide-callout guide-callout-gold">
+                    <strong>Official build standard</strong>
+                    <p>
+                        A build becomes an Official MaximoRO Beginner Build only
+                        after it is tested on the current server build.
+                    </p>
+                </div>
+            </section>
+        </article>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        (() => {
+            function openGuideFromHash() {
+                const hash = window.location.hash;
+
+                if (!hash) {
+                    return;
+                }
+
+                const target = document.querySelector(hash);
+
+                if (!(target instanceof HTMLDetailsElement)) {
+                    return;
+                }
+
+                document
+                    .querySelectorAll(".guide-class-accordion details")
+                    .forEach((details) => {
+                        details.open = details === target;
+                    });
+
+                target.open = true;
+
+                window.requestAnimationFrame(() => {
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                });
+            }
+
+            document.addEventListener("DOMContentLoaded", openGuideFromHash);
+            window.addEventListener("hashchange", openGuideFromHash);
+        })();
+    </script>
+}
+
+

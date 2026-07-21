@@ -39,6 +39,11 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult ProgressionPatch()
+    {
+        return View();
+    }
+
     public IActionResult Downloads()
     {
         return View();

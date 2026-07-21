@@ -1,0 +1,175 @@
+﻿@{
+    ViewData["Title"] = "Guides";
+}
+
+<section class="page-hero guides-page-hero">
+    <div class="container page-hero-content">
+        <span class="eyebrow">Official MaximoRO Knowledge Base</span>
+        <h1>
+            Adventure with
+            <span>Confidence</span>
+        </h1>
+        <p>
+            Learn how MaximoRO progression, stats, builds, leveling routes,
+            party play, and server-specific systems work.
+        </p>
+
+        <div class="guide-status-row">
+            <span class="guide-status guide-status-official">
+                Official server information
+            </span>
+
+            <span class="guide-status">
+                Updated July 2026
+            </span>
+        </div>
+    </div>
+</section>
+
+<section class="section guides-index-section">
+    <div class="container">
+        <div class="section-heading">
+            <span class="eyebrow">Choose Your Path</span>
+            <h2>Beginner <span>Guides</span></h2>
+            <p>
+                Start with the basics, then explore the systems most relevant
+                to your character and playstyle.
+            </p>
+        </div>
+
+        <div class="guide-card-grid">
+            <article class="guide-card">
+                <span class="guide-card-number">01</span>
+                <span class="guide-card-tag">Start Here</span>
+
+                <h2>Getting Started</h2>
+
+                <p>
+                    Follow the MaximoRO new-player path from Novice arrival
+                    through your first job change and early Pathfinder services.
+                </p>
+
+                <ul>
+                    <li>Novice introduction</li>
+                    <li>First job guidance</li>
+                    <li>Pathfinder services</li>
+                    <li>Early progression priorities</li>
+                </ul>
+
+                <a asp-controller="Guides"
+                   asp-action="GettingStarted"
+                   class="guide-card-link">
+                    Read guide <span aria-hidden="true">→</span>
+                </a>
+            </article>
+
+            <article class="guide-card">
+                <span class="guide-card-number">02</span>
+                <span class="guide-card-tag">Character Building</span>
+
+                <h2>Stats and Builds</h2>
+
+                <p>
+                    Understand every base stat, the green bonus number, and
+                    safe beginner build directions for MaximoRO classes.
+                </p>
+
+                <ul>
+                    <li>STR, AGI, VIT, INT, DEX, and LUK</li>
+                    <li>Base values versus bonuses</li>
+                    <li>Beginner build philosophy</li>
+                    <li>Common stat mistakes</li>
+                </ul>
+
+                <a asp-controller="Guides"
+                   asp-action="StatsAndBuilds"
+                   class="guide-card-link">
+                    Read guide <span aria-hidden="true">→</span>
+                </a>
+            </article>
+
+            <article class="guide-card">
+                <span class="guide-card-number">03</span>
+                <span class="guide-card-tag">Levels 1–25</span>
+
+                <h2>Early Leveling</h2>
+
+                <p>
+                    Learn how the Pathfinder assigns class-aware hunting routes
+                    for Base Levels 5–15 and 15–25.
+                </p>
+
+                <ul>
+                    <li>Prontera training route</li>
+                    <li>Payon training route</li>
+                    <li>Geffen training route</li>
+                    <li>Direct warps and nearby Pathfinders</li>
+                </ul>
+
+                <a asp-controller="Guides"
+                   asp-action="Leveling"
+                   class="guide-card-link">
+                    Read guide <span aria-hidden="true">→</span>
+                </a>
+            </article>
+
+            <article class="guide-card">
+                <span class="guide-card-number">04</span>
+                <span class="guide-card-tag">Social Play</span>
+
+                <h2>Party and EXP Sharing</h2>
+
+                <p>
+                    Review current party-sharing rules, Even Share eligibility,
+                    leeching philosophy, and planned party incentives.
+                </p>
+
+                <ul>
+                    <li>Current level-share range</li>
+                    <li>How EXP is divided</li>
+                    <li>Leeching and helping friends</li>
+                    <li>Draft party bonus proposal</li>
+                </ul>
+
+                <a asp-controller="Guides"
+                   asp-action="PartyPlay"
+                   class="guide-card-link">
+                    Read guide <span aria-hidden="true">→</span>
+                </a>
+            </article>
+        
+            <!-- MAXIMORO PATHFINDER GUIDE CARD V3 -->
+            <article class="guide-card guide-card-pathfinder">
+                <div class="guide-card-pathfinder-art">
+                    <span class="guide-card-number">05</span>
+                    <span class="guide-card-tag">Progression Patch</span>
+                </div>
+
+                <div class="guide-card-pathfinder-content">
+                    <h2>Pathfinder Guide</h2>
+
+                    <p>
+                        Learn how class-aware assignments, direct warps,
+                        regional Pathfinder copies, rewards, and Build Adviser
+                        access work together.
+                    </p>
+
+                    <ul>
+                        <li>Class-aware training routes</li>
+                        <li>Shared regional progress</li>
+                        <li>Direct destination warps</li>
+                        <li>Build Adviser access</li>
+                    </ul>
+
+                    <a asp-controller="Guides"
+                       asp-action="Pathfinder"
+                       class="guide-card-link">
+                        Read guide <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+            </article>
+</div>
+</div>
+</section>
+
+

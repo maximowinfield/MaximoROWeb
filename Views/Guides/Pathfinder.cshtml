@@ -1,0 +1,243 @@
+﻿@* PATHFINDER LIVE STATUS DOTS *@
+@{
+    ViewData["Title"] = "Pathfinder Guide";
+}
+
+<section class="page-hero pathfinder-guide-hero">
+    <div class="container page-hero-content">
+        <div class="eyebrow">
+            <span class="eyebrow-dot server-status-dot" aria-hidden="true"></span>
+            Progression Patch Guide
+        </div>
+
+        <h1>
+            MaximoRO
+            <span>Pathfinder Guide</span>
+        </h1>
+
+        <p>
+            Learn how the Pathfinder network directs new characters, assigns
+            class-aware training routes, connects regional destinations, and
+            provides direct access to the central Build Adviser.
+        </p>
+
+        <div class="page-hero-actions">
+            <a class="btn hero-primary-button" href="#services">
+                View Pathfinder Services
+            </a>
+
+            <a class="btn hero-secondary-button"
+               asp-controller="Guides"
+               asp-action="StatsAndBuilds">
+                Open Stats and Builds
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section pathfinder-guide-section" id="services">
+    <div class="container">
+        <div class="section-heading centered-heading">
+            <div class="eyebrow">
+                <span class="eyebrow-dot server-status-dot" aria-hidden="true"></span>
+                Pathfinder Network
+            </div>
+
+            <h2>
+                One progression network,
+                <span>available across Rune-Midgard.</span>
+            </h2>
+
+            <p>
+                Pathfinder NPCs share the same beginner-progression system.
+                You can speak with whichever Pathfinder is nearby without
+                losing assignment progress or being forced to return to one
+                specific NPC.
+            </p>
+        </div>
+
+        <div class="pathfinder-guide-service-grid">
+            <article class="pathfinder-guide-service-card">
+                <span class="pathfinder-guide-number">01</span>
+                <h3>Class-aware training routes</h3>
+                <p>
+                    The Pathfinder checks your class and recommends suitable
+                    hunting destinations instead of sending every character
+                    through one generic route.
+                </p>
+            </article>
+
+            <article class="pathfinder-guide-service-card">
+                <span class="pathfinder-guide-number">02</span>
+                <h3>Direct destination warps</h3>
+                <p>
+                    Accepted training assignments include direct transportation
+                    to the recommended field so beginners can start progressing
+                    without memorizing the world map.
+                </p>
+            </article>
+
+            <article class="pathfinder-guide-service-card">
+                <span class="pathfinder-guide-number">03</span>
+                <h3>Shared regional progress</h3>
+                <p>
+                    Pathfinder copies placed at training destinations share the
+                    same quest state. Continue or complete the assignment with
+                    any member of the network.
+                </p>
+            </article>
+
+            <article class="pathfinder-guide-service-card">
+                <span class="pathfinder-guide-number">04</span>
+                <h3>Beginner assignment rewards</h3>
+                <p>
+                    The first Pathfinder route introduces the progression loop
+                    and provides a completion reward for following the guided
+                    training path.
+                </p>
+            </article>
+
+            <article class="pathfinder-guide-service-card">
+                <span class="pathfinder-guide-number">05</span>
+                <h3>Build Adviser connection</h3>
+                <p>
+                    Every Pathfinder can explain the central Build Adviser and
+                    warp players to Prontera for stat guidance, class builds,
+                    and protected beginner reset support.
+                </p>
+            </article>
+
+            <article class="pathfinder-guide-service-card">
+                <span class="pathfinder-guide-number">06</span>
+                <h3>Website guide access</h3>
+                <p>
+                    The in-game system is supported by website guides covering
+                    primary stats, beginner builds, leveling routes, and the
+                    services available through the Progression Patch.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section pathfinder-guide-route-section" id="route">
+    <div class="container">
+        <div class="pathfinder-guide-route">
+            <div class="pathfinder-guide-route-copy">
+                <div class="eyebrow">
+                    <span class="eyebrow-dot server-status-dot" aria-hidden="true"></span>
+                    Beginner Route
+                </div>
+
+                <h2>How to use the Pathfinder</h2>
+
+                <ol class="pathfinder-guide-steps">
+                    <li>
+                        <strong>Speak with any MaximoRO Pathfinder.</strong>
+                        <span>
+                            The NPC identifies your class and presents the
+                            currently available beginner services.
+                        </span>
+                    </li>
+
+                    <li>
+                        <strong>Review the recommended training assignment.</strong>
+                        <span>
+                            Read the destination and monster guidance before
+                            accepting the route.
+                        </span>
+                    </li>
+
+                    <li>
+                        <strong>Accept the direct warp.</strong>
+                        <span>
+                            The Pathfinder transports you to the recommended
+                            training area.
+                        </span>
+                    </li>
+
+                    <li>
+                        <strong>Continue with the regional Pathfinder.</strong>
+                        <span>
+                            A nearby copy lets you continue or complete the same
+                            shared assignment.
+                        </span>
+                    </li>
+
+                    <li>
+                        <strong>Visit the Build Adviser when needed.</strong>
+                        <span>
+                            Return to any Pathfinder for a direct warp to the
+                            central Build Adviser in Prontera.
+                        </span>
+                    </li>
+                </ol>
+            </div>
+
+            <aside class="pathfinder-guide-summary">
+                <span class="pathfinder-guide-summary-label">
+                    Pathfinder services
+                </span>
+
+                <div>
+                    <strong>Training</strong>
+                    <span>Class-aware hunting routes</span>
+                </div>
+
+                <div>
+                    <strong>Travel</strong>
+                    <span>Direct field and Adviser warps</span>
+                </div>
+
+                <div>
+                    <strong>Progress</strong>
+                    <span>Shared state across regional NPCs</span>
+                </div>
+
+                <div>
+                    <strong>Guidance</strong>
+                    <span>Build, stats, and website resources</span>
+                </div>
+
+                <a class="btn hero-primary-button"
+                   asp-controller="Home"
+                   asp-action="ProgressionPatch"
+                   asp-fragment="pathfinder">
+                    Return to Progression Patch
+                </a>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<section class="section final-cta-section">
+    <div class="container">
+        <div class="final-cta-panel">
+            <div class="final-cta-emblem">P</div>
+
+            <div class="final-cta-content">
+                <div class="eyebrow">Continue your route</div>
+                <h2>Choose the next guide.</h2>
+                <p>
+                    Review class builds through the Build Adviser or continue
+                    into the complete class-aware leveling network.
+                </p>
+            </div>
+
+            <div class="final-cta-actions">
+                <a class="btn hero-primary-button"
+                   asp-controller="Guides"
+                   asp-action="StatsAndBuilds">
+                    Stats and Builds
+                </a>
+
+                <a class="btn hero-secondary-button"
+                   asp-controller="Guides"
+                   asp-action="Leveling">
+                    Leveling Guide
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --background: #08090d;
   --background-soft: #0d1017;
   --panel: #11151e;
@@ -1515,7 +1515,7 @@ a {
   top: 0.45em;
   left: 0;
   color: var(--gold);
-  content: "◆";
+  content: "Ã¢—â€ ";
   font-size: 0.48rem;
 }
 
@@ -1885,6 +1885,74 @@ a {
   min-height: 420px;
 }
 
+
+.news-image-pathfinder {
+  background-image:
+    linear-gradient(0deg, rgba(7, 8, 12, 0.55), rgba(7, 8, 12, 0.05)),
+    url("/images/news/pathfinder-news.png");
+  background-position: center;
+}
+
+.pathfinder-news-card {
+  border-color: rgba(213, 173, 93, 0.34);
+  background:
+    radial-gradient(
+      circle at 88% 18%,
+      rgba(213, 173, 93, 0.1),
+      transparent 34%
+    ),
+    var(--panel);
+}
+
+.pathfinder-feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 2px 0 24px;
+}
+
+.pathfinder-feature-list span {
+  padding: 7px 10px;
+  border: 1px solid rgba(213, 173, 93, 0.2);
+  border-radius: 999px;
+  color: var(--gold-light);
+  background: rgba(213, 173, 93, 0.045);
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.065em;
+  text-transform: uppercase;
+}
+
+.pathfinder-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 26px;
+  padding: 14px 16px;
+  border: 1px solid rgba(213, 173, 93, 0.14);
+  background: rgba(255, 255, 255, 0.018);
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.pathfinder-flow strong {
+  color: var(--gold-light);
+  font-weight: 800;
+}
+
+@media (max-width: 520px) {
+  .pathfinder-flow {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .pathfinder-flow > span[aria-hidden="true"] {
+    transform: rotate(90deg);
+  }
+}
+
 .news-image-development {
   background-image:
     linear-gradient(0deg, rgba(7, 8, 12, 0.35), rgba(7, 8, 12, 0.05)),
@@ -1900,7 +1968,7 @@ a {
 .news-image-guide {
   background-image:
     linear-gradient(0deg, rgba(7, 8, 12, 0.35), rgba(7, 8, 12, 0.05)),
-    url("/images/news/getting-started-city-gate.png");
+    url("/images/news/pathfinder-news.png");
 }
 
 .news-image-event {
@@ -3018,3 +3086,2378 @@ a {
   pointer-events: none !important;
   opacity: 0 !important;
 }
+
+/* ============================================================
+   MaximoRO Guides
+   ============================================================ */
+
+.guides-page-hero {
+  background-image:
+    linear-gradient(0deg, rgba(7, 8, 12, 0.28), rgba(7, 8, 12, 0.05)),
+    url("/images/news/pathfinder-news.png");
+}
+
+.guide-detail-hero {
+  min-height: 430px;
+}
+
+.guide-status-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.guide-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 7px 11px;
+  border: 1px solid rgba(213, 173, 93, 0.18);
+  border-radius: 3px;
+  color: var(--text-muted);
+  background: rgba(7, 8, 12, 0.54);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.guide-status-official {
+  border-color: rgba(213, 173, 93, 0.44);
+  color: var(--gold-light);
+}
+
+.guide-status-draft {
+  border-color: rgba(194, 132, 58, 0.42);
+  color: #efc984;
+}
+
+.guides-index-section {
+  background: var(--background-soft);
+}
+
+.guide-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 46px;
+}
+
+.guide-card {
+  position: relative;
+  min-height: 390px;
+  overflow: hidden;
+  padding: 38px;
+  border: 1px solid var(--panel-border);
+  border-radius: 5px;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(213, 173, 93, 0.08), transparent 30%),
+    var(--panel);
+  transition:
+    border-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.guide-card::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  content: "";
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold-dark),
+    transparent
+  );
+}
+
+.guide-card:hover {
+  border-color: rgba(213, 173, 93, 0.4);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.2);
+  transform: translateY(-6px);
+}
+
+.guide-card-number {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  color: rgba(213, 173, 93, 0.17);
+  font-family: var(--display-font);
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.guide-card-tag,
+.guide-kicker {
+  color: var(--gold);
+  font-size: 0.69rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.guide-card h2 {
+  max-width: 78%;
+  margin: 26px 0 16px;
+  color: var(--text);
+  font-family: var(--display-font);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 500;
+}
+
+.guide-card p {
+  color: var(--text-soft);
+  line-height: 1.75;
+}
+
+.guide-card ul {
+  display: grid;
+  gap: 8px;
+  margin: 23px 0 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.guide-card li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.guide-card li::before {
+  position: absolute;
+  top: 0.68em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  content: "";
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.guide-card-link,
+.guide-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.guide-card-link:hover,
+.guide-back-link:hover {
+  color: var(--gold-light);
+  gap: 12px;
+}
+
+.guide-article-section {
+  background: var(--background-soft);
+}
+
+.guide-article-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.27fr) minmax(0, 0.73fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.guide-sidebar {
+  position: sticky;
+  top: 116px;
+}
+
+.guide-table-of-contents {
+  display: grid;
+  gap: 7px;
+  margin-top: 28px;
+  padding: 25px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+}
+
+.guide-table-of-contents strong {
+  margin-bottom: 10px;
+  color: var(--text);
+  font-family: var(--display-font);
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.guide-table-of-contents a {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.guide-table-of-contents a:hover {
+  color: var(--gold-light);
+}
+
+.guide-article {
+  min-width: 0;
+}
+
+.guide-article-header {
+  margin-bottom: 30px;
+  padding: 40px;
+  border: 1px solid rgba(213, 173, 93, 0.2);
+  background:
+    radial-gradient(circle at 90% 8%, rgba(213, 173, 93, 0.08), transparent 30%),
+    var(--panel);
+}
+
+.guide-article-header h2 {
+  margin: 18px 0;
+  color: var(--text);
+  font-family: var(--display-font);
+  font-size: clamp(2.2rem, 4vw, 3.7rem);
+  font-weight: 500;
+}
+
+.guide-article-header p {
+  max-width: 760px;
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.8;
+}
+
+.guide-content-block {
+  scroll-margin-top: 120px;
+  margin-top: 22px;
+  padding: 38px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+}
+
+.guide-content-block h3 {
+  margin: 0 0 20px;
+  color: var(--text);
+  font-family: var(--display-font);
+  font-size: clamp(1.7rem, 3vw, 2.45rem);
+  font-weight: 500;
+}
+
+.guide-content-block h4 {
+  color: var(--text);
+  font-family: var(--display-font);
+}
+
+.guide-content-block p {
+  color: var(--text-soft);
+  line-height: 1.85;
+}
+
+.guide-callout {
+  margin: 28px 0;
+  padding: 24px;
+  border-left: 3px solid rgba(213, 173, 93, 0.48);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.guide-callout strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.guide-callout p {
+  margin: 0;
+}
+
+.guide-callout-gold {
+  border-color: var(--gold);
+  background: rgba(213, 173, 93, 0.055);
+}
+
+.guide-callout-warning {
+  border-color: #bb7338;
+  background: rgba(187, 115, 56, 0.07);
+}
+
+.guide-data-grid,
+.guide-stat-grid,
+.guide-build-grid,
+.guide-setting-grid,
+.guide-exp-example {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 25px;
+}
+
+.guide-data-grid > div,
+.guide-setting-grid > div,
+.guide-exp-example > div {
+  padding: 20px;
+  border: 1px solid rgba(213, 173, 93, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.guide-data-grid strong,
+.guide-data-grid span,
+.guide-setting-grid strong,
+.guide-setting-grid span,
+.guide-exp-example strong,
+.guide-exp-example span {
+  display: block;
+}
+
+.guide-data-grid strong,
+.guide-setting-grid strong,
+.guide-exp-example strong {
+  color: var(--text);
+  font-family: var(--display-font);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.guide-data-grid span,
+.guide-setting-grid span,
+.guide-exp-example span {
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  font-size: 0.73rem;
+}
+
+.guide-stat-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.guide-stat-grid article,
+.guide-build-grid article {
+  padding: 24px;
+  border: 1px solid var(--panel-border);
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.guide-stat-grid strong {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--gold-light);
+  font-family: var(--display-font);
+  font-size: 1.7rem;
+}
+
+.guide-stat-grid p {
+  margin: 0;
+  font-size: 0.84rem;
+}
+
+.guide-stat-example {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 15px 0 20px;
+  padding: 18px 25px;
+  border: 1px solid rgba(213, 173, 93, 0.28);
+  background: rgba(213, 173, 93, 0.045);
+}
+
+.guide-stat-example span {
+  color: var(--text);
+  font-family: var(--display-font);
+  font-size: 1.4rem;
+}
+
+.guide-stat-example strong {
+  color: var(--gold-light);
+  font-size: 2.1rem;
+}
+
+.guide-stat-example em {
+  color: #73bf75;
+  font-size: 1.3rem;
+  font-style: normal;
+}
+
+.guide-build-grid article span {
+  color: var(--gold);
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.guide-build-grid article h4 {
+  margin: 12px 0;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.guide-build-grid code {
+  color: var(--gold-light);
+  font-size: 0.85rem;
+}
+
+.guide-list,
+.guide-numbered-list {
+  display: grid;
+  gap: 13px;
+  margin: 24px 0 0;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+.guide-route-table {
+  margin-top: 26px;
+  border: 1px solid var(--panel-border);
+}
+
+.guide-route-table > div {
+  display: grid;
+  grid-template-columns: 0.75fr 1fr 1.4fr;
+  gap: 20px;
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-soft);
+}
+
+.guide-route-table > div:last-child {
+  border-bottom: 0;
+}
+
+.guide-route-table .guide-route-header {
+  color: var(--gold);
+  background: rgba(213, 173, 93, 0.055);
+  font-size: 0.69rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.guide-route-table strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.guide-setting-grid-draft {
+  border: 1px dashed rgba(194, 132, 58, 0.35);
+  padding: 14px;
+}
+
+@media (max-width: 991.98px) {
+  .guide-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-article-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .guide-sidebar {
+    position: static;
+  }
+
+  .guide-table-of-contents {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .guide-table-of-contents strong {
+    grid-column: 1 / -1;
+  }
+
+  .guide-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767.98px) {
+  .guide-card,
+  .guide-article-header,
+  .guide-content-block {
+    padding: 26px;
+  }
+
+  .guide-card h2 {
+    max-width: 100%;
+  }
+
+  .guide-card-number {
+    font-size: 3rem;
+  }
+
+  .guide-data-grid,
+  .guide-stat-grid,
+  .guide-build-grid,
+  .guide-setting-grid,
+  .guide-exp-example {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-route-table > div {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .guide-route-table .guide-route-header {
+    display: none;
+  }
+
+  .guide-table-of-contents {
+    grid-template-columns: 1fr;
+  }
+}
+/* MaximoRO class stat accordions */
+
+.guide-class-jump-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin: 28px 0;
+}
+
+.guide-class-jump-links a {
+  padding: 10px 12px;
+  border: 1px solid rgba(213, 173, 93, 0.16);
+  color: var(--gold);
+  background: rgba(213, 173, 93, 0.035);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.guide-class-jump-links a:hover {
+  border-color: rgba(213, 173, 93, 0.45);
+  color: var(--gold-light);
+  background: rgba(213, 173, 93, 0.075);
+}
+
+.guide-class-accordion {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.guide-class-accordion details {
+  scroll-margin-top: 120px;
+  overflow: hidden;
+  border: 1px solid var(--panel-border);
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.guide-class-accordion details[open] {
+  border-color: rgba(213, 173, 93, 0.34);
+  background:
+    radial-gradient(circle at 92% 0%, rgba(213, 173, 93, 0.055), transparent 28%),
+    rgba(255, 255, 255, 0.022);
+}
+
+.guide-class-accordion summary {
+  display: flex;
+  min-height: 88px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 24px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.guide-class-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.guide-class-accordion summary::after {
+  flex: 0 0 auto;
+  color: var(--gold);
+  content: "+";
+  font-family: var(--display-font);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.guide-class-accordion details[open] summary::after {
+  content: "\2212";
+}
+
+.guide-class-accordion summary > span {
+  display: grid;
+  gap: 3px;
+}
+
+.guide-class-accordion summary small {
+  color: var(--text-muted);
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.guide-class-accordion summary strong {
+  color: var(--text);
+  font-family: var(--display-font);
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+
+.guide-class-accordion summary code {
+  margin-left: auto;
+  color: var(--gold-light);
+  font-size: 0.78rem;
+  white-space: normal;
+  text-align: right;
+}
+
+.guide-class-content {
+  padding: 0 24px 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.045);
+}
+
+.guide-class-content > p {
+  max-width: 760px;
+  margin-top: 22px;
+}
+
+.guide-class-stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.guide-class-stat-row > div {
+  padding: 16px;
+  border: 1px solid rgba(213, 173, 93, 0.11);
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.guide-class-stat-row strong,
+.guide-class-stat-row span {
+  display: block;
+}
+
+.guide-class-stat-row strong {
+  margin-bottom: 7px;
+  color: var(--gold-light);
+  font-family: var(--display-font);
+  font-size: 1.2rem;
+}
+
+.guide-class-stat-row span {
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  line-height: 1.55;
+}
+
+.guide-class-advice {
+  margin-top: 18px;
+  padding: 18px 20px;
+  border-left: 3px solid var(--gold-dark);
+  background: rgba(213, 173, 93, 0.045);
+}
+
+.guide-class-advice strong {
+  color: var(--text);
+}
+
+.guide-class-advice p {
+  margin: 6px 0 0;
+}
+
+@media (max-width: 991.98px) {
+  .guide-class-stat-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767.98px) {
+  .guide-class-jump-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .guide-class-accordion summary {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 18px;
+  }
+
+  .guide-class-accordion summary code {
+    width: calc(100% - 30px);
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .guide-class-content {
+    padding: 0 18px 20px;
+  }
+
+  .guide-class-stat-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .guide-class-jump-links {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* MAXIMORO CLASS ART LAYOUT PREVIEW
+   CSS-only mockup. Real class artwork can replace these backgrounds later.
+*/
+
+/* ------------------------------------------------------------
+   Illustrated class-selection cards
+   ------------------------------------------------------------ */
+
+.guide-class-jump-links {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.guide-class-jump-links a {
+  position: relative;
+  display: flex;
+  min-height: 154px;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 22px 20px;
+  border: 1px solid rgba(213, 173, 93, 0.2);
+  color: var(--text);
+  background: #11151e;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+  font-family: var(--display-font);
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  text-align: left;
+  text-transform: none;
+  isolation: isolate;
+}
+
+.guide-class-jump-links a::before {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  content: "";
+  background:
+    radial-gradient(circle at 76% 35%, rgba(242, 215, 150, 0.24), transparent 22%),
+    linear-gradient(130deg, rgba(13, 16, 23, 0.16), rgba(8, 9, 13, 0.94));
+  transition:
+    transform 420ms ease,
+    filter 420ms ease;
+}
+
+.guide-class-jump-links a::after {
+  position: absolute;
+  right: 15px;
+  bottom: -27px;
+  z-index: -1;
+  color: rgba(242, 215, 150, 0.16);
+  content: "?";
+  font-family: var(--display-font);
+  font-size: 7.2rem;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 0 35px rgba(213, 173, 93, 0.16);
+  transform: rotate(-7deg);
+  transition:
+    color 240ms ease,
+    transform 420ms ease;
+}
+
+.guide-class-jump-links a:hover {
+  border-color: rgba(242, 215, 150, 0.64);
+  color: #fff4d2;
+  box-shadow:
+    0 22px 45px rgba(0, 0, 0, 0.34),
+    inset 0 -2px 0 rgba(213, 173, 93, 0.45);
+  transform: translateY(-5px);
+}
+
+.guide-class-jump-links a:hover::before {
+  filter: saturate(1.18) brightness(1.1);
+  transform: scale(1.045);
+}
+
+.guide-class-jump-links a:hover::after {
+  color: rgba(242, 215, 150, 0.28);
+  transform: rotate(-3deg) scale(1.08);
+}
+
+/* Class-specific placeholder art direction */
+
+.guide-class-jump-links a:nth-child(1)::before {
+  background:
+    radial-gradient(circle at 77% 31%, rgba(255, 194, 99, 0.34), transparent 21%),
+    linear-gradient(128deg, rgba(87, 36, 28, 0.42), rgba(12, 15, 22, 0.93) 70%),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.025) 0 2px, transparent 2px 11px);
+}
+.guide-class-jump-links a:nth-child(1)::after { content: "S"; }
+
+.guide-class-jump-links a:nth-child(2)::before {
+  background:
+    radial-gradient(circle at 76% 30%, rgba(151, 112, 255, 0.42), transparent 22%),
+    linear-gradient(128deg, rgba(42, 29, 88, 0.55), rgba(10, 12, 21, 0.94) 72%);
+}
+.guide-class-jump-links a:nth-child(2)::after { content: "M"; }
+
+.guide-class-jump-links a:nth-child(3)::before {
+  background:
+    radial-gradient(circle at 78% 32%, rgba(121, 203, 121, 0.36), transparent 22%),
+    linear-gradient(128deg, rgba(34, 74, 47, 0.48), rgba(10, 14, 18, 0.95) 72%);
+}
+.guide-class-jump-links a:nth-child(3)::after { content: "A"; }
+
+.guide-class-jump-links a:nth-child(4)::before {
+  background:
+    radial-gradient(circle at 77% 31%, rgba(245, 222, 151, 0.42), transparent 21%),
+    linear-gradient(128deg, rgba(91, 75, 34, 0.42), rgba(12, 14, 20, 0.95) 72%);
+}
+.guide-class-jump-links a:nth-child(4)::after { content: "âœ¦"; }
+
+.guide-class-jump-links a:nth-child(5)::before {
+  background:
+    radial-gradient(circle at 76% 30%, rgba(227, 157, 68, 0.4), transparent 22%),
+    linear-gradient(128deg, rgba(90, 53, 25, 0.46), rgba(13, 15, 20, 0.94) 72%);
+}
+.guide-class-jump-links a:nth-child(5)::after { content: "â‚¿"; }
+
+.guide-class-jump-links a:nth-child(6)::before {
+  background:
+    radial-gradient(circle at 77% 30%, rgba(129, 146, 179, 0.32), transparent 22%),
+    linear-gradient(128deg, rgba(34, 43, 59, 0.55), rgba(8, 10, 15, 0.97) 72%);
+}
+.guide-class-jump-links a:nth-child(6)::after { content: "T"; }
+
+.guide-class-jump-links a:nth-child(7)::before {
+  background:
+    radial-gradient(circle at 76% 30%, rgba(219, 76, 76, 0.4), transparent 22%),
+    linear-gradient(128deg, rgba(81, 24, 31, 0.54), rgba(10, 11, 17, 0.96) 72%);
+}
+.guide-class-jump-links a:nth-child(7)::after { content: "å¿"; }
+
+.guide-class-jump-links a:nth-child(8)::before {
+  background:
+    radial-gradient(circle at 77% 31%, rgba(89, 175, 211, 0.38), transparent 21%),
+    linear-gradient(128deg, rgba(31, 65, 82, 0.52), rgba(9, 12, 18, 0.96) 72%);
+}
+.guide-class-jump-links a:nth-child(8)::after { content: "G"; }
+
+.guide-class-jump-links a:nth-child(9)::before {
+  background:
+    radial-gradient(circle at 77% 31%, rgba(230, 124, 71, 0.38), transparent 21%),
+    linear-gradient(128deg, rgba(85, 39, 25, 0.5), rgba(10, 12, 17, 0.96) 72%);
+}
+.guide-class-jump-links a:nth-child(9)::after { content: "æ‹³"; }
+
+/* Small role captions without requiring Razor changes */
+
+.guide-class-jump-links a {
+  padding-top: 64px;
+}
+
+.guide-class-jump-links a span {
+  position: relative;
+}
+
+.guide-class-jump-links a:nth-child(1) { --class-role: "Melee Vanguard"; }
+.guide-class-jump-links a:nth-child(2) { --class-role: "Arcane Caster"; }
+.guide-class-jump-links a:nth-child(3) { --class-role: "Ranged Attacker"; }
+.guide-class-jump-links a:nth-child(4) { --class-role: "Holy Support"; }
+.guide-class-jump-links a:nth-child(5) { --class-role: "Trader & Fighter"; }
+.guide-class-jump-links a:nth-child(6) { --class-role: "Evasive Striker"; }
+.guide-class-jump-links a:nth-child(7) { --class-role: "Mystic Specialist"; }
+.guide-class-jump-links a:nth-child(8) { --class-role: "Firearm Expert"; }
+.guide-class-jump-links a:nth-child(9) { --class-role: "Martial Artist"; }
+
+.guide-class-jump-links a > * {
+  position: relative;
+  z-index: 2;
+}
+
+.guide-class-jump-links a {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.guide-class-jump-links a::selection {
+  background: transparent;
+}
+
+/* Role caption injected above the visible class name */
+.guide-class-jump-links a {
+  line-height: 1.15;
+}
+
+.guide-class-jump-links a {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.78);
+}
+
+.guide-class-jump-links a {
+  --caption-color: rgba(242, 215, 150, 0.76);
+}
+
+.guide-class-jump-links a {
+  background-clip: padding-box;
+}
+
+/* Browser-supported visual caption */
+.guide-class-jump-links a::marker {
+  content: "";
+}
+
+/* ------------------------------------------------------------
+   Open accordion: editorial art composition
+   ------------------------------------------------------------ */
+
+.guide-class-accordion details {
+  position: relative;
+  isolation: isolate;
+}
+
+.guide-class-accordion details[open] {
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(17, 21, 30, 0.99) 0%, rgba(17, 21, 30, 0.97) 58%, rgba(17, 21, 30, 0.78) 100%);
+}
+
+.guide-class-accordion details[open]::before {
+  position: absolute;
+  top: 88px;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+  width: 43%;
+  content: "";
+  opacity: 0.92;
+  background:
+    radial-gradient(circle at 66% 42%, rgba(242, 215, 150, 0.2), transparent 22%),
+    linear-gradient(90deg, rgba(17, 21, 30, 1), rgba(17, 21, 30, 0.18)),
+    repeating-linear-gradient(135deg, rgba(213, 173, 93, 0.045) 0 1px, transparent 1px 13px);
+  mask-image: linear-gradient(90deg, transparent 0%, black 42%);
+}
+
+.guide-class-accordion details[open]::after {
+  position: absolute;
+  right: 7%;
+  bottom: 20px;
+  z-index: -1;
+  color: rgba(242, 215, 150, 0.1);
+  content: "CLASS";
+  font-family: var(--display-font);
+  font-size: clamp(4.5rem, 10vw, 8rem);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  line-height: 0.8;
+  pointer-events: none;
+  transform: rotate(-6deg);
+}
+
+/* Unique placeholder treatment for each accordion */
+.guide-class-accordion details:nth-child(1)[open]::after { content: "SWORD"; }
+.guide-class-accordion details:nth-child(2)[open]::after { content: "MAGIC"; }
+.guide-class-accordion details:nth-child(3)[open]::after { content: "BOW"; }
+.guide-class-accordion details:nth-child(4)[open]::after { content: "FAITH"; }
+.guide-class-accordion details:nth-child(5)[open]::after { content: "ZENY"; }
+.guide-class-accordion details:nth-child(6)[open]::after { content: "SHADE"; }
+.guide-class-accordion details:nth-child(7)[open]::after { content: "NIN"; }
+.guide-class-accordion details:nth-child(8)[open]::after { content: "GUN"; }
+.guide-class-accordion details:nth-child(9)[open]::after { content: "KICK"; }
+
+.guide-class-accordion details:nth-child(2)[open]::before {
+  background:
+    radial-gradient(circle at 67% 42%, rgba(142, 104, 255, 0.28), transparent 23%),
+    linear-gradient(90deg, rgba(17, 21, 30, 1), rgba(33, 24, 68, 0.2)),
+    repeating-linear-gradient(135deg, rgba(142, 104, 255, 0.05) 0 1px, transparent 1px 13px);
+}
+
+.guide-class-accordion details:nth-child(3)[open]::before {
+  background:
+    radial-gradient(circle at 67% 42%, rgba(102, 190, 112, 0.22), transparent 23%),
+    linear-gradient(90deg, rgba(17, 21, 30, 1), rgba(24, 61, 34, 0.18)),
+    repeating-linear-gradient(135deg, rgba(102, 190, 112, 0.045) 0 1px, transparent 1px 13px);
+}
+
+.guide-class-accordion details:nth-child(4)[open]::before {
+  background:
+    radial-gradient(circle at 67% 42%, rgba(255, 233, 161, 0.27), transparent 23%),
+    linear-gradient(90deg, rgba(17, 21, 30, 1), rgba(78, 66, 29, 0.15)),
+    repeating-linear-gradient(135deg, rgba(255, 233, 161, 0.045) 0 1px, transparent 1px 13px);
+}
+
+.guide-class-content {
+  position: relative;
+  z-index: 1;
+}
+
+.guide-class-content > p,
+.guide-class-stat-row,
+.guide-class-advice {
+  max-width: 78%;
+}
+
+/* Accordion icon clarification */
+.guide-class-accordion summary::after {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid rgba(213, 173, 93, 0.26);
+  border-radius: 50%;
+  background: rgba(213, 173, 93, 0.045);
+  font-family: var(--body-font);
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+
+.guide-class-accordion details[open] summary::after {
+  border-color: rgba(213, 173, 93, 0.42);
+  background: rgba(213, 173, 93, 0.09);
+}
+
+/* ------------------------------------------------------------
+   Responsive preview
+   ------------------------------------------------------------ */
+
+@media (max-width: 991.98px) {
+  .guide-class-jump-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .guide-class-content > p,
+  .guide-class-stat-row,
+  .guide-class-advice {
+    max-width: 100%;
+  }
+
+  .guide-class-accordion details[open]::before,
+  .guide-class-accordion details[open]::after {
+    opacity: 0.42;
+  }
+}
+
+@media (max-width: 600px) {
+  .guide-class-jump-links {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-class-jump-links a {
+    min-height: 128px;
+  }
+
+  .guide-class-accordion details[open]::before {
+    width: 70%;
+    opacity: 0.26;
+  }
+
+  .guide-class-accordion details[open]::after {
+    right: 4%;
+    bottom: 30px;
+    opacity: 0.07;
+  }
+}
+
+/* MAXIMORO FINAL CLASS ART */
+
+.guide-class-jump-links a::before {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.guide-class-jump-links a::after {
+  display: none;
+}
+
+.guide-class-jump-links a:nth-child(1)::before { background-image: linear-gradient(90deg, rgba(7,9,14,.88), rgba(7,9,14,.12)), url("/images/guides/classes/swordsman.jpg"); }
+.guide-class-jump-links a:nth-child(2)::before { background-image: linear-gradient(90deg, rgba(7,9,14,.88), rgba(7,9,14,.12)), url("/images/guides/classes/mage.jpg"); }
+.guide-class-jump-links a:nth-child(3)::before { background-image: linear-gradient(90deg, rgba(7,9,14,.88), rgba(7,9,14,.12)), url("/images/guides/classes/archer.jpg"); }
+.guide-class-jump-links a:nth-child(4)::before { background-image: linear-gradient(90deg, rgba(7,9,14,.88), rgba(7,9,14,.12)), url("/images/guides/classes/acolyte.jpg"); }
+.guide-class-jump-links a:nth-child(5)::before { background-image: linear-gradient(90deg, rgba(7,9,14,.88), rgba(7,9,14,.12)), url("/images/guides/classes/merchant.jpg"); }
+.guide-class-jump-links a:nth-child(6)::before { background-image: linear-gradient(90deg, rgba(7,9,14,.88), rgba(7,9,14,.12)), url("/images/guides/classes/thief.jpg"); }
+.guide-class-jump-links a:nth-child(7)::before { background-image: linear-gradient(90deg, rgba(7,9,14,.88), rgba(7,9,14,.12)), url("/images/guides/classes/ninja.jpg"); }
+.guide-class-jump-links a:nth-child(8)::before { background-image: linear-gradient(90deg, rgba(7,9,14,.88), rgba(7,9,14,.12)), url("/images/guides/classes/gunslinger.jpg"); }
+.guide-class-jump-links a:nth-child(9)::before { background-image: linear-gradient(90deg, rgba(7,9,14,.88), rgba(7,9,14,.12)), url("/images/guides/classes/taekwon.jpg"); }
+
+.guide-class-accordion details[open]::before {
+  width: 48%;
+  opacity: .72;
+  background-position: center right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  mask-image: linear-gradient(90deg, transparent 0%, black 45%);
+}
+
+.guide-class-accordion details:nth-child(1)[open]::before { background-image: linear-gradient(90deg, rgba(17,21,30,1), rgba(17,21,30,.16)), url("/images/guides/classes/swordsman.jpg"); }
+.guide-class-accordion details:nth-child(2)[open]::before { background-image: linear-gradient(90deg, rgba(17,21,30,1), rgba(17,21,30,.16)), url("/images/guides/classes/mage.jpg"); }
+.guide-class-accordion details:nth-child(3)[open]::before { background-image: linear-gradient(90deg, rgba(17,21,30,1), rgba(17,21,30,.16)), url("/images/guides/classes/archer.jpg"); }
+.guide-class-accordion details:nth-child(4)[open]::before { background-image: linear-gradient(90deg, rgba(17,21,30,1), rgba(17,21,30,.16)), url("/images/guides/classes/acolyte.jpg"); }
+.guide-class-accordion details:nth-child(5)[open]::before { background-image: linear-gradient(90deg, rgba(17,21,30,1), rgba(17,21,30,.16)), url("/images/guides/classes/merchant.jpg"); }
+.guide-class-accordion details:nth-child(6)[open]::before { background-image: linear-gradient(90deg, rgba(17,21,30,1), rgba(17,21,30,.16)), url("/images/guides/classes/thief.jpg"); }
+.guide-class-accordion details:nth-child(7)[open]::before { background-image: linear-gradient(90deg, rgba(17,21,30,1), rgba(17,21,30,.16)), url("/images/guides/classes/ninja.jpg"); }
+.guide-class-accordion details:nth-child(8)[open]::before { background-image: linear-gradient(90deg, rgba(17,21,30,1), rgba(17,21,30,.16)), url("/images/guides/classes/gunslinger.jpg"); }
+.guide-class-accordion details:nth-child(9)[open]::before { background-image: linear-gradient(90deg, rgba(17,21,30,1), rgba(17,21,30,.16)), url("/images/guides/classes/taekwon.jpg"); }
+
+.guide-class-accordion details[open]::after {
+  display: none;
+}
+
+/* MAXIMORO CLASS ART VISIBILITY FIX */
+
+/* Make class-card artwork clearly visible */
+.guide-class-jump-links a {
+  min-height: 170px;
+  background: #0b0e14;
+}
+
+.guide-class-jump-links a::before {
+  opacity: 1;
+  filter: brightness(1.22) saturate(1.12) contrast(1.04);
+  background-position: 68% center;
+  background-size: cover;
+}
+
+.guide-class-jump-links a:nth-child(1)::before {
+  background-image:
+    linear-gradient(90deg, rgba(7, 9, 14, 0.72) 0%, rgba(7, 9, 14, 0.28) 42%, rgba(7, 9, 14, 0.02) 78%),
+    url("/images/guides/classes/swordsman.jpg");
+}
+
+.guide-class-jump-links a:nth-child(2)::before {
+  background-image:
+    linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 42%, rgba(7, 9, 14, 0.01) 78%),
+    url("/images/guides/classes/mage.jpg");
+}
+
+.guide-class-jump-links a:nth-child(3)::before {
+  background-image:
+    linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 42%, rgba(7, 9, 14, 0.01) 78%),
+    url("/images/guides/classes/archer.jpg");
+}
+
+.guide-class-jump-links a:nth-child(4)::before {
+  background-image:
+    linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 42%, rgba(7, 9, 14, 0.01) 78%),
+    url("/images/guides/classes/acolyte.jpg");
+}
+
+.guide-class-jump-links a:nth-child(5)::before {
+  background-image:
+    linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 42%, rgba(7, 9, 14, 0.01) 78%),
+    url("/images/guides/classes/merchant.jpg");
+}
+
+.guide-class-jump-links a:nth-child(6)::before {
+  background-image:
+    linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 42%, rgba(7, 9, 14, 0.01) 78%),
+    url("/images/guides/classes/thief.jpg");
+}
+
+.guide-class-jump-links a:nth-child(7)::before {
+  background-image:
+    linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 42%, rgba(7, 9, 14, 0.01) 78%),
+    url("/images/guides/classes/ninja.jpg");
+}
+
+.guide-class-jump-links a:nth-child(8)::before {
+  background-image:
+    linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 42%, rgba(7, 9, 14, 0.01) 78%),
+    url("/images/guides/classes/gunslinger.jpg");
+}
+
+.guide-class-jump-links a:nth-child(9)::before {
+  background-image:
+    linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 42%, rgba(7, 9, 14, 0.01) 78%),
+    url("/images/guides/classes/taekwon.jpg");
+}
+
+.guide-class-jump-links a:hover::before {
+  filter: brightness(1.35) saturate(1.18) contrast(1.06);
+}
+
+/* Let the accordion artwork breathe */
+.guide-class-accordion details[open] {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(17, 21, 30, 0.99) 0%,
+      rgba(17, 21, 30, 0.96) 48%,
+      rgba(17, 21, 30, 0.56) 72%,
+      rgba(17, 21, 30, 0.18) 100%
+    );
+}
+
+.guide-class-accordion details[open]::before {
+  top: 66px;
+  right: 0;
+  bottom: 0;
+  width: 53%;
+  opacity: 1;
+  filter: brightness(1.18) saturate(1.08) contrast(1.03);
+  background-position: 70% center;
+  background-size: cover;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.15) 12%,
+    rgba(0, 0, 0, 0.82) 42%,
+    black 68%
+  );
+}
+
+.guide-class-content > p,
+.guide-class-stat-row,
+.guide-class-advice {
+  max-width: 72%;
+}
+
+/* Keep text readable without covering most of the character */
+.guide-class-content {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(17, 21, 30, 0.97) 0%,
+      rgba(17, 21, 30, 0.91) 50%,
+      rgba(17, 21, 30, 0.14) 78%,
+      transparent 100%
+    );
+}
+
+/* Character-specific crop adjustments */
+.guide-class-accordion details:nth-child(1)[open]::before { background-position: 72% center; }
+.guide-class-accordion details:nth-child(2)[open]::before { background-position: 70% center; }
+.guide-class-accordion details:nth-child(3)[open]::before { background-position: 72% center; }
+.guide-class-accordion details:nth-child(4)[open]::before { background-position: 68% center; }
+.guide-class-accordion details:nth-child(5)[open]::before { background-position: 70% center; }
+.guide-class-accordion details:nth-child(6)[open]::before { background-position: 72% center; }
+.guide-class-accordion details:nth-child(7)[open]::before { background-position: 70% center; }
+.guide-class-accordion details:nth-child(8)[open]::before { background-position: 72% center; }
+.guide-class-accordion details:nth-child(9)[open]::before { background-position: 70% center; }
+
+@media (max-width: 991.98px) {
+  .guide-class-content > p,
+  .guide-class-stat-row,
+  .guide-class-advice {
+    max-width: 100%;
+  }
+
+  .guide-class-accordion details[open]::before {
+    width: 62%;
+    opacity: 0.55;
+  }
+
+  .guide-class-content {
+    background: rgba(17, 21, 30, 0.82);
+  }
+}
+
+@media (max-width: 600px) {
+  .guide-class-jump-links a {
+    min-height: 145px;
+  }
+
+  .guide-class-accordion details[open]::before {
+    width: 100%;
+    opacity: 0.28;
+    background-position: center;
+    mask-image: none;
+  }
+
+  .guide-class-content {
+    background: rgba(17, 21, 30, 0.88);
+  }
+}
+
+/* MAXIMORO SEPARATE CARD PANEL ART SYSTEM */
+
+.guide-class-jump-links a::after {
+  display: none;
+}
+
+/* CARD ART: separate small-banner compositions */
+
+.guide-class-jump-links a::before {
+  opacity: 1;
+  filter: brightness(1.16) saturate(1.08) contrast(1.04);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.guide-class-jump-links a:nth-child(1)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 43%, rgba(7, 9, 14, 0.02) 78%), url("/images/guides/classes/cards/swordsman-card.jpg"); }
+.guide-class-jump-links a:nth-child(2)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 43%, rgba(7, 9, 14, 0.02) 78%), url("/images/guides/classes/cards/mage-card.jpg"); }
+.guide-class-jump-links a:nth-child(3)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 43%, rgba(7, 9, 14, 0.02) 78%), url("/images/guides/classes/cards/archer-card.jpg"); }
+.guide-class-jump-links a:nth-child(4)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 43%, rgba(7, 9, 14, 0.02) 78%), url("/images/guides/classes/cards/acolyte-card.jpg"); }
+.guide-class-jump-links a:nth-child(5)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 43%, rgba(7, 9, 14, 0.02) 78%), url("/images/guides/classes/cards/merchant-card.jpg"); }
+.guide-class-jump-links a:nth-child(6)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 43%, rgba(7, 9, 14, 0.02) 78%), url("/images/guides/classes/cards/thief-card.jpg"); }
+.guide-class-jump-links a:nth-child(7)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 43%, rgba(7, 9, 14, 0.02) 78%), url("/images/guides/classes/cards/ninja-card.jpg"); }
+.guide-class-jump-links a:nth-child(8)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 43%, rgba(7, 9, 14, 0.02) 78%), url("/images/guides/classes/cards/gunslinger-card.jpg"); }
+.guide-class-jump-links a:nth-child(9)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.70) 0%, rgba(7, 9, 14, 0.24) 43%, rgba(7, 9, 14, 0.02) 78%), url("/images/guides/classes/cards/taekwon-card.jpg"); }
+
+/* PANEL ART: separate wide compositions for accordion sections */
+
+.guide-class-accordion details[open]::before {
+  width: 53%;
+  opacity: 1;
+  filter: brightness(1.16) saturate(1.08) contrast(1.03);
+  background-position: 70% center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.18) 12%,
+    rgba(0, 0, 0, 0.86) 42%,
+    black 68%
+  );
+}
+
+.guide-class-accordion details:nth-child(1)[open]::before { background-image: linear-gradient(90deg, rgba(17, 21, 30, 1) 0%, rgba(17, 21, 30, 0.18) 100%), url("/images/guides/classes/panels/swordsman-panel.jpg"); }
+.guide-class-accordion details:nth-child(2)[open]::before { background-image: linear-gradient(90deg, rgba(17, 21, 30, 1) 0%, rgba(17, 21, 30, 0.18) 100%), url("/images/guides/classes/panels/mage-panel.jpg"); }
+.guide-class-accordion details:nth-child(3)[open]::before { background-image: linear-gradient(90deg, rgba(17, 21, 30, 1) 0%, rgba(17, 21, 30, 0.18) 100%), url("/images/guides/classes/panels/archer-panel.jpg"); }
+.guide-class-accordion details:nth-child(4)[open]::before { background-image: linear-gradient(90deg, rgba(17, 21, 30, 1) 0%, rgba(17, 21, 30, 0.18) 100%), url("/images/guides/classes/panels/acolyte-panel.jpg"); }
+.guide-class-accordion details:nth-child(5)[open]::before { background-image: linear-gradient(90deg, rgba(17, 21, 30, 1) 0%, rgba(17, 21, 30, 0.18) 100%), url("/images/guides/classes/panels/merchant-panel.jpg"); }
+.guide-class-accordion details:nth-child(6)[open]::before { background-image: linear-gradient(90deg, rgba(17, 21, 30, 1) 0%, rgba(17, 21, 30, 0.18) 100%), url("/images/guides/classes/panels/thief-panel.jpg"); }
+.guide-class-accordion details:nth-child(7)[open]::before { background-image: linear-gradient(90deg, rgba(17, 21, 30, 1) 0%, rgba(17, 21, 30, 0.18) 100%), url("/images/guides/classes/panels/ninja-panel.jpg"); }
+.guide-class-accordion details:nth-child(8)[open]::before { background-image: linear-gradient(90deg, rgba(17, 21, 30, 1) 0%, rgba(17, 21, 30, 0.18) 100%), url("/images/guides/classes/panels/gunslinger-panel.jpg"); }
+.guide-class-accordion details:nth-child(9)[open]::before { background-image: linear-gradient(90deg, rgba(17, 21, 30, 1) 0%, rgba(17, 21, 30, 0.18) 100%), url("/images/guides/classes/panels/taekwon-panel.jpg"); }
+
+/* Keep left text readable */
+.guide-class-content {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(17, 21, 30, 0.97) 0%,
+      rgba(17, 21, 30, 0.91) 50%,
+      rgba(17, 21, 30, 0.14) 78%,
+      transparent 100%
+    );
+}
+
+.guide-class-content > p,
+.guide-class-stat-row,
+.guide-class-advice {
+  max-width: 72%;
+}
+
+@media (max-width: 991.98px) {
+  .guide-class-content > p,
+  .guide-class-stat-row,
+  .guide-class-advice {
+    max-width: 100%;
+  }
+
+  .guide-class-accordion details[open]::before {
+    width: 62%;
+    opacity: 0.55;
+  }
+
+  .guide-class-content {
+    background: rgba(17, 21, 30, 0.82);
+  }
+}
+
+@media (max-width: 600px) {
+  .guide-class-accordion details[open]::before {
+    width: 100%;
+    opacity: 0.28;
+    background-position: center;
+    mask-image: none;
+  }
+
+  .guide-class-content {
+    background: rgba(17, 21, 30, 0.88);
+  }
+}
+
+/* MAXIMORO FULL WIDTH ACCORDION ART FIX */
+
+/*
+  Accordion artwork must use the entire panel as its canvas.
+  Restricting a cinematic image to the right 53% causes background-size: cover
+  to crop away most of the character.
+*/
+.guide-class-accordion details[open]::before {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: brightness(1.08) saturate(1.05) contrast(1.03);
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+/* Per-class focal-point positioning */
+.guide-class-accordion details:nth-child(1)[open]::before {
+  background-position: center center;
+}
+
+.guide-class-accordion details:nth-child(2)[open]::before {
+  background-position: 58% center;
+}
+
+.guide-class-accordion details:nth-child(3)[open]::before {
+  background-position: 58% center;
+}
+
+.guide-class-accordion details:nth-child(4)[open]::before {
+  background-position: 58% center;
+}
+
+.guide-class-accordion details:nth-child(5)[open]::before,
+.guide-class-accordion details:nth-child(6)[open]::before,
+.guide-class-accordion details:nth-child(7)[open]::before,
+.guide-class-accordion details:nth-child(8)[open]::before,
+.guide-class-accordion details:nth-child(9)[open]::before {
+  background-position: center center;
+}
+
+/*
+  Protect the text locally instead of darkening or masking the art itself.
+*/
+.guide-class-content {
+  position: relative;
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(16, 20, 29, 0.99) 0%,
+      rgba(16, 20, 29, 0.96) 38%,
+      rgba(16, 20, 29, 0.84) 56%,
+      rgba(16, 20, 29, 0.38) 72%,
+      rgba(16, 20, 29, 0.06) 88%,
+      transparent 100%
+    );
+}
+
+.guide-class-content > p,
+.guide-class-stat-row,
+.guide-class-advice {
+  max-width: 70%;
+}
+
+@media (max-width: 991.98px) {
+  .guide-class-accordion details[open]::before {
+    width: 100%;
+    opacity: 0.72;
+    background-position: 62% center;
+  }
+
+  .guide-class-content {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(16, 20, 29, 0.98) 0%,
+        rgba(16, 20, 29, 0.92) 58%,
+        rgba(16, 20, 29, 0.42) 82%,
+        transparent 100%
+      );
+  }
+
+  .guide-class-content > p,
+  .guide-class-stat-row,
+  .guide-class-advice {
+    max-width: 76%;
+  }
+}
+
+@media (max-width: 600px) {
+  .guide-class-accordion details[open]::before {
+    opacity: 0.34;
+    background-position: 68% center;
+  }
+
+  .guide-class-content {
+    background: rgba(16, 20, 29, 0.84);
+  }
+
+  .guide-class-content > p,
+  .guide-class-stat-row,
+  .guide-class-advice {
+    max-width: 100%;
+  }
+}
+
+/* MAXIMORO CARD REBUILD FIX */
+
+.guide-class-jump-links a {
+  min-height: 150px;
+}
+
+.guide-class-jump-links a::before {
+  filter: brightness(1.16) saturate(1.08) contrast(1.03);
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.guide-class-jump-links a:nth-child(1)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.54) 0%, rgba(7, 9, 14, 0.16) 42%, rgba(7, 9, 14, 0.00) 78%), url("/images/guides/classes/cards/swordsman-card.jpg"); }
+.guide-class-jump-links a:nth-child(2)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.54) 0%, rgba(7, 9, 14, 0.16) 42%, rgba(7, 9, 14, 0.00) 78%), url("/images/guides/classes/cards/mage-card.jpg"); }
+.guide-class-jump-links a:nth-child(3)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.54) 0%, rgba(7, 9, 14, 0.16) 42%, rgba(7, 9, 14, 0.00) 78%), url("/images/guides/classes/cards/archer-card.jpg"); }
+.guide-class-jump-links a:nth-child(4)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.54) 0%, rgba(7, 9, 14, 0.16) 42%, rgba(7, 9, 14, 0.00) 78%), url("/images/guides/classes/cards/acolyte-card.jpg"); }
+.guide-class-jump-links a:nth-child(5)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.54) 0%, rgba(7, 9, 14, 0.16) 42%, rgba(7, 9, 14, 0.00) 78%), url("/images/guides/classes/cards/merchant-card.jpg"); }
+.guide-class-jump-links a:nth-child(6)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.54) 0%, rgba(7, 9, 14, 0.16) 42%, rgba(7, 9, 14, 0.00) 78%), url("/images/guides/classes/cards/thief-card.jpg"); }
+.guide-class-jump-links a:nth-child(7)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.54) 0%, rgba(7, 9, 14, 0.16) 42%, rgba(7, 9, 14, 0.00) 78%), url("/images/guides/classes/cards/ninja-card.jpg"); }
+.guide-class-jump-links a:nth-child(8)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.54) 0%, rgba(7, 9, 14, 0.16) 42%, rgba(7, 9, 14, 0.00) 78%), url("/images/guides/classes/cards/gunslinger-card.jpg"); }
+.guide-class-jump-links a:nth-child(9)::before { background-image: linear-gradient(90deg, rgba(7, 9, 14, 0.54) 0%, rgba(7, 9, 14, 0.16) 42%, rgba(7, 9, 14, 0.00) 78%), url("/images/guides/classes/cards/taekwon-card.jpg"); }
+
+.guide-class-jump-links a:hover::before {
+  filter: brightness(1.24) saturate(1.12) contrast(1.04);
+}
+
+/* MAXIMORO FULL VISIBILITY CLASS CARDS */
+
+.guide-class-jump-links a {
+  position: relative;
+  min-height: 150px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #0c1017;
+  box-shadow:
+    inset 0 -54px 48px rgba(4, 6, 10, 0.72),
+    inset 0 0 0 1px rgba(196, 145, 66, 0.12);
+}
+
+.guide-class-jump-links a::before {
+  content: "\2212";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  opacity: 1 !important;
+  filter: brightness(1.22) saturate(1.12) contrast(1.04) !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  transform: scale(1.01);
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+/* Remove all full-card dark gradients from earlier passes. */
+.guide-class-jump-links a:nth-child(1)::before { background-image: url("/images/guides/classes/cards/swordsman-card.jpg") !important; }
+.guide-class-jump-links a:nth-child(2)::before { background-image: url("/images/guides/classes/cards/mage-card.jpg") !important; }
+.guide-class-jump-links a:nth-child(3)::before { background-image: url("/images/guides/classes/cards/archer-card.jpg") !important; }
+.guide-class-jump-links a:nth-child(4)::before { background-image: url("/images/guides/classes/cards/acolyte-card.jpg") !important; }
+.guide-class-jump-links a:nth-child(5)::before { background-image: url("/images/guides/classes/cards/merchant-card.jpg") !important; }
+.guide-class-jump-links a:nth-child(6)::before { background-image: url("/images/guides/classes/cards/thief-card.jpg") !important; }
+.guide-class-jump-links a:nth-child(7)::before { background-image: url("/images/guides/classes/cards/ninja-card.jpg") !important; }
+.guide-class-jump-links a:nth-child(8)::before { background-image: url("/images/guides/classes/cards/gunslinger-card.jpg") !important; }
+.guide-class-jump-links a:nth-child(9)::before { background-image: url("/images/guides/classes/cards/taekwon-card.jpg") !important; }
+
+/* A small bottom-only shade for readable class names. */
+.guide-class-jump-links a::after {
+  content: "";
+  display: block !important;
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 58%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    0deg,
+    rgba(4, 6, 10, 0.88) 0%,
+    rgba(4, 6, 10, 0.42) 48%,
+    transparent 100%
+  );
+}
+
+.guide-class-jump-links a span,
+.guide-class-jump-links a strong {
+  position: relative;
+  z-index: 2;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.95),
+    0 0 12px rgba(0, 0, 0, 0.72);
+}
+
+.guide-class-jump-links a:hover::before {
+  transform: scale(1.045);
+  filter: brightness(1.34) saturate(1.16) contrast(1.04) !important;
+}
+
+/* Individual focal points */
+.guide-class-jump-links a:nth-child(1)::before { background-position: 65% 34% !important; }
+.guide-class-jump-links a:nth-child(2)::before { background-position: 66% 30% !important; }
+.guide-class-jump-links a:nth-child(3)::before { background-position: 67% 30% !important; }
+.guide-class-jump-links a:nth-child(4)::before { background-position: 68% 25% !important; }
+.guide-class-jump-links a:nth-child(5)::before { background-position: 67% 24% !important; }
+.guide-class-jump-links a:nth-child(6)::before { background-position: 67% 24% !important; }
+.guide-class-jump-links a:nth-child(7)::before { background-position: 66% 24% !important; }
+.guide-class-jump-links a:nth-child(8)::before { background-position: 65% 24% !important; }
+.guide-class-jump-links a:nth-child(9)::before { background-position: 66% 24% !important; }
+
+/* MAXIMORO PROGRESSION BUILD ADVISER SHOWCASE */
+
+.progression-adviser-showcase {
+  display: grid;
+  align-items: stretch;
+  margin-bottom: 48px;
+  overflow: hidden;
+  border: 1px solid rgba(213, 173, 93, 0.3);
+  border-radius: 5px;
+  grid-template-columns: minmax(0, 0.92fr) minmax(520px, 1.08fr);
+  background:
+    radial-gradient(circle at 14% 18%, rgba(163, 49, 49, 0.1), transparent 34%),
+    radial-gradient(circle at 88% 20%, rgba(213, 173, 93, 0.08), transparent 34%),
+    #0d1017;
+  box-shadow: 0 28px 65px rgba(0, 0, 0, 0.26);
+}
+
+.progression-adviser-copy {
+  position: relative;
+  z-index: 2;
+  padding: 46px;
+  border-right: 1px solid rgba(213, 173, 93, 0.16);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.025), transparent 52%);
+}
+
+.progression-adviser-copy h3 {
+  margin: 16px 0 18px;
+  font-family: var(--display-font);
+  font-size: clamp(2.2rem, 3.6vw, 3.7rem);
+  font-weight: 500;
+  line-height: 1.04;
+}
+
+.progression-adviser-copy h3 span {
+  display: block;
+  color: var(--gold-light);
+}
+
+.progression-adviser-copy > p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.94rem;
+}
+
+.progression-adviser-flow {
+  display: grid;
+  align-items: center;
+  margin: 28px 0;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 10px;
+}
+
+.progression-adviser-flow > div {
+  min-height: 94px;
+  padding: 15px;
+  border: 1px solid rgba(213, 173, 93, 0.15);
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.progression-adviser-flow strong {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--gold-light);
+  font-family: var(--display-font);
+  font-size: 1.2rem;
+}
+
+.progression-adviser-flow div span {
+  display: block;
+  color: var(--text-soft);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.progression-adviser-arrow {
+  color: var(--gold);
+  font-size: 1.1rem;
+}
+
+.progression-adviser-benefits {
+  display: grid;
+  margin: 0 0 30px;
+  padding: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 18px;
+  list-style: none;
+}
+
+.progression-adviser-benefits li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.progression-adviser-benefits li::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--gold);
+  content: "◆";
+  font-size: 0.55rem;
+}
+
+.progression-adviser-class-grid {
+  display: grid;
+  min-height: 620px;
+  padding: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  background: #080b10;
+}
+
+.progression-adviser-class {
+  position: relative;
+  display: flex;
+  min-height: 180px;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 16px;
+  border: 1px solid rgba(213, 173, 93, 0.18);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  isolation: isolate;
+}
+
+.progression-adviser-class::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background:
+    linear-gradient(0deg, rgba(4, 6, 10, 0.88) 0%, rgba(4, 6, 10, 0.22) 56%, transparent 100%);
+}
+
+.progression-adviser-class span {
+  position: relative;
+  z-index: 2;
+  color: var(--text);
+  font-family: var(--display-font);
+  font-size: 1rem;
+  font-weight: 700;
+  text-shadow: 0 2px 7px rgba(0, 0, 0, 0.95);
+}
+
+.progression-adviser-class:hover {
+  border-color: rgba(242, 215, 150, 0.7);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  transform: translateY(-3px);
+}
+
+.progression-adviser-swordsman { background-image: url("/images/guides/classes/cards/swordsman-card.jpg"); background-position: 65% 34%; }
+.progression-adviser-mage { background-image: url("/images/guides/classes/cards/mage-card.jpg"); background-position: 66% 30%; }
+.progression-adviser-archer { background-image: url("/images/guides/classes/cards/archer-card.jpg"); background-position: 67% 30%; }
+.progression-adviser-acolyte { background-image: url("/images/guides/classes/cards/acolyte-card.jpg"); background-position: 68% 25%; }
+.progression-adviser-merchant { background-image: url("/images/guides/classes/cards/merchant-card.jpg"); background-position: 67% 24%; }
+.progression-adviser-thief { background-image: url("/images/guides/classes/cards/thief-card.jpg"); background-position: 67% 24%; }
+.progression-adviser-ninja { background-image: url("/images/guides/classes/cards/ninja-card.jpg"); background-position: 66% 24%; }
+.progression-adviser-gunslinger { background-image: url("/images/guides/classes/cards/gunslinger-card.jpg"); background-position: 65% 24%; }
+.progression-adviser-taekwon { background-image: url("/images/guides/classes/cards/taekwon-card.jpg"); background-position: 66% 24%; }
+
+@media (max-width: 1199.98px) {
+  .progression-adviser-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .progression-adviser-copy {
+    border-right: 0;
+    border-bottom: 1px solid rgba(213, 173, 93, 0.16);
+  }
+
+  .progression-adviser-class-grid {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .progression-adviser-copy {
+    padding: 32px 24px;
+  }
+
+  .progression-adviser-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .progression-adviser-arrow {
+    transform: rotate(90deg);
+    justify-self: center;
+  }
+
+  .progression-adviser-benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .progression-adviser-class-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .progression-adviser-class {
+    min-height: 155px;
+  }
+}
+
+@media (max-width: 520px) {
+  .progression-adviser-class-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .progression-adviser-class {
+    min-height: 180px;
+  }
+}
+
+/* MAXIMORO BUILD ADVISER NPC CALLOUT */
+
+.progression-adviser-npc-callout {
+  display: grid;
+  align-items: center;
+  margin: 26px 0 28px;
+  padding: 18px;
+  grid-template-columns: 168px minmax(0, 1fr);
+  gap: 18px;
+  border: 1px solid rgba(213, 173, 93, 0.18);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.028), transparent 48%),
+    rgba(255, 255, 255, 0.02);
+}
+
+.progression-adviser-npc-callout img {
+  width: 100%;
+  max-width: 168px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.34));
+}
+
+.progression-adviser-npc-copy h4 {
+  margin: 0 0 8px;
+  color: var(--gold-light);
+  font-family: var(--display-font);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.progression-adviser-npc-copy p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 767.98px) {
+  .progression-adviser-npc-callout {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .progression-adviser-npc-callout img {
+    max-width: 180px;
+  }
+}
+
+
+/* MAXIMORO PATHFINDER GUIDE PAGE */
+
+.pathfinder-guide-hero {
+  background-image:
+    linear-gradient(90deg, rgba(8, 9, 13, 0.3), rgba(8, 9, 13, 0.08)),
+    url("/images/news/pathfinder-news.png");
+  background-position: center;
+}
+
+.pathfinder-guide-section {
+  background:
+    radial-gradient(circle at 80% 8%, rgba(213, 173, 93, 0.07), transparent 32%),
+    var(--background-soft);
+}
+
+.pathfinder-guide-service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.pathfinder-guide-service-card {
+  position: relative;
+  min-height: 285px;
+  padding: 34px;
+  overflow: hidden;
+  border: 1px solid var(--panel-border);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.028), transparent 54%),
+    var(--panel);
+  transition:
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.pathfinder-guide-service-card::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  content: "";
+  background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+  transform: scaleX(0.34);
+  transition: transform var(--transition);
+}
+
+.pathfinder-guide-service-card:hover {
+  border-color: rgba(213, 173, 93, 0.4);
+  transform: translateY(-5px);
+}
+
+.pathfinder-guide-service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.pathfinder-guide-number {
+  display: block;
+  color: rgba(213, 173, 93, 0.4);
+  font-family: var(--display-font);
+  font-size: 0.88rem;
+}
+
+.pathfinder-guide-service-card h3 {
+  margin: 27px 0 14px;
+  font-family: var(--display-font);
+  font-size: 1.55rem;
+  font-weight: 500;
+}
+
+.pathfinder-guide-service-card p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.86rem;
+}
+
+.pathfinder-guide-route-section {
+  border-top: 1px solid rgba(213, 173, 93, 0.08);
+}
+
+.pathfinder-guide-route {
+  display: grid;
+  align-items: start;
+  grid-template-columns: minmax(0, 1.2fr) minmax(330px, 0.8fr);
+  gap: 60px;
+}
+
+.pathfinder-guide-route-copy h2 {
+  margin: 18px 0 30px;
+  font-family: var(--display-font);
+  font-size: clamp(2.3rem, 4vw, 4rem);
+  font-weight: 500;
+}
+
+.pathfinder-guide-steps {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: 14px;
+  list-style: none;
+  counter-reset: pathfinder-step;
+}
+
+.pathfinder-guide-steps li {
+  position: relative;
+  min-height: 94px;
+  padding: 19px 22px 19px 72px;
+  border: 1px solid rgba(213, 173, 93, 0.14);
+  background: rgba(255, 255, 255, 0.018);
+  counter-increment: pathfinder-step;
+}
+
+.pathfinder-guide-steps li::before {
+  position: absolute;
+  top: 19px;
+  left: 20px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid rgba(213, 173, 93, 0.35);
+  border-radius: 50%;
+  color: var(--gold-light);
+  content: counter(pathfinder-step);
+  font-family: var(--display-font);
+}
+
+.pathfinder-guide-steps strong,
+.pathfinder-guide-steps span {
+  display: block;
+}
+
+.pathfinder-guide-steps strong {
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.pathfinder-guide-steps span {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.pathfinder-guide-summary {
+  position: sticky;
+  top: 115px;
+  display: grid;
+  gap: 13px;
+  padding: 34px;
+  border: 1px solid rgba(213, 173, 93, 0.25);
+  background:
+    radial-gradient(circle at 88% 10%, rgba(213, 173, 93, 0.1), transparent 34%),
+    var(--panel);
+}
+
+.pathfinder-guide-summary-label,
+.pathfinder-guide-link-label {
+  color: var(--gold);
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pathfinder-guide-summary > div {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(213, 173, 93, 0.1);
+}
+
+.pathfinder-guide-summary strong,
+.pathfinder-guide-summary span {
+  display: block;
+}
+
+.pathfinder-guide-summary strong {
+  color: var(--text);
+  font-family: var(--display-font);
+}
+
+.pathfinder-guide-summary div span {
+  color: var(--text-muted);
+  font-size: 0.76rem;
+}
+
+.pathfinder-guide-summary .btn {
+  margin-top: 10px;
+}
+
+.pathfinder-guide-link-panel {
+  display: grid;
+  align-items: center;
+  margin-top: 30px;
+  padding: 26px;
+  border: 1px solid rgba(213, 173, 93, 0.22);
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  background:
+    linear-gradient(135deg, rgba(213, 173, 93, 0.06), transparent 58%),
+    rgba(255, 255, 255, 0.018);
+}
+
+.pathfinder-guide-link-panel strong {
+  display: block;
+  margin: 7px 0;
+  color: var(--text);
+  font-family: var(--display-font);
+  font-size: 1.2rem;
+}
+
+.pathfinder-guide-link-panel p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 991.98px) {
+  .pathfinder-guide-service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pathfinder-guide-route {
+    grid-template-columns: 1fr;
+  }
+
+  .pathfinder-guide-summary {
+    position: static;
+  }
+
+  .pathfinder-guide-link-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .pathfinder-guide-service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pathfinder-guide-service-card {
+    min-height: 0;
+  }
+
+  .pathfinder-guide-steps li {
+    padding-left: 66px;
+  }
+}
+
+/* MAXIMORO PATHFINDER GUIDE CARD EXACT FIX */
+
+.guide-card-pathfinder {
+  padding: 0;
+  overflow: hidden;
+  border-color: rgba(213, 173, 93, 0.34);
+  background:
+    radial-gradient(circle at 88% 15%, rgba(213, 173, 93, 0.1), transparent 36%),
+    var(--panel);
+}
+
+.guide-card-pathfinder:hover {
+  border-color: rgba(242, 215, 150, 0.64);
+}
+
+.guide-card-pathfinder-art {
+  position: relative;
+  min-height: 230px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(213, 173, 93, 0.18);
+  background:
+    linear-gradient(
+      0deg,
+      rgba(7, 9, 13, 0.82) 0%,
+      rgba(7, 9, 13, 0.12) 70%
+    ),
+    url("/images/news/pathfinder-news.png") center 35% / cover no-repeat;
+}
+
+.guide-card-pathfinder-art::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(8, 9, 13, 0.15), transparent 62%),
+    linear-gradient(0deg, rgba(8, 9, 13, 0.72), transparent 58%);
+}
+
+.guide-card-pathfinder-art .guide-card-number {
+  position: absolute;
+  top: 20px;
+  left: 22px;
+  z-index: 2;
+  color: var(--gold-light);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.92);
+}
+
+.guide-card-pathfinder-art .guide-card-tag {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  z-index: 2;
+  margin: 0;
+  border-color: rgba(242, 215, 150, 0.34);
+  background: rgba(7, 9, 13, 0.8);
+}
+
+.guide-card-pathfinder-content {
+  padding: 34px;
+}
+
+.guide-card-pathfinder h2 {
+  margin-top: 0;
+}
+
+.guide-card-pathfinder .guide-card-link {
+  margin-top: 2px;
+}
+
+.guide-card-grid {
+  align-items: stretch;
+}
+
+.guide-card {
+  height: 100%;
+}
+
+@media (max-width: 767.98px) {
+  .guide-card-pathfinder-art {
+    min-height: 200px;
+  }
+
+  .guide-card-pathfinder-content {
+    padding: 28px;
+  }
+}
+
+/* MAXIMORO STATS BUILDS ADVISER EXACT */
+
+.stats-adviser-npc-section {
+  padding: 64px 0;
+  border-bottom: 1px solid rgba(213, 173, 93, 0.08);
+  background:
+    radial-gradient(circle at 18% 30%, rgba(213, 173, 93, 0.07), transparent 28%),
+    var(--background-soft);
+}
+
+.stats-adviser-npc-panel {
+  display: grid;
+  align-items: center;
+  min-height: 470px;
+  overflow: hidden;
+  border: 1px solid rgba(213, 173, 93, 0.3);
+  grid-template-columns: minmax(330px, 0.78fr) minmax(0, 1.22fr);
+  background:
+    radial-gradient(circle at 15% 18%, rgba(213, 173, 93, 0.08), transparent 32%),
+    radial-gradient(circle at 88% 12%, rgba(163, 49, 49, 0.08), transparent 34%),
+    #0d1017;
+  box-shadow: 0 28px 62px rgba(0, 0, 0, 0.28);
+}
+
+.stats-adviser-npc-art {
+  position: relative;
+  display: grid;
+  min-height: 470px;
+  place-items: center;
+  padding: 28px;
+  overflow: hidden;
+  border-right: 1px solid rgba(213, 173, 93, 0.18);
+  background:
+    radial-gradient(circle at center, rgba(213, 173, 93, 0.08), transparent 52%),
+    #080b10;
+}
+
+.stats-adviser-npc-art::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent 68%, rgba(8, 9, 13, 0.32)),
+    linear-gradient(0deg, rgba(8, 9, 13, 0.18), transparent 48%);
+}
+
+.stats-adviser-npc-art img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(100%, 390px);
+  height: auto;
+  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.38));
+  transition: transform 240ms ease;
+}
+
+.stats-adviser-npc-panel:hover .stats-adviser-npc-art img {
+  transform: translateY(-4px) scale(1.015);
+}
+
+.stats-adviser-npc-copy {
+  padding: 52px;
+}
+
+.stats-adviser-npc-copy h2 {
+  margin: 16px 0 18px;
+  font-family: var(--display-font);
+  font-size: clamp(2.4rem, 4vw, 4.1rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.stats-adviser-npc-copy h2 span {
+  display: block;
+  color: var(--gold-light);
+}
+
+.stats-adviser-npc-copy > p {
+  max-width: 700px;
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.96rem;
+  line-height: 1.8;
+}
+
+.stats-adviser-npc-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 26px 0 30px;
+}
+
+.stats-adviser-npc-features span {
+  padding: 7px 10px;
+  border: 1px solid rgba(213, 173, 93, 0.2);
+  border-radius: 999px;
+  color: var(--gold-light);
+  background: rgba(213, 173, 93, 0.045);
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.stats-adviser-npc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 991.98px) {
+  .stats-adviser-npc-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-adviser-npc-art {
+    min-height: 390px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(213, 173, 93, 0.18);
+  }
+
+  .stats-adviser-npc-art img {
+    width: min(100%, 340px);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .stats-adviser-npc-section {
+    padding: 40px 0;
+  }
+
+  .stats-adviser-npc-art {
+    min-height: 320px;
+    padding: 20px;
+  }
+
+  .stats-adviser-npc-art img {
+    width: min(100%, 285px);
+  }
+
+  .stats-adviser-npc-copy {
+    padding: 34px 24px;
+  }
+
+  .stats-adviser-npc-actions {
+    flex-direction: column;
+  }
+
+  .stats-adviser-npc-actions .btn {
+    width: 100%;
+  }
+}
+
+/* PATHFINDER LIVE STATUS DOTS */
+
+/*
+  Keep Pathfinder eyebrow dots at their original decorative size while
+  allowing the shared server-online/server-offline body classes to control
+  their color and glow.
+*/
+.pathfinder-guide-hero .eyebrow-dot.server-status-dot,
+.pathfinder-guide-section .eyebrow-dot.server-status-dot,
+.pathfinder-guide-route-section .eyebrow-dot.server-status-dot {
+  flex: 0 0 auto;
+}
+

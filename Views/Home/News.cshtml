@@ -1,4 +1,4 @@
-@{
+﻿@{
     ViewData["Title"] = "News";
 }
 
@@ -41,7 +41,94 @@
         </div>
 
         <div class="news-page-grid">
-            <article class="news-page-card featured-news-card">
+            <article class="news-page-card featured-news-card pathfinder-news-card">
+                <div class="news-page-image news-image-pathfinder"></div>
+
+                <div class="news-page-card-content">
+                    <div class="news-card-meta">
+                        <span>Patch Update</span>
+                        <time datetime="2026-07-21">July 21, 2026</time>
+                    </div>
+
+                    <h2>The MaximoRO Pathfinder is now guiding new adventurers</h2>
+
+                    <p>
+                        The Criatura Academy now connects directly into MaximoRO's
+                        custom beginner progression. After completing a first-job
+                        change, players can continue through class guidance,
+                        hunting routes, assignments, supplies, healing, and
+                        beginner transportation.
+                    </p>
+
+                    <div class="pathfinder-feature-list" aria-label="Pathfinder features">
+                        <span>Class guidance</span>
+                        <span>Hunting routes</span>
+                        <span>Weekly supplies</span>
+                        <span>Beginner healing</span>
+                        <span>First assignment</span>
+                        <span>Guided navigation</span>
+                    </div>
+
+                    <div class="pathfinder-flow" aria-label="Updated beginner progression">
+                        <span>Shipwreck</span>
+                        <span aria-hidden="true">→</span>
+                        <span>Izlude</span>
+                        <span aria-hidden="true">→</span>
+                        <span>Criatura Academy</span>
+                        <span aria-hidden="true">→</span>
+                        <span>First Job</span>
+                        <span aria-hidden="true">→</span>
+                        <strong>Pathfinder</strong>
+                    </div>
+
+                    <a class="news-read-more"
+                       asp-controller="Home"
+                       asp-action="ProgressionPatch"
+                       asp-fragment="pathfinder">
+                        Explore the Progression Patch
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+
+            <article class="news-page-card">
+                <div class="news-page-image news-image-guide"></div>
+
+                <div class="news-page-card-content">
+                    <div class="news-card-meta">
+                        <span>Progression Patch</span>
+                        <time datetime="2026-07-21">July 21, 2026</time>
+                    </div>
+
+                    <h2>Build Adviser and class guides are now connected</h2>
+
+                    <p>
+                        MaximoRO now connects in-game class guidance with the
+                        website's expanded Stats and Builds guide. Players can
+                        review beginner stat priorities, open the correct class
+                        section directly, and use protected early-game stat resets.
+                    </p>
+
+                    <div class="pathfinder-feature-list"
+                         aria-label="Build Adviser and guide features">
+                        <span>Class guides</span>
+                        <span>Stat explanations</span>
+                        <span>Build guidance</span>
+                        <span>Direct guide links</span>
+                        <span>Stat resets</span>
+                        <span>Pathfinder access</span>
+                    </div>
+
+                    <a class="news-read-more"
+                       asp-controller="Home"
+                       asp-action="ProgressionPatch"
+                       asp-fragment="guides-and-builds">
+                        Explore guides and builds
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+            <article class="news-page-card">
                 <div class="news-page-image news-image-development"></div>
 
                 <div class="news-page-card-content">

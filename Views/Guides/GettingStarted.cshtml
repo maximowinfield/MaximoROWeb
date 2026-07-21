@@ -1,0 +1,158 @@
+﻿@{
+    ViewData["Title"] = "Getting Started";
+}
+
+<section class="page-hero guides-page-hero guide-detail-hero">
+    <div class="container page-hero-content">
+        <span class="eyebrow">Beginner Guide</span>
+        <h1>
+            Getting
+            <span>Started</span>
+        </h1>
+        <p>
+            Your first steps in MaximoRO, from Novice arrival through the
+            beginning of your first-job adventure.
+        </p>
+
+        <div class="guide-status-row">
+            <span class="guide-status guide-status-official">
+                Official MaximoRO Guide
+            </span>
+
+            <span class="guide-status">
+                Levels 1–25 foundation
+            </span>
+        </div>
+    </div>
+</section>
+
+<section class="section guide-article-section">
+    <div class="container guide-article-layout">
+        <aside class="guide-sidebar">
+            <a asp-controller="Guides"
+               asp-action="Index"
+               class="guide-back-link">
+                &larr; All Guides
+            </a>
+
+            <nav class="guide-table-of-contents" aria-label="Guide contents">
+                <strong>On this page</strong>
+                <a href="#arrival">Arrival</a>
+                <a href="#first-job">First Job</a>
+                <a href="#pathfinder">Pathfinder</a>
+                <a href="#priorities">Early Priorities</a>
+                <a href="#level-25">Level 25</a>
+            </nav>
+        </aside>
+
+        <article class="guide-article">
+            <header class="guide-article-header">
+                <span class="guide-kicker">New Adventurer Path</span>
+                <h2>Your first MaximoRO journey</h2>
+                <p>
+                    MaximoRO uses a guided early-game structure so new players
+                    always have a clear next step without losing the freedom to explore.
+                </p>
+            </header>
+
+            <section id="arrival" class="guide-content-block">
+                <h3>1. Arrive as a Novice</h3>
+                <p>
+                    Begin by learning basic movement, combat, equipment, and
+                    interaction. Speak with introductory NPCs rather than rushing
+                    past every dialogue window.
+                </p>
+
+                <div class="guide-callout">
+                    <strong>Beginner advice</strong>
+                    <p>
+                        Keep your early equipment, consumables, and quest items.
+                        Do not sell unfamiliar items until you know their purpose.
+                    </p>
+                </div>
+            </section>
+
+            <section id="first-job" class="guide-content-block">
+                <h3>2. Complete your first job change</h3>
+                <p>
+                    Choose the class that matches the playstyle you want to learn.
+                    Your first job determines the training route recommended by
+                    the MaximoRO Pathfinder.
+                </p>
+
+                <div class="guide-data-grid">
+                    <div>
+                        <strong>Swordsman</strong>
+                        <span>Melee offense and durability</span>
+                    </div>
+                    <div>
+                        <strong>Archer</strong>
+                        <span>Ranged physical damage</span>
+                    </div>
+                    <div>
+                        <strong>Mage</strong>
+                        <span>Elemental magic and SP management</span>
+                    </div>
+                    <div>
+                        <strong>Acolyte</strong>
+                        <span>Healing, support, or battle builds</span>
+                    </div>
+                    <div>
+                        <strong>Merchant</strong>
+                        <span>Melee combat and economic utility</span>
+                    </div>
+                    <div>
+                        <strong>Thief</strong>
+                        <span>Speed, evasion, and close combat</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="pathfinder" class="guide-content-block">
+                <h3>3. Speak with a MaximoRO Pathfinder</h3>
+                <p>
+                    Pathfinders provide training recommendations, direct warps,
+                    navigation assistance, assignment information, healing support,
+                    and progression reminders.
+                </p>
+
+                <p>
+                    Regional Pathfinder copies use shared quest progress. You may
+                    return to any Pathfinder rather than finding one specific NPC.
+                </p>
+            </section>
+
+            <section id="priorities" class="guide-content-block">
+                <h3>4. Focus on the fundamentals</h3>
+
+                <ul class="guide-list">
+                    <li>Commit to a clear stat direction.</li>
+                    <li>Learn what your primary skills do.</li>
+                    <li>Carry basic recovery items.</li>
+                    <li>Use elemental advantages when possible.</li>
+                    <li>Upgrade equipment gradually rather than waiting for perfection.</li>
+                    <li>Party with other players when your routes overlap.</li>
+                </ul>
+            </section>
+
+            <section id="level-25" class="guide-content-block">
+                <h3>5. Reach the level-25 transition</h3>
+                <p>
+                    The current early-game structure is feature-complete through
+                    approximately Base Level 25. At that point, begin preparing
+                    for broader regional progression, stronger equipment, and
+                    your eventual second-job direction.
+                </p>
+
+                <div class="guide-callout guide-callout-gold">
+                    <strong>Development status</strong>
+                    <p>
+                        Levels 1–25 are considered feature-complete, pending final
+                        fresh-character playthrough polish.
+                    </p>
+                </div>
+            </section>
+        </article>
+    </div>
+</section>
+

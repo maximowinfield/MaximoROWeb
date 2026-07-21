@@ -1,18 +1,15 @@
-# Secrets
-appsettings.Development.json
-appsettings.Production.json
-secrets.json
-
-# Build output
-bin/
+﻿bin/
 obj/
 publish/
-
-# Runtime output
+publish-staging/
+Backups/
 logs/
-*.log
 
-# Visual Studio
 .vs/
+.vscode/*.log
+
 *.user
 *.suo
+*.bak
+*.backup-*
+*.before-*

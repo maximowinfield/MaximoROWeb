@@ -1,0 +1,219 @@
+﻿@{
+    ViewData["Title"] = "Party and EXP Sharing";
+}
+
+<section class="page-hero guides-page-hero guide-detail-hero">
+    <div class="container page-hero-content">
+        <span class="eyebrow">Social Play Guide</span>
+        <h1>
+            Party and
+            <span>EXP Sharing</span>
+        </h1>
+        <p>
+            Understand MaximoRO's current party mechanics and the proposed
+            incentives being evaluated for cooperative play.
+        </p>
+
+        <div class="guide-status-row">
+            <span class="guide-status guide-status-official">
+                Current settings documented
+            </span>
+
+            <span class="guide-status guide-status-draft">
+                Incentive changes are draft
+            </span>
+        </div>
+    </div>
+</section>
+
+<section class="section guide-article-section">
+    <div class="container guide-article-layout">
+        <aside class="guide-sidebar">
+            <a asp-controller="Guides"
+               asp-action="Index"
+               class="guide-back-link">
+                &larr; All Guides
+            </a>
+
+            <nav class="guide-table-of-contents" aria-label="Guide contents">
+                <strong>On this page</strong>
+                <a href="#current">Current rules</a>
+                <a href="#division">EXP division</a>
+                <a href="#leeching">Leeching policy</a>
+                <a href="#proposal">Draft incentive</a>
+                <a href="#status">Implementation status</a>
+            </nav>
+        </aside>
+
+        <article class="guide-article">
+            <header class="guide-article-header">
+                <span class="guide-kicker">Current Server Behavior</span>
+                <h2>Parties currently share without a bonus</h2>
+                <p>
+                    Even Share divides earned experience between eligible members.
+                    The current server configuration does not yet add a party-size
+                    EXP multiplier.
+                </p>
+            </header>
+
+            <section id="current" class="guide-content-block">
+                <h3>Current active settings</h3>
+
+                <div class="guide-setting-grid">
+                    <div>
+                        <span>Share range</span>
+                        <strong>15 Base Levels</strong>
+                    </div>
+
+                    <div>
+                        <span>Party EXP bonus</span>
+                        <strong>0% per member</strong>
+                    </div>
+
+                    <div>
+                        <span>Idle exclusion</span>
+                        <strong>Disabled</strong>
+                    </div>
+
+                    <div>
+                        <span>Same-account party</span>
+                        <strong>Blocked</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section id="division" class="guide-content-block">
+                <h3>How Even Share divides EXP</h3>
+
+                <p>
+                    With no party bonus, a monster's eligible EXP pool is divided
+                    among the qualifying party members.
+                </p>
+
+                <div class="guide-exp-example">
+                    <div>
+                        <span>Monster EXP</span>
+                        <strong>1,000</strong>
+                    </div>
+
+                    <div>
+                        <span>Two-person share</span>
+                        <strong>500 each</strong>
+                    </div>
+
+                    <div>
+                        <span>Three-person share</span>
+                        <strong>About 333 each</strong>
+                    </div>
+                </div>
+
+                <p>
+                    Parties can still gain more experience per hour by killing
+                    faster, reducing downtime, supporting one another, and fighting
+                    stronger monsters.
+                </p>
+            </section>
+
+            <section id="leeching" class="guide-content-block">
+                <h3>Leeching and helping friends</h3>
+
+                <div class="guide-callout guide-callout-gold">
+                    <strong>MaximoRO philosophy</strong>
+                    <p>
+                        Helping or carrying another player is allowed. Leeching is
+                        not automatically treated as misconduct.
+                    </p>
+                </div>
+
+                <p>
+                    The server distinguishes ordinary player assistance from
+                    unattended automation, botting, or deliberate exploitation.
+                    Social catch-up play should remain possible.
+                </p>
+
+                <ul class="guide-list">
+                    <li>A stronger friend may help a weaker character catch up.</li>
+                    <li>Support characters are not required to deal direct damage.</li>
+                    <li>Brief inactivity should not immediately remove a player.</li>
+                    <li>Botting and unattended automated farming remain prohibited.</li>
+                </ul>
+            </section>
+
+            <section id="proposal" class="guide-content-block">
+                <h3>Draft party-incentive proposal</h3>
+
+                <p>
+                    The following values are under consideration and are not yet
+                    active server settings.
+                </p>
+
+                <div class="guide-setting-grid guide-setting-grid-draft">
+                    <div>
+                        <span>Share range</span>
+                        <strong>20 Base Levels</strong>
+                    </div>
+
+                    <div>
+                        <span>Bonus per extra member</span>
+                        <strong>20%</strong>
+                    </div>
+
+                    <div>
+                        <span>Idle exclusion</span>
+                        <strong>Disabled at launch</strong>
+                    </div>
+
+                    <div>
+                        <span>Same-account party</span>
+                        <strong>Remain blocked</strong>
+                    </div>
+                </div>
+
+                <div class="guide-route-table guide-party-table">
+                    <div class="guide-route-header">
+                        <span>Eligible members</span>
+                        <span>Total EXP pool</span>
+                        <span>Approximate share each</span>
+                    </div>
+
+                    <div>
+                        <span>2</span>
+                        <strong>120%</strong>
+                        <span>60%</span>
+                    </div>
+
+                    <div>
+                        <span>3</span>
+                        <strong>140%</strong>
+                        <span>46.7%</span>
+                    </div>
+
+                    <div>
+                        <span>4</span>
+                        <strong>160%</strong>
+                        <span>40%</span>
+                    </div>
+
+                    <div>
+                        <span>5</span>
+                        <strong>180%</strong>
+                        <span>36%</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="status" class="guide-content-block">
+                <h3>Implementation status</h3>
+
+                <div class="guide-callout guide-callout-warning">
+                    <strong>Draft values are not active yet.</strong>
+                    <p>
+                        This page will be updated when the server configuration
+                        changes. Players should treat only the Current Active
+                        Settings section as authoritative.
+                    </p>
+                </div>
+            </section>
+        </article>
+    </div>
+</section>
