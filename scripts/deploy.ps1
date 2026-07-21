@@ -10,7 +10,7 @@ $TaskPath = "\"
 
 $PublishFolder = Join-Path $Root "publish"
 $StagingFolder = Join-Path $Root "publish-staging"
-$BackupRoot = Join-Path $Root "Backups"
+$BackupRoot = "C:\Projects\MaximoROweb-Backups"
 
 $OutputFolder = "C:\Users\Maximo\Desktop\MaximoRO Outputs"
 $Timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
