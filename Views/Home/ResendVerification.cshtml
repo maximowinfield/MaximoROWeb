@@ -1,0 +1,90 @@
+@model MaximoROWeb.Models.ResendVerificationViewModel
+
+@{
+    ViewData["Title"] = "Resend Verification";
+    ViewData["MetaDescription"] =
+        "Request a fresh MaximoRO account verification email.";
+
+    var verificationReady =
+        ViewData["EmailVerificationReady"] as bool? ?? false;
+}
+
+<section class="page-section account-section">
+    <div class="account-shell">
+        <div class="account-intro">
+            <span class="eyebrow">Account Security</span>
+            <h1>Resend Verification</h1>
+            <p>
+                Enter the email used during registration. If the account is
+                still waiting for verification, we will send a fresh link.
+            </p>
+
+            <div class="account-notice">
+                <strong>Check every inbox tab.</strong>
+                <span>
+                    Delivery can take a few minutes. Check spam and promotions
+                    folders before requesting another message.
+                </span>
+            </div>
+        </div>
+
+        <div class="account-card">
+            @if (TempData["ResendVerificationMessage"] is string message)
+            {
+                <div class="form-alert form-alert-success" role="status">
+                    @message
+                </div>
+            }
+
+            @if (!verificationReady)
+            {
+                <div class="form-alert form-alert-warning" role="alert">
+                    Verification email delivery is temporarily unavailable.
+                </div>
+            }
+
+            <form asp-action="ResendVerification" method="post">
+                <div class="registration-honeypot" aria-hidden="true">
+                    <label asp-for="Website"></label>
+                    <input asp-for="Website" tabindex="-1" autocomplete="off" />
+                </div>
+
+                <div asp-validation-summary="ModelOnly"
+                     class="form-alert form-alert-error"></div>
+
+                <div class="form-field">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email"
+                           autocomplete="email"
+                           maxlength="39" />
+                    <span asp-validation-for="Email"></span>
+                </div>
+
+                @if (verificationReady)
+                {
+                    <button class="button button-primary account-submit"
+                            type="submit">
+                        Send New Link
+                    </button>
+                }
+                else
+                {
+                    <button class="button button-primary account-submit"
+                            type="button"
+                            disabled>
+                        Email Temporarily Unavailable
+                    </button>
+                }
+            </form>
+
+            <div class="account-support-links">
+                <span>Need a new game account instead?</span>
+                <a asp-action="Register">Create account</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -2,6 +2,11 @@
 
 @{
     ViewData["Title"] = "Create Account";
+    ViewData["MetaDescription"] =
+        "Create a MaximoRO game account and verify your email before entering Rune-Midgard.";
+
+    var verificationReady =
+        ViewData["EmailVerificationReady"] as bool? ?? false;
 }
 
 <section class="page-section account-section">
@@ -10,15 +15,16 @@
             <span class="eyebrow">Join MaximoRO</span>
             <h1>Create Your Account</h1>
             <p>
-                Register your game account, download the client, and begin your
+                Register your game account, verify your email, and begin your
                 adventure in Rune-Midgard.
             </p>
 
             <div class="account-notice">
-                <strong>Use a unique password.</strong>
+                <strong>Protect your account.</strong>
                 <span>
-                    Do not reuse a password from your email, banking, or other
-                    important accounts.
+                    Use a unique password and an email address you can access.
+                    You must confirm that address before the game will let you
+                    sign in.
                 </span>
             </div>
         </div>
@@ -31,35 +37,63 @@
                 </div>
             }
 
+            @if (TempData["RegistrationWarning"] is string warningMessage)
+            {
+                <div class="form-alert form-alert-warning" role="alert">
+                    @warningMessage
+                </div>
+            }
+
+            @if (!verificationReady)
+            {
+                <div class="form-alert form-alert-warning" role="alert">
+                    Registration is temporarily unavailable while email
+                    verification is being configured.
+                </div>
+            }
+
             <form asp-action="Register" method="post">
                 <div class="registration-honeypot" aria-hidden="true">
                     <label asp-for="Website"></label>
 
                     <input asp-for="Website" tabindex="-1" autocomplete="off" />
                 </div>
-                <div asp-validation-summary="ModelOnly" class="form-alert form-alert-error"></div>
+
+                <div asp-validation-summary="ModelOnly"
+                     class="form-alert form-alert-error"></div>
 
                 <div class="form-field">
                     <label asp-for="Username"></label>
-                    <input asp-for="Username" autocomplete="username" maxlength="23" />
+                    <input asp-for="Username"
+                           autocomplete="username"
+                           maxlength="23" />
                     <span asp-validation-for="Username"></span>
                 </div>
 
                 <div class="form-field">
                     <label asp-for="Email"></label>
-                    <input asp-for="Email" autocomplete="email" maxlength="39" />
+                    <input asp-for="Email"
+                           autocomplete="email"
+                           maxlength="39" />
+                    <small class="form-help">
+                        We will send the link required to unlock your account.
+                    </small>
                     <span asp-validation-for="Email"></span>
                 </div>
 
                 <div class="form-field">
                     <label asp-for="Password"></label>
-                    <input asp-for="Password" autocomplete="new-password" maxlength="23" />
+                    <input asp-for="Password"
+                           autocomplete="new-password"
+                           maxlength="23" />
                     <span asp-validation-for="Password"></span>
                 </div>
 
                 <div class="form-field">
                     <label asp-for="ConfirmPassword"></label>
-                    <input asp-for="ConfirmPassword" autocomplete="new-password" maxlength="23" />
+                    <input asp-for="ConfirmPassword"
+                           autocomplete="new-password"
+                           maxlength="23" />
                     <span asp-validation-for="ConfirmPassword"></span>
                 </div>
 
@@ -68,12 +102,16 @@
 
                     <div class="radio-group">
                         <label class="radio-option">
-                            <input asp-for="Sex" type="radio" value="M" />
+                            <input asp-for="Sex"
+                                   type="radio"
+                                   value="M" />
                             <span>Male</span>
                         </label>
 
                         <label class="radio-option">
-                            <input asp-for="Sex" type="radio" value="F" />
+                            <input asp-for="Sex"
+                                   type="radio"
+                                   value="F" />
                             <span>Female</span>
                         </label>
                     </div>
@@ -81,10 +119,29 @@
                     <span asp-validation-for="Sex"></span>
                 </fieldset>
 
-                <button class="button button-primary account-submit" type="submit">
-                    Create Account
-                </button>
+                @if (verificationReady)
+                {
+                    <button class="button button-primary account-submit"
+                            type="submit">
+                        Create Account
+                    </button>
+                }
+                else
+                {
+                    <button class="button button-primary account-submit"
+                            type="button"
+                            disabled>
+                        Registration Temporarily Unavailable
+                    </button>
+                }
             </form>
+
+            <div class="account-support-links">
+                <span>Already registered but missing the email?</span>
+                <a asp-action="ResendVerification">
+                    Resend verification
+                </a>
+            </div>
         </div>
     </div>
 </section>

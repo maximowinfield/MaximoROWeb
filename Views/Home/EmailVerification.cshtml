@@ -1,0 +1,102 @@
+@using MaximoROWeb.Services
+@model MaximoROWeb.Models.EmailVerificationViewModel
+
+@{
+    ViewData["Title"] = "Email Verification";
+    ViewData["MetaDescription"] =
+        "Confirm the email address connected to your MaximoRO game account.";
+
+    var eyebrow = "Account Security";
+    var title = "Verification Link Invalid";
+    var message =
+        "This verification link is not valid. Request a new link and try again.";
+    var statusClass = "verification-result-error";
+    var showResend = true;
+    var showClient = false;
+
+    switch (Model.Outcome)
+    {
+        case EmailVerificationOutcome.Verified:
+            eyebrow = "Account Unlocked";
+            title = "Email Verified";
+            message =
+                "Your MaximoRO account is active. You can now sign in through the game client.";
+            statusClass = "verification-result-success";
+            showResend = false;
+            showClient = true;
+            break;
+
+        case EmailVerificationOutcome.AlreadyVerified:
+            eyebrow = "Already Complete";
+            title = "Email Already Verified";
+            message =
+                "This account is already active and ready to use in the game client.";
+            statusClass = "verification-result-success";
+            showResend = false;
+            showClient = true;
+            break;
+
+        case EmailVerificationOutcome.Expired:
+            eyebrow = "Link Expired";
+            title = "Request A Fresh Link";
+            message =
+                "For your security, verification links expire. Request a new one using the same email address.";
+            statusClass = "verification-result-warning";
+            break;
+
+        case EmailVerificationOutcome.AccountUnavailable:
+            eyebrow = "Account Unavailable";
+            title = "Verification Could Not Finish";
+            message =
+                "This account cannot be activated through this link. Contact support if the problem continues.";
+            showResend = false;
+            break;
+    }
+}
+
+<section class="page-section account-section">
+    <div class="account-shell">
+        <div class="account-intro">
+            <span class="eyebrow">@eyebrow</span>
+            <h1>@title</h1>
+            <p>@message</p>
+
+            <div class="account-notice">
+                <strong>Verification protects every player.</strong>
+                <span>
+                    New game accounts remain locked until the email owner
+                    confirms them.
+                </span>
+            </div>
+        </div>
+
+        <div class="account-card verification-result @statusClass">
+            <span class="verification-result-mark" aria-hidden="true"></span>
+            <h2>@title</h2>
+            <p>@message</p>
+
+            <div class="verification-actions">
+                @if (showClient)
+                {
+                    <a class="button button-primary"
+                       asp-action="Downloads">
+                        Get The Client
+                    </a>
+                }
+
+                @if (showResend)
+                {
+                    <a class="button button-primary"
+                       asp-action="ResendVerification">
+                        Resend Verification
+                    </a>
+                }
+
+                <a class="button button-secondary"
+                   asp-action="Discord">
+                    Get Support
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
