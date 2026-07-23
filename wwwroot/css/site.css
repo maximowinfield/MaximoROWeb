@@ -4693,6 +4693,114 @@ a {
 .guide-class-jump-links a:nth-child(8)::before { background-position: 65% 24% !important; }
 .guide-class-jump-links a:nth-child(9)::before { background-position: 66% 24% !important; }
 
+/* MAXIMORO CLASS ART FINAL FIT */
+
+.guide-class-jump-links {
+  gap: 12px;
+}
+
+.guide-class-jump-links a {
+  display: flex;
+  min-height: 0;
+  aspect-ratio: 8 / 3;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 0 14px 12px;
+  border-color: rgba(213, 173, 93, 0.24);
+  text-align: left;
+}
+
+.guide-class-jump-links a::before {
+  background-size: cover !important;
+  transform: scale(1.005);
+}
+
+.guide-class-jump-links a::after {
+  height: 72%;
+  background:
+    linear-gradient(
+      0deg,
+      rgba(4, 6, 10, 0.92) 0%,
+      rgba(4, 6, 10, 0.48) 42%,
+      rgba(4, 6, 10, 0.08) 75%,
+      transparent 100%
+    );
+}
+
+.guide-class-jump-links a:hover::before {
+  transform: scale(1.025);
+}
+
+.guide-class-jump-links a:nth-child(1)::before { background-position: 61% 42% !important; }
+.guide-class-jump-links a:nth-child(2)::before { background-position: 60% 42% !important; }
+.guide-class-jump-links a:nth-child(3)::before { background-position: 62% 45% !important; }
+.guide-class-jump-links a:nth-child(4)::before { background-position: 64% 42% !important; }
+.guide-class-jump-links a:nth-child(5)::before { background-position: 61% 43% !important; }
+.guide-class-jump-links a:nth-child(6)::before { background-position: 64% 44% !important; }
+.guide-class-jump-links a:nth-child(7)::before { background-position: 64% 43% !important; }
+.guide-class-jump-links a:nth-child(8)::before { background-position: 61% 43% !important; }
+.guide-class-jump-links a:nth-child(9)::before { background-position: 62% 43% !important; }
+
+.guide-class-accordion details[open] {
+  min-height: 520px;
+}
+
+.guide-class-accordion details[open]::before {
+  background-size: cover;
+  filter: brightness(1.12) saturate(1.08) contrast(1.04);
+}
+
+.guide-class-accordion details:nth-child(1)[open]::before { background-position: 66% 50%; }
+.guide-class-accordion details:nth-child(2)[open]::before { background-position: 61% 50%; }
+.guide-class-accordion details:nth-child(3)[open]::before { background-position: 62% 50%; }
+.guide-class-accordion details:nth-child(4)[open]::before { background-position: 63% 50%; }
+.guide-class-accordion details:nth-child(5)[open]::before { background-position: 62% 50%; }
+.guide-class-accordion details:nth-child(6)[open]::before { background-position: 63% 50%; }
+.guide-class-accordion details:nth-child(7)[open]::before { background-position: 62% 50%; }
+.guide-class-accordion details:nth-child(8)[open]::before { background-position: 63% 50%; }
+.guide-class-accordion details:nth-child(9)[open]::before { background-position: 62% 50%; }
+
+.guide-class-content {
+  min-height: 432px;
+  padding-bottom: 34px;
+}
+
+@media (max-width: 991.98px) {
+  .guide-class-jump-links a {
+    aspect-ratio: 8 / 3.2;
+  }
+
+  .guide-class-accordion details[open] {
+    min-height: 470px;
+  }
+
+  .guide-class-accordion details[open]::before {
+    opacity: 0.6;
+  }
+
+  .guide-class-content {
+    min-height: 382px;
+  }
+}
+
+@media (max-width: 600px) {
+  .guide-class-jump-links {
+    gap: 10px;
+  }
+
+  .guide-class-jump-links a {
+    aspect-ratio: 8 / 3.5;
+    padding: 0 12px 10px;
+  }
+
+  .guide-class-accordion details[open] {
+    min-height: 0;
+  }
+
+  .guide-class-content {
+    min-height: 0;
+  }
+}
 /* MAXIMORO PROGRESSION BUILD ADVISER SHOWCASE */
 
 .progression-adviser-showcase {
