@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Guides";
+    ViewData["MetaDescription"] = "Search official MaximoRO guides for beginner progression, stats, builds, leveling, party play, and Pathfinder systems.";
 }
 
 <section class="page-hero guides-page-hero">
@@ -26,7 +27,7 @@
     </div>
 </section>
 
-<section class="section guides-index-section">
+<section class="section guides-index-section" data-collection-root>
     <div class="container">
         <div class="section-heading">
             <span class="eyebrow">Choose Your Path</span>
@@ -37,8 +38,31 @@
             </p>
         </div>
 
+        <div class="content-filter-toolbar guide-filter-toolbar">
+            <div class="content-search-field">
+                <label for="guide-search">Search guides</label>
+                <input id="guide-search" type="search" placeholder="Search classes, leveling, parties, or systems" autocomplete="off" data-collection-search />
+            </div>
+
+            <div class="content-filter-tabs" role="group" aria-label="Filter guides">
+                <button type="button" class="active" data-collection-filter="all" aria-pressed="true">All</button>
+                <button type="button" data-collection-filter="start" aria-pressed="false">Start Here</button>
+                <button type="button" data-collection-filter="build" aria-pressed="false">Builds</button>
+                <button type="button" data-collection-filter="leveling" aria-pressed="false">Leveling</button>
+                <button type="button" data-collection-filter="community" aria-pressed="false">Community</button>
+                <button type="button" data-collection-filter="system" aria-pressed="false">Systems</button>
+            </div>
+
+            <span class="content-result-count" data-collection-count aria-live="polite">5 guides</span>
+        </div>
+
+        <div class="content-empty-state" data-collection-empty hidden>
+            <strong>No matching guides</strong>
+            <span>Try a class name, topic, or different category.</span>
+        </div>
+
         <div class="guide-card-grid">
-            <article class="guide-card">
+            <article class="guide-card" data-collection-item data-collection-category="start">
                 <span class="guide-card-number">01</span>
                 <span class="guide-card-tag">Start Here</span>
 
@@ -63,7 +87,7 @@
                 </a>
             </article>
 
-            <article class="guide-card">
+            <article class="guide-card" data-collection-item data-collection-category="build">
                 <span class="guide-card-number">02</span>
                 <span class="guide-card-tag">Character Building</span>
 
@@ -88,7 +112,7 @@
                 </a>
             </article>
 
-            <article class="guide-card">
+            <article class="guide-card" data-collection-item data-collection-category="leveling">
                 <span class="guide-card-number">03</span>
                 <span class="guide-card-tag">Levels 1–25</span>
 
@@ -113,7 +137,7 @@
                 </a>
             </article>
 
-            <article class="guide-card">
+            <article class="guide-card" data-collection-item data-collection-category="community">
                 <span class="guide-card-number">04</span>
                 <span class="guide-card-tag">Social Play</span>
 
@@ -139,7 +163,7 @@
             </article>
         
             <!-- MAXIMORO PATHFINDER GUIDE CARD V3 -->
-            <article class="guide-card guide-card-pathfinder">
+            <article class="guide-card guide-card-pathfinder" data-collection-item data-collection-category="system">
                 <div class="guide-card-pathfinder-art">
                     <span class="guide-card-number">05</span>
                     <span class="guide-card-tag">Progression Patch</span>

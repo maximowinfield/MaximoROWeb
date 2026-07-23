@@ -1,12 +1,13 @@
 @{
-    ViewData["Title"] = "Downloads";
+    ViewData["Title"] = "Client Status";
+    ViewData["MetaDescription"] = "Follow the MaximoRO client release status, create your game account, and use only verified downloads and checksums.";
 }
 
 <section class="page-hero downloads-page-hero">
     <div class="container page-hero-content">
         <div class="eyebrow">
             <span class="server-status-dot"></span>
-            MaximoRO Downloads
+            MaximoRO Client Status
         </div>
 
         <h1>
@@ -39,6 +40,23 @@
                 The client and launcher are not yet publicly available. These
                 download cards will be activated after testing is complete.
             </p>
+        </div>
+
+        <div class="download-prelaunch-panel">
+            <div>
+                <span class="download-prelaunch-label">Accounts are open</span>
+                <h2>Prepare now. Download only when verification is complete.</h2>
+                <p>
+                    Create your account and join Discord today. The client buttons
+                    will activate only after official mirrors, checksums, and
+                    installation instructions have been verified.
+                </p>
+            </div>
+
+            <div class="download-prelaunch-actions">
+                <a class="btn hero-primary-button" asp-controller="Home" asp-action="Register">Create Account</a>
+                <a class="btn hero-secondary-button" href="https://discord.gg/JWGgmvGwAa" target="_blank" rel="noopener noreferrer">Join Discord</a>
+            </div>
         </div>
 
         <div class="downloads-grid">

@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home";
+    ViewData["MetaDescription"] = "Create your MaximoRO account, follow live server status, and prepare for a guided Ragnarok Online Renewal adventure.";
 }
 
 <section class="hero-section">
@@ -7,7 +8,7 @@
         <div class="hero-content">
             <div class="eyebrow">
                 <span class="server-status-dot"></span>
-                The gates are opening
+                Prelaunch accounts are open
             </div>
 
             <h1>
@@ -22,12 +23,16 @@
             </p>
 
             <div class="hero-actions">
-                <a class="btn hero-primary-button" asp-controller="Home" asp-action="Downloads">
-                    Start Playing
+                <a class="btn hero-primary-button" asp-controller="Home" asp-action="Register">
+                    Create Account
                 </a>
 
-                <a class="btn hero-secondary-button" asp-controller="Home" asp-action="ServerInfo">
-                    Explore the Server
+                <a class="btn hero-secondary-button" asp-controller="Home" asp-action="Discord">
+                    Join Discord
+                </a>
+
+                <a class="hero-text-link" asp-controller="Home" asp-action="Downloads">
+                    Review client launch status <span aria-hidden="true">&rarr;</span>
                 </a>
             </div>
 
@@ -38,13 +43,13 @@
                 </div>
 
                 <div class="hero-detail">
-                    <span class="detail-value">Community</span>
-                    <span class="detail-label">Focused</span>
+                    <span class="detail-value">7.5x / 7.5x</span>
+                    <span class="detail-label">Base / Job EXP</span>
                 </div>
 
                 <div class="hero-detail">
-                    <span class="detail-value">Always</span>
-                    <span class="detail-label">Improving</span>
+                    <span class="detail-value">2026-02-19</span>
+                    <span class="detail-label">Client Version</span>
                 </div>
             </div>
         </div>
@@ -79,7 +84,51 @@
 
     <div class="hero-divider"></div>
 </section>
+<section class="launch-path-section" aria-labelledby="launch-path-title">
+    <div class="container launch-path-shell">
+        <div class="launch-path-heading">
+            <div>
+                <span class="eyebrow">Your prelaunch checklist</span>
+                <h2 id="launch-path-title">Be ready when the gates open.</h2>
+                <p>
+                    Create your game account now, join the official community,
+                    and watch the client page for the verified public release.
+                </p>
+            </div>
 
+            <span class="launch-readiness-badge">Public client: In preparation</span>
+        </div>
+
+        <ol class="launch-path-grid">
+            <li class="launch-path-step">
+                <span class="launch-path-number">01</span>
+                <div>
+                    <strong>Create your account</strong>
+                    <p>Reserve your username through the protected MaximoRO registration form.</p>
+                    <a asp-controller="Home" asp-action="Register">Register now <span aria-hidden="true">&rarr;</span></a>
+                </div>
+            </li>
+
+            <li class="launch-path-step">
+                <span class="launch-path-number">02</span>
+                <div>
+                    <strong>Join the community</strong>
+                    <p>Receive testing notices, development updates, support, and launch announcements.</p>
+                    <a href="https://discord.gg/JWGgmvGwAa" target="_blank" rel="noopener noreferrer">Open Discord <span aria-hidden="true">&rarr;</span></a>
+                </div>
+            </li>
+
+            <li class="launch-path-step">
+                <span class="launch-path-number">03</span>
+                <div>
+                    <strong>Get the verified client</strong>
+                    <p>Download only after checksums, mirrors, and installation instructions are published.</p>
+                    <a asp-controller="Home" asp-action="Downloads">View client status <span aria-hidden="true">&rarr;</span></a>
+                </div>
+            </li>
+        </ol>
+    </div>
+</section>
 <section class="section server-introduction">
     <div class="container">
         <div class="section-heading centered-heading">
@@ -324,14 +373,14 @@
                 <h2>Will you become part of the legend?</h2>
 
                 <p>
-                    Prepare your client, join the community, and be there when
+                    Create your account, join the community, and be there when
                     the gates of MaximoRO open.
                 </p>
             </div>
 
             <div class="final-cta-actions">
-                <a class="btn hero-primary-button" asp-controller="Home" asp-action="Downloads">
-                    Download Client
+                <a class="btn hero-primary-button" asp-controller="Home" asp-action="Register">
+                    Create Account
                 </a>
 
                 <a class="btn hero-secondary-button" asp-controller="Home" asp-action="Discord">

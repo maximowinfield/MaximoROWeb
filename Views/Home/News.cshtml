@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "News";
+    ViewData["MetaDescription"] = "Search MaximoRO patch updates, progression changes, community announcements, events, and development news.";
 }
 
 <section class="page-hero news-page-hero">
@@ -21,7 +22,7 @@
     </div>
 </section>
 
-<section class="section news-page-section">
+<section class="section news-page-section" data-collection-root>
     <div class="container">
         <div class="section-heading">
             <div class="eyebrow">
@@ -40,8 +41,31 @@
             </p>
         </div>
 
+        <div class="content-filter-toolbar">
+            <div class="content-search-field">
+                <label for="update-search">Search updates</label>
+                <input id="update-search" type="search" placeholder="Search patch notes and announcements" autocomplete="off" data-collection-search />
+            </div>
+
+            <div class="content-filter-tabs" role="group" aria-label="Filter updates">
+                <button type="button" class="active" data-collection-filter="all" aria-pressed="true">All</button>
+                <button type="button" data-collection-filter="patch" aria-pressed="false">Patches</button>
+                <button type="button" data-collection-filter="development" aria-pressed="false">Development</button>
+                <button type="button" data-collection-filter="community" aria-pressed="false">Community</button>
+                <button type="button" data-collection-filter="guide" aria-pressed="false">Guides</button>
+                <button type="button" data-collection-filter="event" aria-pressed="false">Events</button>
+            </div>
+
+            <span class="content-result-count" data-collection-count aria-live="polite">6 updates</span>
+        </div>
+
+        <div class="content-empty-state" data-collection-empty hidden>
+            <strong>No matching updates</strong>
+            <span>Try a different search or category.</span>
+        </div>
+
         <div class="news-page-grid">
-            <article class="news-page-card featured-news-card pathfinder-news-card">
+            <article class="news-page-card featured-news-card pathfinder-news-card" data-collection-item data-collection-category="patch">
                 <div class="news-page-image news-image-pathfinder"></div>
 
                 <div class="news-page-card-content">
@@ -91,7 +115,7 @@
                 </div>
             </article>
 
-            <article class="news-page-card">
+            <article class="news-page-card" data-collection-item data-collection-category="patch">
                 <div class="news-page-image news-image-guide"></div>
 
                 <div class="news-page-card-content">
@@ -128,7 +152,7 @@
                     </a>
                 </div>
             </article>
-            <article class="news-page-card">
+            <article class="news-page-card" data-collection-item data-collection-category="development">
                 <div class="news-page-image news-image-development"></div>
 
                 <div class="news-page-card-content">
@@ -152,7 +176,7 @@
                 </div>
             </article>
 
-            <article class="news-page-card">
+            <article class="news-page-card" data-collection-item data-collection-category="community">
                 <div class="news-page-image news-image-community"></div>
 
                 <div class="news-page-card-content">
@@ -176,7 +200,7 @@
                 </div>
             </article>
 
-            <article class="news-page-card">
+            <article class="news-page-card" data-collection-item data-collection-category="guide">
                 <div class="news-page-image news-image-guide"></div>
 
                 <div class="news-page-card-content">
@@ -200,7 +224,7 @@
                 </div>
             </article>
 
-            <article class="news-page-card">
+            <article class="news-page-card" data-collection-item data-collection-category="event">
                 <div class="news-page-image news-image-event"></div>
 
                 <div class="news-page-card-content">

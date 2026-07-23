@@ -2,12 +2,30 @@
     string currentAction =
         ViewContext.RouteData.Values["action"]?.ToString() ?? "Index";
 
-    string IsActive(string action)
+    string currentController =
+        ViewContext.RouteData.Values["controller"]?.ToString() ?? "Home";
+
+    string IsActive(string action, string controller = "Home")
     {
         return string.Equals(currentAction, action, StringComparison.OrdinalIgnoreCase)
+            && string.Equals(currentController, controller, StringComparison.OrdinalIgnoreCase)
+                ? "active"
+                : string.Empty;
+    }
+
+    string IsControllerActive(string controller)
+    {
+        return string.Equals(currentController, controller, StringComparison.OrdinalIgnoreCase)
             ? "active"
             : string.Empty;
     }
+
+    string metaDescription =
+        ViewData["MetaDescription"]?.ToString()
+        ?? "MaximoRO is a community-focused Ragnarok Online Renewal server featuring guided progression, custom systems, events, and classic MMORPG adventure.";
+
+    string socialImageUrl =
+        $"{Context.Request.Scheme}://{Context.Request.Host}/images/social/maximoro-social-card.png";
 }
 
 <!DOCTYPE html>
@@ -18,8 +36,20 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0" />
 
-    <meta name="description"
-          content="MaximoRO is a community-focused Ragnarok Online private server featuring custom progression, events, and classic MMORPG adventure." />
+    <meta name="description" content="@metaDescription" />
+    <meta name="theme-color" content="#08090d" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MaximoRO" />
+    <meta property="og:title" content="@(ViewData["Title"]) | MaximoRO" />
+    <meta property="og:description" content="@metaDescription" />
+    <meta property="og:image" content="@socialImageUrl" />
+    <meta property="og:image:alt" content="MaximoRO adventurers overlooking a fantasy city" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="@(ViewData["Title"]) | MaximoRO" />
+    <meta name="twitter:description" content="@metaDescription" />
+    <meta name="twitter:image" content="@socialImageUrl" />
 
     <title>@ViewData["Title"] | MaximoRO</title>
 
@@ -94,7 +124,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"
+                            <a class="nav-link @IsControllerActive("Guides")"
                                asp-controller="Guides"
                                asp-action="Index">
                                 Guides
@@ -126,16 +156,57 @@
                         </li>
 
                         <li class="nav-item ms-lg-2">
-                            <a class="btn btn-download"
+                            <a class="btn btn-download @IsActive("Downloads")"
                                asp-controller="Home"
                                asp-action="Downloads">
-                                Download
+                                Client Status
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+        <div class="server-utility-bar" aria-label="Live server information">
+            <div class="container server-utility-content">
+                <div class="server-utility-primary" aria-live="polite">
+                    <span class="server-status-dot" aria-hidden="true"></span>
+                    <strong data-server-status-text>Checking...</strong>
+                    <span class="server-utility-separator" aria-hidden="true"></span>
+                    <span>
+                        <strong data-player-count>0</strong>
+                        adventurers online
+                    </span>
+                </div>
+
+                <dl class="server-utility-metrics">
+                    <div>
+                        <dt>Login</dt>
+                        <dd data-login-server-status>Checking...</dd>
+                    </div>
+                    <div>
+                        <dt>Character</dt>
+                        <dd data-char-server-status>Checking...</dd>
+                    </div>
+                    <div>
+                        <dt>World</dt>
+                        <dd data-map-server-status>Checking...</dd>
+                    </div>
+                    <div>
+                        <dt>Rates</dt>
+                        <dd>7.5x / 7.5x</dd>
+                    </div>
+                    <div>
+                        <dt>Client</dt>
+                        <dd>2026-02-19</dd>
+                    </div>
+                </dl>
+
+                <span class="server-utility-checked">
+                    Checked <time data-status-checked>just now</time>
+                </span>
+            </div>
+        </div>
     </header>
 
     <main role="main">
