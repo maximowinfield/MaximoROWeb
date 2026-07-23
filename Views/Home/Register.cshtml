@@ -52,15 +52,19 @@
                 </div>
             }
 
-            <form asp-action="Register" method="post">
+            <form asp-action="Register"
+                  method="post"
+                  id="registration-form">
                 <div class="registration-honeypot" aria-hidden="true">
                     <label asp-for="Website"></label>
 
                     <input asp-for="Website" tabindex="-1" autocomplete="off" />
                 </div>
 
-                <div asp-validation-summary="ModelOnly"
-                     class="form-alert form-alert-error"></div>
+                <div asp-validation-summary="All"
+                     class="form-alert form-alert-error"
+                     role="alert"
+                     aria-live="polite"></div>
 
                 <div class="form-field">
                     <label asp-for="Username"></label>
@@ -122,7 +126,9 @@
                 @if (verificationReady)
                 {
                     <button class="button button-primary account-submit"
-                            type="submit">
+                            type="submit"
+                            data-registration-submit
+                            data-pending-label="Creating Account...">
                         Create Account
                     </button>
                 }
@@ -148,4 +154,62 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        (() => {
+            const form = document.getElementById("registration-form");
+            const submitButton =
+                form?.querySelector("[data-registration-submit]");
+
+            if (!form || !submitButton) {
+                return;
+            }
+
+            const revealFirstError = () => {
+                const firstInvalidField =
+                    form.querySelector(".input-validation-error");
+
+                if (firstInvalidField) {
+                    firstInvalidField.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+
+                    firstInvalidField.focus({
+                        preventScroll: true
+                    });
+
+                    return;
+                }
+
+                form.querySelector(".validation-summary-errors")
+                    ?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+            };
+
+            form.addEventListener("submit", (event) => {
+                const validator =
+                    window.jQuery
+                        ? window.jQuery(form).validate()
+                        : null;
+
+                if (validator && !validator.form()) {
+                    event.preventDefault();
+                    window.requestAnimationFrame(revealFirstError);
+                    return;
+                }
+
+                submitButton.disabled = true;
+                submitButton.setAttribute("aria-busy", "true");
+                submitButton.textContent =
+                    submitButton.dataset.pendingLabel;
+            });
+
+            if (form.querySelector(".field-validation-error")) {
+                window.requestAnimationFrame(revealFirstError);
+            }
+        })();
+    </script>
 }

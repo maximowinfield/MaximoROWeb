@@ -1,0 +1,490 @@
+@{
+    ViewData["Title"] = "The Journey Forward";
+    ViewData["MetaDescription"] = "MaximoRO development update covering the Level 35 handoff, Pathfinder and Kafra improvements, English localization, secure accounts, and the upcoming Level 35-50 experience.";
+}
+
+<section class="page-hero news-page-hero journey-forward-hero">
+    <div class="container page-hero-content">
+        <div class="eyebrow">
+            <span class="server-status-dot"></span>
+            July 23, 2026 &middot; Development Update
+        </div>
+
+        <h1>
+            The journey
+            <span>forward.</span>
+        </h1>
+
+        <p>
+            A clearer road beyond the beginner route, stronger in-game
+            support, a more English-friendly client, safer account creation,
+            and the first design work for MaximoRO's Level 35-50 experience.
+        </p>
+
+        <div class="hero-actions">
+            <a class="btn hero-primary-button" href="#progression">
+                Progression Update
+            </a>
+
+            <a class="btn hero-secondary-button" href="#client-and-website">
+                Client and Website
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section news-page-section" id="update-overview">
+    <div class="container">
+        <div class="centered-heading section-heading">
+            <div class="eyebrow">
+                <span class="server-status-dot"></span>
+                One day, several connected systems
+            </div>
+
+            <h2>
+                Building a smoother
+                <span>MaximoRO journey.</span>
+            </h2>
+
+            <p>
+                This development update separates work that is live on the
+                website, work implemented in the game-server project, client
+                packages prepared for runtime testing, and the Level 35-50
+                route now entering design and audit work.
+            </p>
+        </div>
+
+        <div class="feature-card-grid">
+            <article class="feature-card">
+                <span class="feature-number">01</span>
+
+                <h3>Implemented</h3>
+
+                <p>
+                    Pathfinder dialogue, support Kafras, reset services, and
+                    Academy referrals are implemented in the game project.
+                    Verified registration and deployment safeguards are now
+                    live on the website.
+                </p>
+            </article>
+
+            <article class="feature-card featured-card">
+                <span class="feature-number">02</span>
+
+                <h3>Ready for QA</h3>
+
+                <p>
+                    Complete English Tipbox and map-entry localization packages
+                    have passed structural validation and are ready for careful
+                    client runtime testing.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">03</span>
+
+                <h3>In progress</h3>
+
+                <p>
+                    The next phase of the player experience is being traced from Level 35
+                    through Level 50, including second-job advancement and the
+                    transition into normal Ragnarok progression.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section world-section" id="progression">
+    <div class="container world-grid">
+        <div class="world-panel">
+            <img
+                class="world-image"
+                src="/images/news/journey-forward-pathfinder.jpg"
+                alt="A Pathfinder helping a new adventurer choose the road ahead" />
+        </div>
+
+        <div class="world-content">
+            <div class="eyebrow">
+                <span class="server-status-dot"></span>
+                New-player progression
+            </div>
+
+            <h2>
+                A clearer road
+                <span>through Level 35.</span>
+            </h2>
+
+            <p>
+                The beginner journey now has a more deliberate beginning,
+                middle, and conclusion. Players are introduced to the
+                Pathfinder after their first job change, receive repeatable
+                access to guidance, and leave Assignment III with clear next
+                steps instead of reaching a silent progression cliff.
+            </p>
+
+            <ul class="world-list">
+                <li>
+                    <span>◆</span>
+                    Academy registration now introduces the Pathfinder route
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    Pathfinder menus return safely after guidance and assignments
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    Assignment labels now read consistently as I, II, and III
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    Assignment III completion explains what to pursue after Level 35
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    Players are directed toward training, second jobs, travel,
+                    class guidance, and the Build Adviser
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    Existing assignment requirements and rewards remain unchanged
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="section news-page-section" id="support-network">
+    <div class="container">
+        <div class="section-heading-row">
+            <div class="section-heading">
+                <div class="eyebrow">
+                    <span class="server-status-dot"></span>
+                    Pathfinder support network
+                </div>
+
+                <h2>
+                    Guidance and services,
+                    <span>where players need them.</span>
+                </h2>
+
+                <p>
+                    The main Pathfinder now stands beside the Build Adviser in
+                    Prontera, while an Izlude copy preserves the Academy and
+                    Swordsman route. Supporting Kafra employees have also been
+                    placed throughout the beginner network.
+                </p>
+            </div>
+
+            <a class="text-link"
+               asp-controller="Guides"
+               asp-action="Pathfinder">
+                Open the Pathfinder guide
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
+
+        <div class="feature-card-grid">
+            <article class="feature-card">
+                <span class="feature-number">01</span>
+
+                <h3>Prontera hub</h3>
+
+                <p>
+                    The primary Pathfinder and Build Adviser now form one
+                    discoverable support hub in Prontera. Izlude remains
+                    supported for the Academy and Swordsman journey.
+                </p>
+            </article>
+
+            <article class="feature-card featured-card">
+                <span class="feature-number">02</span>
+
+                <h3>Full Kafra services</h3>
+
+                <p>
+                    Route Kafras can provide save points, storage, guild
+                    storage, cart rental, town travel, Pathfinder travel,
+                    and beginner training-area transportation.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">03</span>
+
+                <h3>Beginner-friendly travel</h3>
+
+                <p>
+                    Training-area travel is free through Base Level 60, while
+                    town and support-hub travel use clear, controlled Zeny
+                    prices that preserve normal world travel.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">04</span>
+
+                <h3>Stat and skill resets</h3>
+
+                <p>
+                    The Build Adviser now supports both stat and skill resets.
+                    Eligible beginner jobs receive free service through Base
+                    Level 60, with a paid option for later progression.
+                </p>
+            </article>
+
+            <article class="feature-card featured-card">
+                <span class="feature-number">05</span>
+
+                <h3>Reset safeguards</h3>
+
+                <p>
+                    Skill resets verify inventory weight and attached class
+                    systems such as carts, mounts, falcons, wargs, dragons,
+                    and Mado Gear before making changes.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">06</span>
+
+                <h3>Second-job audit</h3>
+
+                <p>
+                    Existing second-job routes are now being mapped before the
+                    Level 35-50 experience is designed, so new guidance works
+                    with Ragnarok's advancement systems rather than bypassing them.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section world-section" id="client-and-website">
+    <div class="container world-grid">
+        <div class="world-content">
+            <div class="eyebrow">
+                <span class="server-status-dot"></span>
+                Client localization
+            </div>
+
+            <h2>
+                More of Rune-Midgarts,
+                <span>readable in English.</span>
+            </h2>
+
+            <p>
+                Two large localization packages were prepared from the exact
+                2026 client data. They preserve current IDs, links, icons,
+                navigation targets, map behavior, and non-text fields while
+                replacing Korean player-facing text.
+            </p>
+
+            <ul class="world-list">
+                <li>
+                    <span>◆</span>
+                    1,503 Tipbox articles preserved
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    3,053 Tipbox title and page fields translated
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    1,198 map-entry records preserved
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    2,630 map-entry localization fields translated
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    Zero Korean fields remain in either prepared payload
+                </li>
+
+                <li>
+                    <span>◆</span>
+                    Both packages remain in runtime QA and are not yet announced as live
+                </li>
+            </ul>
+        </div>
+
+        <div class="world-panel">
+            <img
+                class="world-image"
+                src="/images/news/journey-forward-localization.jpg"
+                alt="MaximoRO scholars reviewing maps and guidebooks during localization work" />
+        </div>
+    </div>
+</section>
+
+<section class="section news-page-section" id="account-and-operations">
+    <div class="container">
+        <div class="centered-heading section-heading">
+            <div class="eyebrow">
+                <span class="server-status-dot"></span>
+                Website and account systems
+            </div>
+
+            <h2>
+                Safer registration,
+                <span>steadier deployment.</span>
+            </h2>
+
+            <p>
+                Mandatory email verification is now part of the live account
+                flow. The same work also strengthened registration feedback,
+                protected Production secrets, corrected a form blocker, and
+                made successful publishing depend on local and public health
+                checks.
+            </p>
+        </div>
+
+        <div class="feature-card-grid">
+            <article class="feature-card">
+                <span class="feature-number">01</span>
+
+                <h3>Verification required</h3>
+
+                <p>
+                    New accounts are created in an unconfirmed state and unlock
+                    only after the player follows a secure, expiring email link.
+                    Verification tokens are stored as hashes.
+                </p>
+            </article>
+
+            <article class="feature-card featured-card">
+                <span class="feature-number">02</span>
+
+                <h3>Secure Gmail delivery</h3>
+
+                <p>
+                    Gmail SMTP is configured with TLS and an app password. The
+                    sender credentials remain outside the repository and are
+                    loaded into the Production process from the local secret
+                    store.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">03</span>
+
+                <h3>Verification safeguards</h3>
+
+                <p>
+                    Hashed expiring tokens, resend throttling, fail-closed email
+                    configuration, automatic schema setup, and dedicated verify
+                    and resend pages protect the account flow.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">04</span>
+
+                <h3>Registration unblocked</h3>
+
+                <p>
+                    An invisible anti-spam field was corrected after it
+                    unintentionally blocked legitimate submissions. Real
+                    players can now pass validation and reach account creation.
+                </p>
+            </article>
+
+            <article class="feature-card featured-card">
+                <span class="feature-number">05</span>
+
+                <h3>Clearer form feedback</h3>
+
+                <p>
+                    Invalid fields now appear in one visible summary, focus
+                    moves to the first problem, and valid submissions display
+                    a clear Creating Account state while the request is running.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">06</span>
+
+                <h3>Reliable publishing</h3>
+
+                <p>
+                    Website deployment now uses isolated staging, verified
+                    process shutdown, backup and rollback support, Production
+                    secret validation, and local plus public checks that require
+                    registration to be available.
+                </p>
+            </article>
+        </div>
+
+        <div class="news-development-panel">
+            <div>
+                <div class="eyebrow">
+                    <span class="server-status-dot"></span>
+                    Registration status
+                </div>
+
+                <h2>Verified registration is live.</h2>
+
+                <p>
+                    The public registration form is enabled, Production is
+                    loading its protected sender settings, and deployment
+                    health checks are passing. A real inbox registration remains
+                    the final delivery test for the configured Gmail sender.
+                </p>
+            </div>
+
+            <a class="btn hero-primary-button"
+               asp-controller="Home"
+               asp-action="Register">
+                Create Account
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="final-cta-section" id="next">
+    <div class="container">
+        <div class="final-cta-panel">
+            <div class="final-cta-emblem">M</div>
+
+            <div class="final-cta-content">
+                <div class="eyebrow">
+                    Next focus
+                </div>
+
+                <h2>The Level 35-50 experience.</h2>
+
+                <p>
+                    The next step is to shape the journey from Pathfinder
+                    graduation into second-job advancement and normal world
+                    progression. That work begins with a careful audit of
+                    existing routes, requirements, trials, rewards, and
+                    possible progression gaps before new content is added.
+                </p>
+            </div>
+
+            <div class="final-cta-actions">
+                <a class="btn hero-primary-button"
+                   asp-controller="Home"
+                   asp-action="ProgressionPatch">
+                    Previous Progression Patch
+                </a>
+
+                <a class="btn hero-secondary-button"
+                   asp-controller="Home"
+                   asp-action="News">
+                    Return to News
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

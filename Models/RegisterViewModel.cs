@@ -6,7 +6,7 @@ public sealed class RegisterViewModel
 {
 
     [Display(Name = "Website")]
-    public string Website { get; set; } = string.Empty;
+    public string? Website { get; set; }
 
     [Required]
     [StringLength(23, MinimumLength = 4)]

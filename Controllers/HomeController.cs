@@ -50,6 +50,11 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult JourneyForwardUpdate()
+    {
+        return View();
+    }
+
     public IActionResult Downloads()
     {
         return View();

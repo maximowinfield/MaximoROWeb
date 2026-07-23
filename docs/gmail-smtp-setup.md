@@ -27,5 +27,7 @@ dotnet user-secrets set "EmailVerification:Smtp:Password" "YOUR_16_CHARACTER_APP
 Do not place the app password in `appsettings.json`, commit it to Git, or share
 it in chat.
 
-After saving the app password, restart the website and test registration with
-an email address different from the sender.
+After saving the app password, run the deployment script. The launcher loads
+the required values into the Production process without copying them into the
+published application. Confirm the deployment health check enables registration,
+then test with an email address different from the sender.

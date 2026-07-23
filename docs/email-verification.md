@@ -6,7 +6,9 @@ which allows normal game login.
 
 Registration remains unavailable until every required email setting is valid.
 Keep SMTP credentials out of `appsettings.json`; use .NET user secrets locally
-and environment variables or a secret manager in production.
+and environment variables or a secret manager in production. The MaximoRO
+single-machine launcher imports the required values from the current Windows
+user's .NET user-secret store into the Production process at startup.
 
 ## Local configuration
 
@@ -41,8 +43,12 @@ rAthena's `login` table, which may use MyISAM.
 
 ## Production checklist
 
-- Configure the public HTTPS URL and all SMTP settings in the production secret
-  store.
+- Run the MaximoRO launcher under the same Windows account that owns the .NET
+  user secrets.
+- Confirm the deployment health check reports that the registration form is
+  available.
+- For any future multi-machine hosting, move the settings to that platform's
+  environment-variable or secret-management system.
 - Configure SPF, DKIM, and DMARC for the sender domain through the mail
   provider.
 - Verify that the sender address is authorized by the provider.

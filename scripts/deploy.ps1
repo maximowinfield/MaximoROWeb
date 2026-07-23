@@ -224,16 +224,16 @@ function Test-MaximoROWeb {
 
             if ($Url -like "*/Home/Register") {
                 $ExpectedContent =
-                    $Content.Contains("Registration Temporarily Unavailable") -and
-                    $Content.Contains("type=`"button`"") -and
-                    $Content.Contains("disabled")
+                    $Content.Contains("Create Account") -and
+                    $Content.Contains("type=`"submit`"") -and
+                    -not $Content.Contains("Registration Temporarily Unavailable")
             }
 
             [pscustomobject]@{
                 Url = $Url
                 Status = $Response.StatusCode
                 ExpectedContent = $ExpectedContent
-                Result = if ($ExpectedContent) { "OK" } else { "Missing expected registration unavailable button" }
+                Result = if ($ExpectedContent) { "OK" } else { "Registration form is unavailable or SMTP configuration is incomplete" }
             }
         }
         catch {

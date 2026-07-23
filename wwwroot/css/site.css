@@ -927,6 +927,12 @@ a {
     url("/images/news/getting-started-city-gate.png") center / cover no-repeat;
 }
 
+.news-image-journey-forward {
+  background:
+    linear-gradient(0deg, rgba(8, 9, 13, 0.76), transparent 72%),
+    url("/images/news/journey-forward-hero.jpg") center 48% / cover no-repeat;
+}
+
 .news-card-image > span {
   position: relative;
   z-index: 2;
@@ -1841,6 +1847,11 @@ a {
 
 .news-page-hero {
   background-image: url("/images/news/news-hero.png");
+}
+
+.journey-forward-hero {
+  background-image: url("/images/news/journey-forward-hero.jpg");
+  background-position: center 48%;
 }
 
 .news-page-section {
@@ -5878,10 +5889,33 @@ img {
   background: rgba(86, 201, 137, 0.07);
 }
 
+.validation-summary-valid {
+  display: none;
+}
+
 .form-alert-error:not(:empty) {
   border-color: rgba(212, 81, 69, 0.34);
   color: #efb0a9;
   background: rgba(212, 81, 69, 0.07);
+}
+
+.form-alert-error ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.form-field .input-validation-error {
+  border-color: rgba(239, 143, 132, 0.72);
+  box-shadow: 0 0 0 3px rgba(212, 81, 69, 0.1);
+}
+
+.account-submit[aria-busy="true"] {
+  opacity: 0.78;
+  cursor: wait;
+  box-shadow: none;
+  transform: none;
 }
 
 .download-disabled-button,
