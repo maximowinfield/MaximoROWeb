@@ -1,54 +1,40 @@
-﻿$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Stop"
 
 # ============================================================
 # MaximoROWeb deployment configuration
 # ============================================================
 
-$Root = "C:\Projects\MaximoROweb"
-$TaskName = "MaximoROWeb"
-$TaskPath = "\"
+$Root = "C:\Projects\MaximoROWeb"
+$ProjectName = "MaximoROWeb"
+$LivePort = 5043
+$PublicUrl = "https://desktop-68ka5hg.tail9fc6cc.ts.net:8443"
 
-$PublishFolder = Join-Path $Root "publish"
-$StagingFolder = Join-Path $Root "publish-staging"
-$BackupRoot = "C:\Projects\MaximoROweb-Backups"
-
+$PublishFolder = Join-Path $Root "publish-5043"
+$StagingFolder = "C:\Projects\MaximoROWeb-PublishStaging"
+$BackupRoot = "C:\Projects\MaximoROWeb-Backups"
 $OutputFolder = "C:\Users\Maximo\Desktop\MaximoRO Outputs"
+$StartScript = Join-Path $Root "scripts\start-maximoroweb.ps1"
+
 $Timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
+$BackupFolder = Join-Path $BackupRoot "publish-before-deploy-$Timestamp"
+$Report = Join-Path $OutputFolder "maximoroweb-publish-deploy_$Timestamp.txt"
 
-$BackupFolder = Join-Path `
-    $BackupRoot `
-    "publish-before-deploy-$Timestamp"
-
-$Report = Join-Path `
-    $OutputFolder `
-    "maximoroweb-publish-deploy_$Timestamp.txt"
-
-$HealthUrl = "http://127.0.0.1:5041/"
-$ProgressionUrl = "http://127.0.0.1:5041/Home/ProgressionPatch"
+$HealthUrl = "http://127.0.0.1:$LivePort/"
+$RegisterUrl = "http://127.0.0.1:$LivePort/Home/Register"
+$PublicRegisterUrl = "$PublicUrl/Home/Register"
 
 New-Item -ItemType Directory -Path $OutputFolder -Force | Out-Null
 New-Item -ItemType Directory -Path $BackupRoot -Force | Out-Null
 
-# Never remain inside publish while trying to replace it.
-$CurrentFolder = (Get-Location).Path
-
-if (
-    $CurrentFolder -eq $PublishFolder -or
-    $CurrentFolder.StartsWith(
-        "$PublishFolder\",
-        [System.StringComparison]::OrdinalIgnoreCase
-    )
-) {
+if ((Get-Location).Path.StartsWith($PublishFolder, [System.StringComparison]::OrdinalIgnoreCase)) {
     Set-Location $Root
 }
 
 $Changes = [System.Collections.Generic.List[string]]::new()
 $Warnings = [System.Collections.Generic.List[string]]::new()
-
 $PublishOutput = @()
 $Checks = @()
-
-$TaskWasEnabled = $false
+$StartedProcesses = @()
 $BackupCreated = $false
 $NewPublishInstalled = $false
 
@@ -58,45 +44,86 @@ $NewPublishInstalled = $false
 
 function Get-MaximoROWebConnection {
     Get-NetTCPConnection `
-        -LocalPort 5041 `
+        -LocalPort $LivePort `
         -State Listen `
         -ErrorAction SilentlyContinue |
     Select-Object -First 1
 }
 
+function Get-ProcessInfo {
+    param([int]$ProcessId)
+
+    Get-CimInstance `
+        Win32_Process `
+        -Filter "ProcessId = $ProcessId" `
+        -ErrorAction SilentlyContinue
+}
+
 function Stop-MaximoROWebProcess {
+    param([switch]$RequireStopped)
+
     $Connection = Get-MaximoROWebConnection
 
     if (-not $Connection) {
         return
     }
 
-    $ProcessId = $Connection.OwningProcess
-
-    $ProcessInfo = Get-CimInstance `
-        Win32_Process `
-        -Filter "ProcessId = $ProcessId" `
-        -ErrorAction SilentlyContinue
+    $ProcessId = [int]$Connection.OwningProcess
+    $ProcessInfo = Get-ProcessInfo -ProcessId $ProcessId
 
     if (-not $ProcessInfo) {
-        throw "Port 5041 is occupied, but its process could not be inspected."
+        throw "Port $LivePort is occupied, but its process could not be inspected."
     }
 
     $CommandLine = [string]$ProcessInfo.CommandLine
+    $ProcessName = [string]$ProcessInfo.Name
     $ExecutablePath = [string]$ProcessInfo.ExecutablePath
+    $ExpectedRoot = [regex]::Escape($Root)
 
-    if (
-        $CommandLine -notmatch "MaximoROWeb" -and
-        $CommandLine -notmatch [regex]::Escape($Root) -and
-        $ExecutablePath -notmatch "dotnet"
-    ) {
-        throw "Port 5041 belongs to an unexpected process: $CommandLine"
+    $LooksLikeMaximoROWeb =
+        $ProcessName -eq "$ProjectName.exe" -or
+        $CommandLine -match $ProjectName -or
+        $CommandLine -match $ExpectedRoot -or
+        $ExecutablePath -match $ProjectName
+
+    if (-not $LooksLikeMaximoROWeb) {
+        throw "Port $LivePort belongs to an unexpected process: $CommandLine"
     }
 
-    Stop-Process `
-        -Id $ProcessId `
-        -Force `
-        -ErrorAction SilentlyContinue
+    $ParentProcessId = [int]$ProcessInfo.ParentProcessId
+    $ParentInfo = Get-ProcessInfo -ProcessId $ParentProcessId
+
+    $ProcessIdsToStop = [System.Collections.Generic.List[int]]::new()
+    $ProcessIdsToStop.Add($ProcessId)
+
+    if ($ParentInfo) {
+        $ParentCommandLine = [string]$ParentInfo.CommandLine
+        $ParentName = [string]$ParentInfo.Name
+
+        if (
+            $ParentName -in @("dotnet.exe", "powershell.exe", "pwsh.exe") -and
+            ($ParentCommandLine -match $ProjectName -or $ParentCommandLine -match [regex]::Escape($StartScript))
+        ) {
+            $ProcessIdsToStop.Add($ParentProcessId)
+        }
+    }
+
+    foreach ($Id in ($ProcessIdsToStop | Select-Object -Unique)) {
+        try {
+            Stop-Process -Id $Id -Force -ErrorAction Stop
+            Wait-Process -Id $Id -Timeout 15 -ErrorAction SilentlyContinue
+            $Changes.Add("Stopped MaximoROWeb process PID $Id.")
+        }
+        catch {
+            if ($RequireStopped) {
+                throw "Could not stop PID $Id on port ${LivePort}: $($_.Exception.Message)"
+            }
+
+            $Warnings.Add("Could not stop PID $Id on port ${LivePort}: $($_.Exception.Message)")
+        }
+    }
+
+    Start-Sleep -Seconds 2
 
     $Deadline = (Get-Date).AddSeconds(20)
 
@@ -104,27 +131,63 @@ function Stop-MaximoROWebProcess {
         Start-Sleep -Milliseconds 500
         $StillListening = Get-MaximoROWebConnection
     }
-    until (
-        -not $StillListening -or
-        (Get-Date) -ge $Deadline
-    )
+    until (-not $StillListening -or (Get-Date) -ge $Deadline)
 
-    if ($StillListening) {
-        throw "MaximoROWeb did not release port 5041."
+    if ($StillListening -and $RequireStopped) {
+        throw "MaximoROWeb did not release port $LivePort."
     }
-
-    $Changes.Add("Stopped MaximoROWeb process PID $ProcessId.")
 }
 
-function Start-MaximoROWebTask {
-    Enable-ScheduledTask `
-        -TaskName $TaskName `
-        -ErrorAction Stop |
-    Out-Null
+function Wait-ForPathUnlock {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Path,
+        [int]$TimeoutSeconds = 30
+    )
 
-    Start-ScheduledTask `
-        -TaskName $TaskName `
-        -ErrorAction Stop
+    if (-not (Test-Path $Path)) {
+        return
+    }
+
+    $Deadline = (Get-Date).AddSeconds($TimeoutSeconds)
+
+    do {
+        try {
+            $Stream = [System.IO.File]::Open(
+                $Path,
+                [System.IO.FileMode]::Open,
+                [System.IO.FileAccess]::ReadWrite,
+                [System.IO.FileShare]::None)
+            $Stream.Dispose()
+            return
+        }
+        catch {
+            Start-Sleep -Milliseconds 500
+        }
+    }
+    until ((Get-Date) -ge $Deadline)
+
+    throw "Timed out waiting for file to unlock: $Path"
+}
+
+function Start-MaximoROWebProcess {
+    if (-not (Test-Path $StartScript)) {
+        throw "Start script was not found: $StartScript"
+    }
+
+    $Process = Start-Process `
+        -FilePath "powershell.exe" `
+        -ArgumentList @(
+            "-NoProfile",
+            "-ExecutionPolicy", "Bypass",
+            "-File", $StartScript
+        ) `
+        -WorkingDirectory $Root `
+        -WindowStyle Hidden `
+        -PassThru
+
+    $StartedProcesses += $Process.Id
+    $Changes.Add("Started MaximoROWeb with launcher PID $($Process.Id) on port $LivePort.")
 
     $Deadline = (Get-Date).AddSeconds(45)
     $Connection = $null
@@ -133,20 +196,10 @@ function Start-MaximoROWebTask {
         Start-Sleep -Seconds 2
         $Connection = Get-MaximoROWebConnection
     }
-    until (
-        $Connection -or
-        (Get-Date) -ge $Deadline
-    )
+    until ($Connection -or (Get-Date) -ge $Deadline)
 
     if (-not $Connection) {
-        $TaskInfo = Get-ScheduledTaskInfo `
-            -TaskName $TaskName `
-            -ErrorAction SilentlyContinue
-
-        throw (
-            "MaximoROWeb did not begin listening on port 5041. " +
-            "Scheduled Task result: $($TaskInfo.LastTaskResult)"
-        )
+        throw "MaximoROWeb did not begin listening on port $LivePort."
     }
 
     return $Connection
@@ -155,32 +208,43 @@ function Start-MaximoROWebTask {
 function Test-MaximoROWeb {
     $Urls = @(
         $HealthUrl,
-        $ProgressionUrl
+        $RegisterUrl,
+        $PublicRegisterUrl
     )
 
-    $Results = foreach ($Url in $Urls) {
+    foreach ($Url in $Urls) {
         try {
             $Response = Invoke-WebRequest `
                 -Uri $Url `
                 -UseBasicParsing `
                 -TimeoutSec 15
 
+            $Content = [string]$Response.Content
+            $ExpectedContent = $true
+
+            if ($Url -like "*/Home/Register") {
+                $ExpectedContent =
+                    $Content.Contains("Registration Temporarily Unavailable") -and
+                    $Content.Contains("type=`"button`"") -and
+                    $Content.Contains("disabled")
+            }
+
             [pscustomobject]@{
-                Url    = $Url
+                Url = $Url
                 Status = $Response.StatusCode
-                Result = "OK"
+                ExpectedContent = $ExpectedContent
+                Result = if ($ExpectedContent) { "OK" } else { "Missing expected registration unavailable button" }
             }
         }
         catch {
             [pscustomobject]@{
-                Url    = $Url
+                Url = $Url
                 Status = "ERROR"
+                ExpectedContent = $false
                 Result = $_.Exception.Message
             }
         }
     }
-
-    return $Results
 }
 
 function Write-DeploymentReport {
@@ -189,29 +253,17 @@ function Write-DeploymentReport {
         [string]$FailureMessage = ""
     )
 
-    $Task = Get-ScheduledTask `
-        -TaskName $TaskName `
-        -ErrorAction SilentlyContinue
-
-    $TaskInfo = Get-ScheduledTaskInfo `
-        -TaskName $TaskName `
-        -ErrorAction SilentlyContinue
-
     $Connection = Get-MaximoROWebConnection
     $LiveProcess = $null
 
     if ($Connection) {
-        $LiveProcess = Get-CimInstance `
-            Win32_Process `
-            -Filter "ProcessId = $($Connection.OwningProcess)" `
-            -ErrorAction SilentlyContinue
+        $LiveProcess = Get-ProcessInfo -ProcessId ([int]$Connection.OwningProcess)
     }
 
     & {
         Write-Output "MaximoROWeb Deployment"
         Write-Output "Generated: $(Get-Date)"
         Write-Output ""
-
         Write-Output "=== Result ==="
         Write-Output $Result
 
@@ -220,8 +272,14 @@ function Write-DeploymentReport {
         }
 
         Write-Output ""
-        Write-Output "=== Changes ==="
+        Write-Output "=== Configuration ==="
+        Write-Output "Root: $Root"
+        Write-Output "Publish: $PublishFolder"
+        Write-Output "Local URL: $HealthUrl"
+        Write-Output "Public URL: $PublicUrl"
 
+        Write-Output ""
+        Write-Output "=== Changes ==="
         if ($Changes.Count -eq 0) {
             Write-Output "No completed changes were recorded."
         }
@@ -234,37 +292,27 @@ function Write-DeploymentReport {
         if ($Warnings.Count -gt 0) {
             Write-Output ""
             Write-Output "=== Warnings ==="
-
             foreach ($Warning in $Warnings) {
                 Write-Output "[WARNING] $Warning"
             }
         }
 
         Write-Output ""
-        Write-Output "=== Scheduled Task ==="
-        Write-Output "Task: $TaskName"
-        Write-Output "State: $($Task.State)"
-        Write-Output "Last run: $($TaskInfo.LastRunTime)"
-        Write-Output "Last result: $($TaskInfo.LastTaskResult)"
-
-        Write-Output ""
         Write-Output "=== Live Process ==="
-
         if ($LiveProcess) {
             Write-Output "PID: $($LiveProcess.ProcessId)"
             Write-Output "Command: $($LiveProcess.CommandLine)"
         }
         else {
-            Write-Output "Nothing is listening on port 5041."
+            Write-Output "Nothing is listening on port $LivePort."
         }
 
         Write-Output ""
         Write-Output "=== HTTP Checks ==="
-
         if ($Checks.Count -gt 0) {
             $Checks |
             Format-Table -AutoSize |
-            Out-String -Width 240 |
+            Out-String -Width 260 |
             Write-Output
         }
         else {
@@ -273,7 +321,6 @@ function Write-DeploymentReport {
 
         Write-Output ""
         Write-Output "=== Publish Output ==="
-
         if ($PublishOutput.Count -gt 0) {
             $PublishOutput
         }
@@ -283,15 +330,34 @@ function Write-DeploymentReport {
 
         Write-Output ""
         Write-Output "=== Backup ==="
-
         if ($BackupCreated -and (Test-Path $BackupFolder)) {
             Write-Output $BackupFolder
         }
         else {
             Write-Output "No deployment backup was created."
         }
-
     } 2>&1 | Tee-Object -FilePath $Report
+}
+
+function Restore-PreviousPublish {
+    if (-not ($BackupCreated -and (Test-Path $BackupFolder))) {
+        if ($NewPublishInstalled) {
+            $Warnings.Add("No previous publish backup existed, so there was nothing to restore.")
+        }
+
+        return
+    }
+
+    $LiveDll = Join-Path $PublishFolder "$ProjectName.dll"
+    Wait-ForPathUnlock -Path $LiveDll
+
+    if (Test-Path $PublishFolder) {
+        Remove-Item $PublishFolder -Recurse -Force
+    }
+
+    New-Item -ItemType Directory -Path $PublishFolder -Force | Out-Null
+    Copy-Item -Path (Join-Path $BackupFolder "*") -Destination $PublishFolder -Recurse -Force
+    $Changes.Add("Restored the previous deployment from backup.")
 }
 
 # ============================================================
@@ -301,42 +367,21 @@ function Write-DeploymentReport {
 try {
     Write-Host ""
     Write-Host "=== MaximoROWeb Deployment ===" -ForegroundColor Cyan
+    Write-Host "Deploying $Root to local port $LivePort"
 
-    $ProjectFile = Get-ChildItem `
-        -Path $Root `
-        -Filter "*.csproj" `
-        -File |
-    Select-Object -First 1
+    $ProjectFile = Get-ChildItem -Path $Root -Filter "*.csproj" -File | Select-Object -First 1
 
     if (-not $ProjectFile) {
         throw "No project file was found in $Root."
     }
 
-    $Task = Get-ScheduledTask `
-        -TaskName $TaskName `
-        -ErrorAction Stop
-
-    $TaskWasEnabled = $Task.State -ne "Disabled"
-
-    # --------------------------------------------------------
-    # Publish first, while the current site remains online
-    # --------------------------------------------------------
-
     if (Test-Path $StagingFolder) {
-        Remove-Item `
-            $StagingFolder `
-            -Recurse `
-            -Force
+        Remove-Item $StagingFolder -Recurse -Force
     }
 
-    New-Item `
-        -ItemType Directory `
-        -Path $StagingFolder `
-        -Force |
-    Out-Null
+    New-Item -ItemType Directory -Path $StagingFolder -Force | Out-Null
 
     Write-Host "Publishing to staging..."
-
     Push-Location $Root
 
     try {
@@ -346,6 +391,7 @@ try {
                 -c Release `
                 -o $StagingFolder `
                 --no-self-contained `
+                /p:UseAppHost=false `
                 2>&1
         )
 
@@ -359,99 +405,48 @@ try {
         throw "dotnet publish failed with exit code $PublishExitCode."
     }
 
-    $PublishedDll = Join-Path `
-        $StagingFolder `
-        "MaximoROWeb.dll"
+    $PublishedDll = Join-Path $StagingFolder "$ProjectName.dll"
 
     if (-not (Test-Path $PublishedDll)) {
-        throw "Staging output is missing MaximoROWeb.dll."
+        throw "Staging output is missing $ProjectName.dll."
     }
 
     $Changes.Add("Published the project successfully to staging.")
 
-    # --------------------------------------------------------
-    # Stop Task Scheduler and live process
-    # --------------------------------------------------------
-
-    Write-Host "Stopping and disabling Scheduled Task..."
-
-    Disable-ScheduledTask `
-        -TaskName $TaskName `
-        -ErrorAction Stop |
-    Out-Null
-
-    Stop-ScheduledTask `
-        -TaskName $TaskName `
-        -ErrorAction SilentlyContinue
-
-    Start-Sleep -Seconds 2
-
-    Stop-MaximoROWebProcess
-
-    # --------------------------------------------------------
-    # Back up current deployment
-    # --------------------------------------------------------
+    Write-Host "Stopping live MaximoROWeb process on port $LivePort..."
+    Stop-MaximoROWebProcess -RequireStopped
 
     if (Test-Path $PublishFolder) {
-        New-Item `
-            -ItemType Directory `
-            -Path $BackupFolder `
-            -Force |
-        Out-Null
-
-        Copy-Item `
-            -Path (Join-Path $PublishFolder "*") `
-            -Destination $BackupFolder `
-            -Recurse `
-            -Force
-
+        New-Item -ItemType Directory -Path $BackupFolder -Force | Out-Null
+        Copy-Item -Path (Join-Path $PublishFolder "*") -Destination $BackupFolder -Recurse -Force
         $BackupCreated = $true
         $Changes.Add("Backed up the previous live deployment.")
     }
 
-    # --------------------------------------------------------
-    # Replace live deployment
-    # --------------------------------------------------------
+    $LiveDll = Join-Path $PublishFolder "$ProjectName.dll"
+    Wait-ForPathUnlock -Path $LiveDll
 
     if (Test-Path $PublishFolder) {
-        Remove-Item `
-            $PublishFolder `
-            -Recurse `
-            -Force
+        Remove-Item $PublishFolder -Recurse -Force
     }
 
-    Move-Item `
-        -Path $StagingFolder `
-        -Destination $PublishFolder
-
+    Move-Item -Path $StagingFolder -Destination $PublishFolder
     $NewPublishInstalled = $true
     $Changes.Add("Promoted staging to the live publish folder.")
 
-    # --------------------------------------------------------
-    # Start site through Task Scheduler
-    # --------------------------------------------------------
+    Write-Host "Starting MaximoROWeb on port $LivePort..."
+    $LiveConnection = Start-MaximoROWebProcess
 
-    Write-Host "Starting MaximoROWeb Scheduled Task..."
-
-    $LiveConnection = Start-MaximoROWebTask
-    $Changes.Add("Scheduled Task started MaximoROWeb on port 5041.")
-
-    # --------------------------------------------------------
-    # Health checks
-    # --------------------------------------------------------
-
+    Write-Host "Running health checks..."
     $Checks = @(Test-MaximoROWeb)
 
-    $FailedChecks = $Checks |
-    Where-Object {
-        $_.Status -ne 200
-    }
+    $FailedChecks = $Checks | Where-Object { $_.Status -ne 200 -or -not $_.ExpectedContent }
 
     if ($FailedChecks) {
-        throw "One or more local HTTP health checks failed."
+        throw "One or more HTTP health checks failed."
     }
 
-    $Changes.Add("Local HTTP health checks passed.")
+    $Changes.Add("Local and public HTTP health checks passed.")
 
     Write-DeploymentReport -Result "SUCCESS"
 
@@ -468,98 +463,38 @@ catch {
     Write-Host "Deployment failed. Beginning rollback..." -ForegroundColor Red
 
     try {
-        Disable-ScheduledTask `
-            -TaskName $TaskName `
-            -ErrorAction SilentlyContinue |
-        Out-Null
-
-        Stop-ScheduledTask `
-            -TaskName $TaskName `
-            -ErrorAction SilentlyContinue
-
-        Start-Sleep -Seconds 2
-
         Stop-MaximoROWebProcess
     }
     catch {
-        $Warnings.Add(
-            "Could not completely stop the failed deployment: " +
-            $_.Exception.Message
-        )
+        $Warnings.Add("Could not completely stop the failed deployment: $($_.Exception.Message)")
     }
-
-    # --------------------------------------------------------
-    # Restore previous live publish
-    # --------------------------------------------------------
-
-    if ($BackupCreated -and (Test-Path $BackupFolder)) {
-        try {
-            if (Test-Path $PublishFolder) {
-                Remove-Item `
-                    $PublishFolder `
-                    -Recurse `
-                    -Force
-            }
-
-            New-Item `
-                -ItemType Directory `
-                -Path $PublishFolder `
-                -Force |
-            Out-Null
-
-            Copy-Item `
-                -Path (Join-Path $BackupFolder "*") `
-                -Destination $PublishFolder `
-                -Recurse `
-                -Force
-
-            $Changes.Add("Restored the previous deployment from backup.")
-        }
-        catch {
-            $Warnings.Add(
-                "Rollback copy failed: " +
-                $_.Exception.Message
-            )
-        }
-    }
-    elseif ($NewPublishInstalled) {
-        $Warnings.Add(
-            "No previous publish backup existed, so there was nothing to restore."
-        )
-    }
-
-    # --------------------------------------------------------
-    # Restart the previous deployment
-    # --------------------------------------------------------
 
     try {
-        $RollbackConnection = Start-MaximoROWebTask
+        Restore-PreviousPublish
+    }
+    catch {
+        $Warnings.Add("Rollback copy failed: $($_.Exception.Message)")
+    }
 
+    try {
+        $RollbackConnection = Start-MaximoROWebProcess
         $Checks = @(Test-MaximoROWeb)
 
-        $RollbackFailedChecks = $Checks |
-        Where-Object {
-            $_.Status -ne 200
-        }
+        $RollbackFailedChecks = $Checks | Where-Object { $_.Status -ne 200 }
 
         if ($RollbackFailedChecks) {
-            $Warnings.Add(
-                "The rollback process started, but an HTTP health check still failed."
-            )
+            $Warnings.Add("The rollback process started, but an HTTP health check still failed.")
         }
         else {
-            $Changes.Add("Rollback deployment is online and healthy.")
+            $Changes.Add("Rollback deployment is online.")
         }
     }
     catch {
-        $Warnings.Add(
-            "Could not restart MaximoROWeb after rollback: " +
-            $_.Exception.Message
-        )
+        $Warnings.Add("Could not restart MaximoROWeb after rollback: $($_.Exception.Message)")
     }
 
     Write-DeploymentReport `
-        -Result "FAILED — ROLLBACK ATTEMPTED" `
+        -Result "FAILED - ROLLBACK ATTEMPTED" `
         -FailureMessage $FailureMessage
 
     Write-Host ""
