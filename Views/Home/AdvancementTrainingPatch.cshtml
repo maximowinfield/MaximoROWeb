@@ -1,0 +1,464 @@
+@{
+    ViewData["Title"] = "Pathfinder Advancement Training Update";
+    ViewData["MetaDescription"] =
+        "Patch notes for the MaximoRO Pathfinder overhaul, including Level 35-50 Advancement Training, three training grounds, Pathfinder Envoys, and network quality-of-life improvements.";
+}
+
+<section class="page-hero advancement-training-hero">
+    <div class="container page-hero-content">
+        <div class="eyebrow">
+            <span class="server-status-dot"></span>
+            July 23, 2026 &middot; Patch Notes
+        </div>
+
+        <h1>
+            Pathfinder Overhaul:
+            <span>Advancement Training.</span>
+        </h1>
+
+        <p>
+            The Pathfinder now guides adventurers through Level 50 with three
+            new training routes, open destination review, direct travel, and a
+            streamlined network of field Envoys.
+        </p>
+
+        <div class="hero-actions">
+            <a class="btn hero-primary-button" href="#training-grounds">
+                Training Grounds
+            </a>
+
+            <a class="btn hero-secondary-button" href="#envoys">
+                Pathfinder Envoys
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section news-page-section" id="patch-overview">
+    <div class="container">
+        <div class="centered-heading section-heading">
+            <div class="eyebrow">
+                <span class="server-status-dot"></span>
+                The largest Pathfinder usability update yet
+            </div>
+
+            <h2>
+                Better guidance,
+                <span>without taking away choice.</span>
+            </h2>
+
+            <p>
+                This update expands Pathfinder guidance through Level 50 and
+                simplifies field support across Rune-Midgarts. Recommendations
+                remain optional: every class may inspect and travel to every
+                available training ground.
+            </p>
+        </div>
+
+        <div class="feature-card-grid">
+            <article class="feature-card">
+                <span class="feature-number">01</span>
+
+                <h3>Levels 35-50</h3>
+
+                <p>
+                    Advancement Training adds a dedicated bridge between the
+                    established beginner route and the next stage of normal
+                    Ragnarok progression.
+                </p>
+            </article>
+
+            <article class="feature-card featured-card">
+                <span class="feature-number">02</span>
+
+                <h3>Class-aware, never restricted</h3>
+
+                <p>
+                    The Pathfinder highlights routes that suit each profession,
+                    but all characters are free to review and visit all three
+                    destinations.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">03</span>
+
+                <h3>One support language</h3>
+
+                <p>
+                    Field copies and custom training Kafras have been replaced
+                    by consistent Pathfinder Envoys with focused services at
+                    every supported training area.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section advancement-destinations-section"
+         id="training-grounds">
+    <div class="container">
+        <div class="section-heading-row">
+            <div class="section-heading">
+                <div class="eyebrow">
+                    <span class="server-status-dot"></span>
+                    New: Advancement Training
+                </div>
+
+                <h2>
+                    Three routes for
+                    <span>Levels 35-50.</span>
+                </h2>
+
+                <p>
+                    Each route includes recommended monster targets, an area
+                    overview, profession guidance, navigation support, and
+                    direct Pathfinder travel.
+                </p>
+            </div>
+
+            <a class="text-link"
+               asp-controller="Guides"
+               asp-action="Pathfinder">
+                Open the Pathfinder guide
+                <span aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
+
+        <div class="training-destination-grid">
+            <article class="training-destination-card">
+                <div class="training-destination-media">
+                    <img
+                        src="/images/news/advancement-training-wolf-steel.jpg"
+                        alt="A swordsman and archer training in a highland field against wolves" />
+                </div>
+
+                <div class="training-destination-content">
+                    <span class="training-destination-level">
+                        Advancement Route 01
+                    </span>
+
+                    <h3>Wolf and Steel Training Field</h3>
+
+                    <p class="training-destination-recommendation">
+                        Recommended for Swordsmen and Archers
+                    </p>
+
+                    <p>
+                        A broad highland combat route suited to durable
+                        front-line practice and ranged field control.
+                    </p>
+
+                    <ul>
+                        <li>Recommended target guidance</li>
+                        <li>Free direct Pathfinder travel</li>
+                        <li>Open to every profession</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="training-destination-card">
+                <div class="training-destination-media">
+                    <img
+                        src="/images/news/advancement-training-byalan.jpg"
+                        alt="A mage and thief exploring an underwater training ruin" />
+                </div>
+
+                <div class="training-destination-content">
+                    <span class="training-destination-level">
+                        Advancement Route 02
+                    </span>
+
+                    <h3>Byalan Undersea Training</h3>
+
+                    <p class="training-destination-recommendation">
+                        Recommended for Mages and Thieves
+                    </p>
+
+                    <p>
+                        A layered undersea route for controlled spell damage,
+                        careful pulls, mobility, and opportunistic combat.
+                    </p>
+
+                    <ul>
+                        <li>Recommended target guidance</li>
+                        <li>Free direct Pathfinder travel</li>
+                        <li>Open to every profession</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="training-destination-card">
+                <div class="training-destination-media">
+                    <img
+                        src="/images/news/advancement-training-payon.jpg"
+                        alt="An acolyte and merchant training along an undead forest shrine route" />
+                </div>
+
+                <div class="training-destination-content">
+                    <span class="training-destination-level">
+                        Advancement Route 03
+                    </span>
+
+                    <h3>Payon Undead Training</h3>
+
+                    <p class="training-destination-recommendation">
+                        Recommended for Acolytes and Merchants
+                    </p>
+
+                    <p>
+                        An undead route where holy support, survivability,
+                        preparation, and practical resource use can shine.
+                    </p>
+
+                    <ul>
+                        <li>Recommended target guidance</li>
+                        <li>Free direct Pathfinder travel</li>
+                        <li>Open to every profession</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+
+        <div class="advancement-choice-panel">
+            <div>
+                <span class="eyebrow">Review all training grounds</span>
+
+                <h3>Pathfinder recommends. Players choose.</h3>
+            </div>
+
+            <p>
+                Class recommendations help adventurers find a comfortable
+                starting point, but never lock a destination. Players can
+                compare every Level 35-50 route and travel wherever they prefer.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="section world-section" id="envoys">
+    <div class="container world-grid">
+        <div class="world-panel">
+            <img
+                class="world-image"
+                src="/images/news/advancement-training-envoy.jpg"
+                alt="A Pathfinder Envoy supporting adventurers at a field outpost" />
+        </div>
+
+        <div class="world-content">
+            <div class="eyebrow">
+                <span class="server-status-dot"></span>
+                New Pathfinder Envoys
+            </div>
+
+            <h2>
+                Consistent support,
+                <span>where training happens.</span>
+            </h2>
+
+            <p>
+                Old field Pathfinder copies and custom training Kafras have
+                been replaced by a streamlined Envoy network. Every supported
+                training area now uses the same focused field-service model.
+            </p>
+
+            <ul class="world-list">
+                <li>
+                    <span>&#9670;</span>
+                    Storage access at the training area
+                </li>
+
+                <li>
+                    <span>&#9670;</span>
+                    Free return to Pathfinder Headquarters
+                </li>
+
+                <li>
+                    <span>&#9670;</span>
+                    Stay Here option for uninterrupted training
+                </li>
+
+                <li>
+                    <span>&#9670;</span>
+                    Consistent dialogue and services across the network
+                </li>
+
+                <li>
+                    <span>&#9670;</span>
+                    Official world Kafras remain unchanged
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="section news-page-section" id="network">
+    <div class="container">
+        <div class="centered-heading section-heading">
+            <div class="eyebrow">
+                <span class="server-status-dot"></span>
+                Pathfinder network expansion
+            </div>
+
+            <h2>
+                One route from first steps
+                <span>through Level 50.</span>
+            </h2>
+
+            <p>
+                The expanded network now presents three clear stages of
+                training support while preserving freedom to move through
+                Rune-Midgarts normally.
+            </p>
+        </div>
+
+        <div class="advancement-stage-flow"
+             aria-label="Pathfinder training stages">
+            <div>
+                <span>Levels 5-20</span>
+                <strong>Beginner Hunting Grounds</strong>
+            </div>
+
+            <span aria-hidden="true">&rarr;</span>
+
+            <div>
+                <span>Levels 20-35</span>
+                <strong>Adventurer Hunting Grounds</strong>
+            </div>
+
+            <span aria-hidden="true">&rarr;</span>
+
+            <div class="active">
+                <span>Levels 35-50</span>
+                <strong>Advancement Training</strong>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section advancement-quality-section" id="quality-of-life">
+    <div class="container">
+        <div class="section-heading-row">
+            <div class="section-heading">
+                <div class="eyebrow">
+                    <span class="server-status-dot"></span>
+                    Quality of life
+                </div>
+
+                <h2>
+                    Less friction,
+                    <span>cleaner field support.</span>
+                </h2>
+            </div>
+        </div>
+
+        <div class="feature-card-grid">
+            <article class="feature-card">
+                <span class="feature-number">01</span>
+                <h3>Improved 35-50 guidance</h3>
+                <p>Dedicated recommendations now cover the next training stage.</p>
+            </article>
+
+            <article class="feature-card featured-card">
+                <span class="feature-number">02</span>
+                <h3>Class-aware routes</h3>
+                <p>Profession suggestions provide direction without restrictions.</p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">03</span>
+                <h3>Review every route</h3>
+                <p>All training grounds remain visible and available at any time.</p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">04</span>
+                <h3>Consistent Envoys</h3>
+                <p>Supported maps now share one predictable field-support model.</p>
+            </article>
+
+            <article class="feature-card featured-card">
+                <span class="feature-number">05</span>
+                <h3>Cleaner layouts</h3>
+                <p>Duplicate support NPC clutter has been reduced across training maps.</p>
+            </article>
+
+            <article class="feature-card">
+                <span class="feature-number">06</span>
+                <h3>Official Kafras preserved</h3>
+                <p>Normal Kafra functionality throughout the world remains intact.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section news-page-section" id="preserved">
+    <div class="container">
+        <div class="preserved-systems-panel">
+            <div class="section-heading">
+                <div class="eyebrow">
+                    <span class="server-status-dot"></span>
+                    Preserved systems
+                </div>
+
+                <h2>
+                    Focused changes,
+                    <span>familiar foundations.</span>
+                </h2>
+
+                <p>
+                    This overhaul changes guidance and field support. It does
+                    not rebalance combat, rewards, job advancement, or the
+                    established Level 5-35 route.
+                </p>
+            </div>
+
+            <ul class="preserved-systems-list">
+                <li>Assignments</li>
+                <li>Weekly Supplies</li>
+                <li>Pathfinder Rewards</li>
+                <li>Second Job Guidance</li>
+                <li>Second Job quests</li>
+                <li>Official Kafra NPCs</li>
+                <li>Monster spawns, EXP, and drops</li>
+                <li>Existing Level 5-35 progression</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="final-cta-section" id="looking-ahead">
+    <div class="container">
+        <div class="final-cta-panel">
+            <div class="final-cta-emblem">M</div>
+
+            <div class="final-cta-content">
+                <div class="eyebrow">Looking ahead</div>
+
+                <h2>A clearer Training Guidance interface.</h2>
+
+                <p>
+                    The next Pathfinder update will make all three progression
+                    stages immediately visible: Beginner Hunting Grounds,
+                    Adventurer Hunting Grounds, and Advancement Training.
+                    The philosophy remains simple: Pathfinder recommends.
+                    Players choose.
+                </p>
+            </div>
+
+            <div class="final-cta-actions">
+                <a class="btn hero-primary-button"
+                   asp-controller="Guides"
+                   asp-action="Pathfinder">
+                    Pathfinder Guide
+                </a>
+
+                <a class="btn hero-secondary-button"
+                   asp-controller="Home"
+                   asp-action="News">
+                    Return to News
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -60,6 +60,11 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult AdvancementTrainingPatch()
+    {
+        return View();
+    }
+
     public IActionResult Rules()
     {
         return View();

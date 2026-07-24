@@ -56,7 +56,7 @@
                 <button type="button" data-collection-filter="event" aria-pressed="false">Events</button>
             </div>
 
-            <span class="content-result-count" data-collection-count aria-live="polite">7 updates</span>
+            <span class="content-result-count" data-collection-count aria-live="polite">8 updates</span>
         </div>
 
         <div class="content-empty-state" data-collection-empty hidden>
@@ -65,6 +65,45 @@
         </div>
 
         <div class="news-page-grid">
+            <article class="news-page-card featured-news-card advancement-training-news-card"
+                     data-collection-item
+                     data-collection-category="patch">
+                <div class="news-page-image news-image-advancement-training"></div>
+
+                <div class="news-page-card-content">
+                    <div class="news-card-meta">
+                        <span>Patch Notes</span>
+                        <time datetime="2026-07-23">July 23, 2026</time>
+                    </div>
+
+                    <h2>Pathfinder Overhaul: Advancement Training Update</h2>
+
+                    <p>
+                        Pathfinder guidance now continues through Level 50 with
+                        three new advancement routes, open destination review,
+                        direct travel, and a streamlined field network of
+                        Pathfinder Envoys.
+                    </p>
+
+                    <div class="pathfinder-feature-list"
+                         aria-label="Advancement Training patch features">
+                        <span>Levels 35-50</span>
+                        <span>Three training grounds</span>
+                        <span>Class-aware guidance</span>
+                        <span>Open route choice</span>
+                        <span>Pathfinder Envoys</span>
+                        <span>Cleaner field support</span>
+                    </div>
+
+                    <a class="news-read-more"
+                       asp-controller="Home"
+                       asp-action="AdvancementTrainingPatch">
+                        Read the patch notes
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </article>
+
             <article class="news-page-card featured-news-card pathfinder-news-card" data-collection-item data-collection-category="development">
                 <div class="news-page-image news-image-journey-forward"></div>
 
